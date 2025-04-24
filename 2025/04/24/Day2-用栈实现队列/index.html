@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/23/day1-uikit事件传递机制-responder-chain/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/24/day2-用栈实现队列/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day1-UIKit事件传递机制 &amp; Responder Chain | YVTU
+            Day2-用栈实现队列 | YVTU
         
     </title>
 
@@ -378,7 +378,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day1-UIKit事件传递机制 &amp; Responder Chain</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day2-用栈实现队列</h1>
 			</div>
 			
 		</div>
@@ -399,15 +399,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-23 11:50:13</span>
-        <span class="mobile">2025-04-23 11:50:13</span>
+        <span class="desktop">2025-04-24 11:28:10</span>
+        <span class="mobile">2025-04-24 11:28:10</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-24 12:09:11</span>
-            <span class="mobile">2025-04-24 12:09:11</span>
+            <span class="desktop">2025-04-24 11:55:20</span>
+            <span class="mobile">2025-04-24 11:55:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -421,7 +421,7 @@
                     
                         
                         <li>
-                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                         </li>
                     
                     
@@ -429,6 +429,17 @@
             </ul>
         </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -446,97 +457,34 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="UIKit-事件传递机制-Responder-Chain"><a href="#UIKit-事件传递机制-Responder-Chain" class="headerlink" title="UIKit 事件传递机制 &amp; Responder Chain"></a>UIKit 事件传递机制 &amp; Responder Chain</h1><h2 id="一、事件类型"><a href="#一、事件类型" class="headerlink" title="一、事件类型"></a>一、事件类型</h2><p>UIKit 中主要的事件类型包括：</p>
+			<p>🧠 算法题：用栈实现队列（LeetCode 232）</p>
+<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-queue-using-stacks/" >LeetCode 232 - Implement Queue using Stacks<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>📌 题目描述：</p>
+<p>使用两个栈 stackIn 和 stackOut 实现一个队列，支持以下操作：</p>
 <ul>
-<li><strong>触摸事件（Touch Events）</strong>：如 tap、swipe、pinch 等。</li>
-<li><strong>运动事件（Motion Events）</strong>：如摇动设备。</li>
-<li><strong>远程控制事件（Remote-Control Events）</strong>：如耳机控制、CarPlay。</li>
-<li><strong>按键事件（Press Events）</strong>（仅限 tvOS 或支持硬件键盘时的 iOS）。</li>
+<li>push(x)：将元素 x 推到队列的末尾</li>
+<li>pop()：移除队列开头的元素并返回</li>
+<li>peek()：返回队列开头的元素</li>
+<li>empty()：返回队列是否为空</li>
 </ul>
-<hr>
-<h2 id="二、事件传递流程"><a href="#二、事件传递流程" class="headerlink" title="二、事件传递流程"></a>二、事件传递流程</h2><ol>
-<li><p><strong>事件产生</strong>：</p>
+<p>要求：<br>只能使用栈的标准操作（push, pop, peek, empty）</p>
+<p>⸻</p>
+<p>💡 解题思路：</p>
 <ul>
-<li>事件由硬件（屏幕、传感器等）检测后交给系统。</li>
-<li>iOS 将事件加入到主线程的 <code>UIApplication</code> 对象中进行分发。</li>
+<li>入队操作（push）直接往 stackIn 中加元素；</li>
+<li>出队操作（pop 或 peek）时，如果 stackOut 为空，则将 stackIn 中的所有元素倒序转移到 stackOut；</li>
+<li>保证先进先出（FIFO）的顺序。</li>
 </ul>
-</li>
-<li><p><strong>事件分发路径</strong>：</p>
+<p>⸻</p>
+<p>✅ JavaScript 实现：</p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">MyQueue</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span> = [];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackOut</span> = [];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span> = <span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">push</span>(x);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pop</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">pop</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">peek</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>[<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> - <span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">empty</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span> === <span class="number">0</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+
+<p>⸻</p>
+<p>🧠 思考拓展：</p>
 <ul>
-<li><code>UIApplication</code> → <code>UIWindow</code> → <code>UIView</code></li>
-</ul>
-</li>
-<li><p><strong>命中测试（Hit-Testing）</strong>：</p>
-<ul>
-<li>从根视图（window 的 rootView）开始递归查找目标视图。</li>
-<li>使用两个方法：<ul>
-<li><code>point(inside:with:)</code></li>
-<li><code>hitTest(_:with:)</code></li>
-</ul>
-</li>
-<li>最终找到最合适的视图接收触摸事件。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="三、Responder-Chain（响应者链）"><a href="#三、Responder-Chain（响应者链）" class="headerlink" title="三、Responder Chain（响应者链）"></a>三、Responder Chain（响应者链）</h2><h3 id="1-什么是-Responder-Chain？"><a href="#1-什么是-Responder-Chain？" class="headerlink" title="1. 什么是 Responder Chain？"></a>1. 什么是 Responder Chain？</h3><p>Responder Chain 是一条事件响应链，用来处理视图无法响应的事件。</p>
-<h3 id="2-Responder-Chain-构成"><a href="#2-Responder-Chain-构成" class="headerlink" title="2. Responder Chain 构成"></a>2. Responder Chain 构成</h3><p>一个 UIResponder 对象（如 UIView、UIViewController）可以传递事件给其上层响应者：<br>UIView → UIViewController → UIWindow → UIApplication → AppDelegate</p>
-<p>如果某个对象无法处理事件，它会把事件传递给下一个响应者。</p>
-<h3 id="3-UIResponder-方法"><a href="#3-UIResponder-方法" class="headerlink" title="3. UIResponder 方法"></a>3. UIResponder 方法</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>touchesBegan(_:with:)</code></td>
-<td>开始触摸</td>
-</tr>
-<tr>
-<td><code>touchesMoved(_:with:)</code></td>
-<td>触摸移动</td>
-</tr>
-<tr>
-<td><code>touchesEnded(_:with:)</code></td>
-<td>触摸结束</td>
-</tr>
-<tr>
-<td><code>touchesCancelled(_:with:)</code></td>
-<td>触摸被取消</td>
-</tr>
-</tbody></table>
-<p>还可以通过 <code>canBecomeFirstResponder</code> 和 <code>becomeFirstResponder()</code> 控制焦点。</p>
-<hr>
-<h2 id="四、自定义事件传递（常见场景）"><a href="#四、自定义事件传递（常见场景）" class="headerlink" title="四、自定义事件传递（常见场景）"></a>四、自定义事件传递（常见场景）</h2><h3 id="1-UIView-不响应事件"><a href="#1-UIView-不响应事件" class="headerlink" title="1. UIView 不响应事件"></a>1. UIView 不响应事件</h3><p>可能是因为以下原因：</p>
-<ul>
-<li><code>isUserInteractionEnabled = false</code></li>
-<li><code>alpha &lt; 0.01</code></li>
-<li><code>hidden = true</code></li>
-</ul>
-<h3 id="2-自定义控件事件传递"><a href="#2-自定义控件事件传递" class="headerlink" title="2. 自定义控件事件传递"></a>2. 自定义控件事件传递</h3><p>可重写以下方法：</p>
-<ul>
-<li><code>hitTest(_:with:)</code>：决定谁是事件的最终响应者。</li>
-<li><code>point(inside:with:)</code>：判断点是否在当前视图内。</li>
-</ul>
-<hr>
-<h2 id="五、Responder-Chain-应用场景"><a href="#五、Responder-Chain-应用场景" class="headerlink" title="五、Responder Chain 应用场景"></a>五、Responder Chain 应用场景</h2><ul>
-<li>控件事件传递：如 UIButton 点击事件向上传递。</li>
-<li>菜单处理：如复制粘贴菜单响应。</li>
-<li>键盘响应管理。</li>
-<li>自定义事件路由（target-action 无法处理时）。</li>
-</ul>
-<hr>
-<h2 id="六、调试技巧"><a href="#六、调试技巧" class="headerlink" title="六、调试技巧"></a>六、调试技巧</h2><ul>
-<li>使用 View Debugger 检查视图层级。</li>
-<li>打断点调试 <code>hitTest</code> 和 <code>touchesBegan</code>。</li>
-<li>查看 <code>next</code> 属性追踪 Responder Chain。</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ul>
-<li>UIKit 事件从 UIApplication 开始，经过 UIWindow 最终传递给具体的 UIView。</li>
-<li>Responder Chain 是事件冒泡机制的实现，支持事件的多级处理。</li>
-<li>通过合理利用 <code>hitTest:</code> 和 <code>Responder Chain</code>，可以实现复杂交互需求。</li>
+<li>如果反过来是“用队列实现栈”应该怎么做？👉 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-stack-using-queues/" >LeetCode 225<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>队列相关拓展题：滑动窗口最大值、最小栈等</li>
 </ul>
 
 		</div>
@@ -544,29 +492,25 @@
 		
 
 		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
+			</li>
+			
+		</ul>
+		
 
 		
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/23/Day1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day1-两数之和</span>
-						<span class="post-nav-item">Prev posts</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/23/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+				<a class="next" rel="next" href="/2025/04/24/Day2-View-%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">学习计划</span>
+						<span class="post-nav-title-item">Day2-View 布局流程</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -587,8 +531,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day1-UIKit事件传递机制 &amp; Responder Chain</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIKit-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6-Responder-Chain"><span class="nav-text">UIKit 事件传递机制 &amp; Responder Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">一、事件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%B5%81%E7%A8%8B"><span class="nav-text">二、事件传递流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Responder-Chain%EF%BC%88%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE%EF%BC%89"><span class="nav-text">三、Responder Chain（响应者链）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Responder-Chain%EF%BC%9F"><span class="nav-text">1. 什么是 Responder Chain？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Responder-Chain-%E6%9E%84%E6%88%90"><span class="nav-text">2. Responder Chain 构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UIResponder-%E6%96%B9%E6%B3%95"><span class="nav-text">3. UIResponder 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%EF%BC%88%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-text">四、自定义事件传递（常见场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UIView-%E4%B8%8D%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6"><span class="nav-text">1. UIView 不响应事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="nav-text">2. 自定义控件事件传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Responder-Chain-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">五、Responder Chain 应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="nav-text">六、调试技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">七、总结</span></a></li></ol></li></ol>
+		<div class="page-title">Day2-用栈实现队列</div>
+		
 
 	</div>
 </div>

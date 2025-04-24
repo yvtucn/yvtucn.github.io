@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/23/day1-uikit事件传递机制-responder-chain/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/24/day2-view-布局流程/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day1-UIKit事件传递机制 &amp; Responder Chain | YVTU
+            Day2-View 布局流程 | YVTU
         
     </title>
 
@@ -378,7 +378,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day1-UIKit事件传递机制 &amp; Responder Chain</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day2-View 布局流程</h1>
 			</div>
 			
 		</div>
@@ -399,15 +399,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-23 11:50:13</span>
-        <span class="mobile">2025-04-23 11:50:13</span>
+        <span class="desktop">2025-04-24 10:46:58</span>
+        <span class="mobile">2025-04-24 10:46:58</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-24 12:09:11</span>
-            <span class="mobile">2025-04-24 12:09:11</span>
+            <span class="desktop">2025-04-24 12:09:15</span>
+            <span class="mobile">2025-04-24 12:09:15</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -446,97 +446,67 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="UIKit-事件传递机制-Responder-Chain"><a href="#UIKit-事件传递机制-Responder-Chain" class="headerlink" title="UIKit 事件传递机制 &amp; Responder Chain"></a>UIKit 事件传递机制 &amp; Responder Chain</h1><h2 id="一、事件类型"><a href="#一、事件类型" class="headerlink" title="一、事件类型"></a>一、事件类型</h2><p>UIKit 中主要的事件类型包括：</p>
+			<h1 id="View-布局流程详解"><a href="#View-布局流程详解" class="headerlink" title="View 布局流程详解"></a>View 布局流程详解</h1><h2 id="📌-一、布局流程总览"><a href="#📌-一、布局流程总览" class="headerlink" title="📌 一、布局流程总览"></a>📌 一、布局流程总览</h2><p>iOS 的视图布局流程由 UIKit 管理，核心遵循「从父到子、从外向内」的递归更新方式。涉及的关键方法有：</p>
 <ul>
-<li><strong>触摸事件（Touch Events）</strong>：如 tap、swipe、pinch 等。</li>
-<li><strong>运动事件（Motion Events）</strong>：如摇动设备。</li>
-<li><strong>远程控制事件（Remote-Control Events）</strong>：如耳机控制、CarPlay。</li>
-<li><strong>按键事件（Press Events）</strong>（仅限 tvOS 或支持硬件键盘时的 iOS）。</li>
+<li><code>layoutSubviews</code>：真正进行子视图位置布局的地方</li>
+<li><code>setNeedsLayout</code>：标记视图为需要重新布局</li>
+<li><code>layoutIfNeeded</code>：立即强制布局</li>
 </ul>
+<p>布局流程如下：<br>属性变化（如 frame）或手动触发<br>↓<br>调用 setNeedsLayout（标记需要布局）<br>↓<br>下一个 runloop 执行 layoutIfNeeded<br>↓<br>系统递归调用 layoutSubviews 进行布局</p>
 <hr>
-<h2 id="二、事件传递流程"><a href="#二、事件传递流程" class="headerlink" title="二、事件传递流程"></a>二、事件传递流程</h2><ol>
-<li><p><strong>事件产生</strong>：</p>
+<h2 id="⚙️-二、关键方法详解"><a href="#⚙️-二、关键方法详解" class="headerlink" title="⚙️ 二、关键方法详解"></a>⚙️ 二、关键方法详解</h2><h3 id="1-setNeedsLayout"><a href="#1-setNeedsLayout" class="headerlink" title="1. setNeedsLayout"></a>1. <code>setNeedsLayout</code></h3><ul>
+<li><strong>作用</strong>：标记当前视图为“需要重新布局”</li>
+<li><strong>调用时机</strong>：当视图状态或依赖数据变化时</li>
+<li><strong>注意</strong>：不会立即执行 <code>layoutSubviews</code>，而是在下一个 runloop 进行布局</li>
+</ul>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.view setNeedsLayout];</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-layoutIfNeeded"><a href="#2-layoutIfNeeded" class="headerlink" title="2. layoutIfNeeded"></a>2. layoutIfNeeded</h3><ul>
+<li>作用：立即执行布局流程（如果已标记）</li>
+<li>常用场景：动画中强制更新 layout，确保视图状态正确  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.view layoutIfNeeded];</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="3-layoutSubviews"><a href="#3-layoutSubviews" class="headerlink" title="3. layoutSubviews"></a>3. layoutSubviews</h3><ul>
+<li>作用：布局子视图，子类通过重写此方法来自定义布局逻辑</li>
+<li>调用方式：系统自动调用，或通过 layoutIfNeeded 间接触发  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)layoutSubviews &#123;</span><br><span class="line">    [<span class="variable language_">super</span> layoutSubviews];</span><br><span class="line">    <span class="keyword">self</span>.label.frame = <span class="built_in">CGRectMake</span>(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h2 id="🕒-三、布局触发时机"><a href="#🕒-三、布局触发时机" class="headerlink" title="🕒 三、布局触发时机"></a>🕒 三、布局触发时机</h2><p>布局流程会在以下情况下自动触发：</p>
 <ul>
-<li>事件由硬件（屏幕、传感器等）检测后交给系统。</li>
-<li>iOS 将事件加入到主线程的 <code>UIApplication</code> 对象中进行分发。</li>
+<li>视图初始化完成后首次添加到视图层级中</li>
+<li>frame &#x2F; bounds &#x2F; center 属性改变</li>
+<li>调用 setNeedsLayout + layoutIfNeeded</li>
+<li>屏幕旋转、设备方向变化</li>
+<li>Auto Layout 约束变化</li>
 </ul>
-</li>
-<li><p><strong>事件分发路径</strong>：</p>
+<h2 id="🔁-四、Auto-Layout-参与布局流程"><a href="#🔁-四、Auto-Layout-参与布局流程" class="headerlink" title="🔁 四、Auto Layout 参与布局流程"></a>🔁 四、Auto Layout 参与布局流程</h2><p>当使用 Auto Layout（自动布局）时：</p>
 <ul>
-<li><code>UIApplication</code> → <code>UIWindow</code> → <code>UIView</code></li>
+<li>不推荐在 layoutSubviews 中设置 frame</li>
+<li>更新约束应在 updateConstraints 方法中完成</li>
+<li>updateConstraints → layoutSubviews → drawRect 是完整的调用链  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)updateConstraints &#123;</span><br><span class="line">    <span class="comment">// 更新约束</span></span><br><span class="line">    [<span class="variable language_">super</span> updateConstraints];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
 </ul>
-</li>
-<li><p><strong>命中测试（Hit-Testing）</strong>：</p>
-<ul>
-<li>从根视图（window 的 rootView）开始递归查找目标视图。</li>
-<li>使用两个方法：<ul>
-<li><code>point(inside:with:)</code></li>
-<li><code>hitTest(_:with:)</code></li>
+<h2 id="🧱-五、UIView-与-CALayer-的关系"><a href="#🧱-五、UIView-与-CALayer-的关系" class="headerlink" title="🧱 五、UIView 与 CALayer 的关系"></a>🧱 五、UIView 与 CALayer 的关系</h2><ul>
+<li>每个 UIView 都有一个对应的 CALayer</li>
+<li>UIView.frame 实际上是操作 CALayer.frame</li>
+<li>布局本质上是在更新图层的属性  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLog</span>(<span class="string">@&quot;%@&quot;</span>, <span class="built_in">NSStringFromCGRect</span>(<span class="keyword">self</span>.view.layer.frame));</span><br></pre></td></tr></table></figure></div></li>
 </ul>
-</li>
-<li>最终找到最合适的视图接收触摸事件。</li>
+<h2 id="📐-六、文字版布局流程图"><a href="#📐-六、文字版布局流程图" class="headerlink" title="📐 六、文字版布局流程图"></a>📐 六、文字版布局流程图</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[视图属性变更]</span><br><span class="line">      ↓</span><br><span class="line">[setNeedsLayout] → 标记布局</span><br><span class="line">      ↓</span><br><span class="line">[下一个 runloop]</span><br><span class="line">      ↓</span><br><span class="line">[layoutIfNeeded] → 判断并触发布局</span><br><span class="line">      ↓</span><br><span class="line">[layoutSubviews] → 更新子视图 frame</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="🎯-七、面试高频问题整理"><a href="#🎯-七、面试高频问题整理" class="headerlink" title="🎯 七、面试高频问题整理"></a>🎯 七、面试高频问题整理</h2><h3 id="Q1：layoutSubviews-和-drawRect-有什么区别？"><a href="#Q1：layoutSubviews-和-drawRect-有什么区别？" class="headerlink" title="Q1：layoutSubviews 和 drawRect 有什么区别？"></a>Q1：layoutSubviews 和 drawRect 有什么区别？</h3><ul>
+<li>layoutSubviews：用于更新子视图的布局</li>
+<li>drawRect：用于自定义视图绘图（如 Core Graphics）</li>
 </ul>
-</li>
-</ol>
-<hr>
-<h2 id="三、Responder-Chain（响应者链）"><a href="#三、Responder-Chain（响应者链）" class="headerlink" title="三、Responder Chain（响应者链）"></a>三、Responder Chain（响应者链）</h2><h3 id="1-什么是-Responder-Chain？"><a href="#1-什么是-Responder-Chain？" class="headerlink" title="1. 什么是 Responder Chain？"></a>1. 什么是 Responder Chain？</h3><p>Responder Chain 是一条事件响应链，用来处理视图无法响应的事件。</p>
-<h3 id="2-Responder-Chain-构成"><a href="#2-Responder-Chain-构成" class="headerlink" title="2. Responder Chain 构成"></a>2. Responder Chain 构成</h3><p>一个 UIResponder 对象（如 UIView、UIViewController）可以传递事件给其上层响应者：<br>UIView → UIViewController → UIWindow → UIApplication → AppDelegate</p>
-<p>如果某个对象无法处理事件，它会把事件传递给下一个响应者。</p>
-<h3 id="3-UIResponder-方法"><a href="#3-UIResponder-方法" class="headerlink" title="3. UIResponder 方法"></a>3. UIResponder 方法</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>touchesBegan(_:with:)</code></td>
-<td>开始触摸</td>
-</tr>
-<tr>
-<td><code>touchesMoved(_:with:)</code></td>
-<td>触摸移动</td>
-</tr>
-<tr>
-<td><code>touchesEnded(_:with:)</code></td>
-<td>触摸结束</td>
-</tr>
-<tr>
-<td><code>touchesCancelled(_:with:)</code></td>
-<td>触摸被取消</td>
-</tr>
-</tbody></table>
-<p>还可以通过 <code>canBecomeFirstResponder</code> 和 <code>becomeFirstResponder()</code> 控制焦点。</p>
-<hr>
-<h2 id="四、自定义事件传递（常见场景）"><a href="#四、自定义事件传递（常见场景）" class="headerlink" title="四、自定义事件传递（常见场景）"></a>四、自定义事件传递（常见场景）</h2><h3 id="1-UIView-不响应事件"><a href="#1-UIView-不响应事件" class="headerlink" title="1. UIView 不响应事件"></a>1. UIView 不响应事件</h3><p>可能是因为以下原因：</p>
-<ul>
-<li><code>isUserInteractionEnabled = false</code></li>
-<li><code>alpha &lt; 0.01</code></li>
-<li><code>hidden = true</code></li>
+<h3 id="Q2：如何立即触发布局？"><a href="#Q2：如何立即触发布局？" class="headerlink" title="Q2：如何立即触发布局？"></a>Q2：如何立即触发布局？</h3><div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.view setNeedsLayout];</span><br><span class="line">[<span class="keyword">self</span>.view layoutIfNeeded];</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Q3：什么时候会调用-layoutSubviews？"><a href="#Q3：什么时候会调用-layoutSubviews？" class="headerlink" title="Q3：什么时候会调用 layoutSubviews？"></a>Q3：什么时候会调用 layoutSubviews？</h3><ul>
+<li>添加到父视图后</li>
+<li>frame 改变</li>
+<li>setNeedsLayout + layoutIfNeeded</li>
+<li>Auto Layout 触发</li>
 </ul>
-<h3 id="2-自定义控件事件传递"><a href="#2-自定义控件事件传递" class="headerlink" title="2. 自定义控件事件传递"></a>2. 自定义控件事件传递</h3><p>可重写以下方法：</p>
-<ul>
-<li><code>hitTest(_:with:)</code>：决定谁是事件的最终响应者。</li>
-<li><code>point(inside:with:)</code>：判断点是否在当前视图内。</li>
-</ul>
-<hr>
-<h2 id="五、Responder-Chain-应用场景"><a href="#五、Responder-Chain-应用场景" class="headerlink" title="五、Responder Chain 应用场景"></a>五、Responder Chain 应用场景</h2><ul>
-<li>控件事件传递：如 UIButton 点击事件向上传递。</li>
-<li>菜单处理：如复制粘贴菜单响应。</li>
-<li>键盘响应管理。</li>
-<li>自定义事件路由（target-action 无法处理时）。</li>
-</ul>
-<hr>
-<h2 id="六、调试技巧"><a href="#六、调试技巧" class="headerlink" title="六、调试技巧"></a>六、调试技巧</h2><ul>
-<li>使用 View Debugger 检查视图层级。</li>
-<li>打断点调试 <code>hitTest</code> 和 <code>touchesBegan</code>。</li>
-<li>查看 <code>next</code> 属性追踪 Responder Chain。</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ul>
-<li>UIKit 事件从 UIApplication 开始，经过 UIWindow 最终传递给具体的 UIView。</li>
-<li>Responder Chain 是事件冒泡机制的实现，支持事件的多级处理。</li>
-<li>通过合理利用 <code>hitTest:</code> 和 <code>Responder Chain</code>，可以实现复杂交互需求。</li>
+<h3 id="Q4：如何在动画中确保布局生效？"><a href="#Q4：如何在动画中确保布局生效？" class="headerlink" title="Q4：如何在动画中确保布局生效？"></a>Q4：如何在动画中确保布局生效？</h3><div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">0.3</span> animations:^&#123;</span><br><span class="line">    <span class="comment">// 修改布局前置条件</span></span><br><span class="line">    [<span class="keyword">self</span>.view layoutIfNeeded]; <span class="comment">// 强制立即布局</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="📚-八、参考资料"><a href="#📚-八、参考资料" class="headerlink" title="📚 八、参考资料"></a>📚 八、参考资料</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://developer.apple.com/documentation/uikit/uiview" >Apple Developer 文档：UIView Class Reference<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://developer.apple.com/library/archive/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html" >官方指南：View Programming Guide for iOS<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
 </ul>
 
 		</div>
@@ -551,12 +521,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/23/Day1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+				<a class="prev" rel="prev" href="/2025/04/24/Day2-%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day1-两数之和</span>
+						<span class="post-nav-title-item">Day2-用栈实现队列</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -564,9 +534,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/23/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+				<a class="next" rel="next" href="/2025/04/23/Day1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">学习计划</span>
+						<span class="post-nav-title-item">Day1-两数之和</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -587,8 +557,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day1-UIKit事件传递机制 &amp; Responder Chain</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIKit-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6-Responder-Chain"><span class="nav-text">UIKit 事件传递机制 &amp; Responder Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">一、事件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%B5%81%E7%A8%8B"><span class="nav-text">二、事件传递流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Responder-Chain%EF%BC%88%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE%EF%BC%89"><span class="nav-text">三、Responder Chain（响应者链）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Responder-Chain%EF%BC%9F"><span class="nav-text">1. 什么是 Responder Chain？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Responder-Chain-%E6%9E%84%E6%88%90"><span class="nav-text">2. Responder Chain 构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UIResponder-%E6%96%B9%E6%B3%95"><span class="nav-text">3. UIResponder 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%EF%BC%88%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-text">四、自定义事件传递（常见场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UIView-%E4%B8%8D%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6"><span class="nav-text">1. UIView 不响应事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="nav-text">2. 自定义控件事件传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Responder-Chain-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">五、Responder Chain 应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="nav-text">六、调试技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">七、总结</span></a></li></ol></li></ol>
+		<div class="page-title">Day2-View 布局流程</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#View-%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="nav-text">View 布局流程详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E4%B8%80%E3%80%81%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B%E6%80%BB%E8%A7%88"><span class="nav-text">📌 一、布局流程总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9A%99%EF%B8%8F-%E4%BA%8C%E3%80%81%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-text">⚙️ 二、关键方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-setNeedsLayout"><span class="nav-text">1. setNeedsLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-layoutIfNeeded"><span class="nav-text">2. layoutIfNeeded</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-layoutSubviews"><span class="nav-text">3. layoutSubviews</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%95%92-%E4%B8%89%E3%80%81%E5%B8%83%E5%B1%80%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA"><span class="nav-text">🕒 三、布局触发时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%81-%E5%9B%9B%E3%80%81Auto-Layout-%E5%8F%82%E4%B8%8E%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B"><span class="nav-text">🔁 四、Auto Layout 参与布局流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%B1-%E4%BA%94%E3%80%81UIView-%E4%B8%8E-CALayer-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">🧱 五、UIView 与 CALayer 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%90-%E5%85%AD%E3%80%81%E6%96%87%E5%AD%97%E7%89%88%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">📐 六、文字版布局流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E4%B8%83%E3%80%81%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86"><span class="nav-text">🎯 七、面试高频问题整理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1%EF%BC%9AlayoutSubviews-%E5%92%8C-drawRect-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">Q1：layoutSubviews 和 drawRect 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2%EF%BC%9A%E5%A6%82%E4%BD%95%E7%AB%8B%E5%8D%B3%E8%A7%A6%E5%8F%91%E5%B8%83%E5%B1%80%EF%BC%9F"><span class="nav-text">Q2：如何立即触发布局？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3%EF%BC%9A%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%B0%83%E7%94%A8-layoutSubviews%EF%BC%9F"><span class="nav-text">Q3：什么时候会调用 layoutSubviews？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4%EF%BC%9A%E5%A6%82%E4%BD%95%E5%9C%A8%E5%8A%A8%E7%94%BB%E4%B8%AD%E7%A1%AE%E4%BF%9D%E5%B8%83%E5%B1%80%E7%94%9F%E6%95%88%EF%BC%9F"><span class="nav-text">Q4：如何在动画中确保布局生效？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9A-%E5%85%AB%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">📚 八、参考资料</span></a></li></ol></li></ol>
 
 	</div>
 </div>
