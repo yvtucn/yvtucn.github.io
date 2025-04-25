@@ -1,0 +1,383 @@
+<!-- 你的HTML内容 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>职场已读乱回</title>
+    <style>
+        :root {
+            --dark-gray-start: #2D2F33;
+            --dark-gray-end: #1A1A1A;
+            --white-collar-blue-start: #6C8EB4;
+            --white-collar-blue-end: #B4C7E7;
+            --slacker-orange-start: #F4B183;
+            --slacker-orange-end: #F8C471;
+            --overachiever-red-start: #FF6666;
+            --overachiever-red-end: #FF9999;
+            --gold: #FFD700;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(var(--dark-gray-start), var(--dark-gray-end));
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 48px;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+            text-shadow: 
+                0 0 10px var(--gold),
+                0 0 20px var(--gold),
+                0 0 30px var(--gold);
+            animation: glitch 1s infinite alternate;
+            border: 5px solid white;
+            padding: 10px;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translateX(-50%) skewX(0deg);
+                text-shadow: 
+                    0 0 10px var(--gold),
+                    0 0 20px var(--gold),
+                    0 0 30px var(--gold);
+            }
+            20% {
+                transform: translateX(-50%) skewX(10deg);
+                text-shadow: 
+                    -5px 0 var(--white-collar-blue-start),
+                    5px 0 var(--overachiever-red-start);
+            }
+            40% {
+                transform: translateX(-50%) skewX(-10deg);
+                text-shadow: 
+                    -5px 0 var(--slacker-orange-start),
+                    5px 0 var(--white-collar-blue-start);
+            }
+            60% {
+                transform: translateX(-50%) skewX(5deg);
+                text-shadow: 
+                    -5px 0 var(--overachiever-red-start),
+                    5px 0 var(--slacker-orange-start);
+            }
+            80% {
+                transform: translateX(-50%) skewX(-5deg);
+                text-shadow: 
+                    -5px 0 var(--white-collar-blue-start),
+                    5px 0 var(--overachiever-red-start);
+            }
+            100% {
+                transform: translateX(-50%) skewX(0deg);
+                text-shadow: 
+                    0 0 10px var(--gold),
+                    0 0 20px var(--gold),
+                    0 0 30px var(--gold);
+            }
+        }
+
+        .message {
+            position: absolute;
+            top: -50px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            min-width: 100px;
+            justify-content: center;
+        }
+
+        .message::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .white-collar {
+            background: linear-gradient(var(--white-collar-blue-start), var(--white-collar-blue-end));
+        }
+
+        .white-collar::before {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="white"/></svg>');
+        }
+
+        .slacker {
+            background: linear-gradient(var(--slacker-orange-start), var(--slacker-orange-end));
+        }
+
+        .slacker::before {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="white"/></svg>');
+        }
+
+        .overachiever {
+            background: linear-gradient(var(--overachiever-red-start), var(--overachiever-red-end));
+        }
+
+        .overachiever::before {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="white"/></svg>');
+        }
+
+        .catch-area {
+            position: absolute;
+            bottom: 20px;
+            width: 200px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .catch-area::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: trail 0.5s infinite;
+        }
+
+        @keyframes trail {
+            0% {
+                transform: translateX(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(10px);
+                opacity: 0;
+            }
+        }
+
+        .particle-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: particle 1s ease-out forwards;
+        }
+
+        @keyframes particle {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        .prompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>职场已读乱回</h1>
+    <div class="catch-area" id="catchArea"></div>
+    <div class="particle-effect" id="particleEffect"></div>
+    <div class="prompt" id="prompt">功德+1</div>
+
+    <script>
+        const messages = [
+            "嗯嗯，知道了。",
+            "好的，安排一下。",
+            "行，我看看。",
+            "没问题，稍后处理。",
+            "收到，马上跟进。",
+            "了解，会处理的。",
+            "好嘞，这就办。",
+            "可以，我来弄。",
+            "晓得，等我弄。",
+            "明白，着手处理。"
+        ];
+
+        const messageTypes = ['white-collar', 'slacker', 'overachiever'];
+        const catchArea = document.getElementById('catchArea');
+        const particleEffect = document.getElementById('particleEffect');
+        const prompt = document.getElementById('prompt');
+        const messageElements = [];
+        let score = 0;
+        let isPerformanceMode = window.innerWidth < 768;
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX - catchArea.offsetWidth / 2;
+            catchArea.style.left = Math.min(
+                Math.max(x, 0),
+                window.innerWidth - catchArea.offsetWidth
+            ) + 'px';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const x = touch.clientX - catchArea.offsetWidth / 2;
+            catchArea.style.left = Math.min(
+                Math.max(x, 0),
+                window.innerWidth - catchArea.offsetWidth
+            ) + 'px';
+        }, { passive: false });
+
+        document.addEventListener('keydown', (e) => {
+            const speed = 20;
+            const currentLeft = parseInt(catchArea.style.left || 0);
+            if (e.key === 'ArrowLeft') {
+                catchArea.style.left = Math.max(0, currentLeft - speed) + 'px';
+            } else if (e.key === 'ArrowRight') {
+                catchArea.style.left = Math.min(
+                    window.innerWidth - catchArea.offsetWidth,
+                    currentLeft + speed
+                ) + 'px';
+            }
+        });
+
+        function createMessage() {
+            const message = document.createElement('div');
+            message.classList.add('message');
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const randomType = messageTypes[Math.floor(Math.random() * messageTypes.length)];
+            message.classList.add(randomType);
+            message.textContent = randomMessage;
+            message.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            document.body.appendChild(message);
+            messageElements.push(message);
+        }
+
+        function moveMessages() {
+            messageElements.forEach((message, index) => {
+                const rect = message.getBoundingClientRect();
+                if (rect.bottom < window.innerHeight) {
+                    message.style.top = (rect.top + 3) + 'px';
+                    if (isCollision(message, catchArea)) {
+                        catchMessage(message, index);
+                    }
+                } else {
+                    removeMessage(message, index);
+                }
+            });
+        }
+
+        function isCollision(element1, element2) {
+            const rect1 = element1.getBoundingClientRect();
+            const rect2 = element2.getBoundingClientRect();
+            return (
+                rect1.left < rect2.right &&
+                rect1.right > rect2.left &&
+                rect1.bottom > rect2.top &&
+                rect1.top < rect2.bottom
+            );
+        }
+
+        function catchMessage(message, index) {
+            playSound();
+            showParticleEffect();
+            showPrompt();
+            removeMessage(message, index);
+            score++;
+        }
+
+        function playSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.2);
+        }
+
+        function showParticleEffect() {
+            particleEffect.style.display = 'block';
+            for (let i = 0; i < (isPerformanceMode ? 10 : 50); i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 200;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                particle.style.setProperty('--x', `${x}px`);
+                particle.style.setProperty('--y', `${y}px`);
+                particle.style.left = window.innerWidth / 2 + 'px';
+                particle.style.top = window.innerHeight / 2 + 'px';
+                particleEffect.appendChild(particle);
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+            setTimeout(() => {
+                particleEffect.style.display = 'none';
+            }, 1000);
+        }
+
+        function showPrompt() {
+            prompt.style.display = 'block';
+            setTimeout(() => {
+                prompt.style.display = 'none';
+            }, 1000);
+        }
+
+        function removeMessage(message, index) {
+            message.remove();
+            messageElements.splice(index, 1);
+        }
+
+        function gameLoop() {
+            if (Math.random() < 0.01) {
+                createMessage();
+            }
+            moveMessages();
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body>
+
+</html>
+    
