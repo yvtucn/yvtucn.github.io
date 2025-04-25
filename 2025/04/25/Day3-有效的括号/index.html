@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/404.html"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/25/day3-有效的括号/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Page Not Found | YVTU
+            Day3-有效的括号 | YVTU
         
     </title>
 
@@ -372,28 +372,152 @@
 			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-	
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day3-有效的括号</h1>
+			</div>
+			
+		</div>
 
-	<div class="page-template-content markdown-body">
 		
-		<h1>Page Not Found</h1>
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-04-25 11:16:45</span>
+        <span class="mobile">2025-04-25 11:16:45</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-04-25 11:18:37</span>
+            <span class="mobile">2025-04-25 11:18:37</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
 		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="🧠-算法题：有效的括号（LeetCode-20）"><a href="#🧠-算法题：有效的括号（LeetCode-20）" class="headerlink" title="🧠 算法题：有效的括号（LeetCode 20）"></a>🧠 算法题：有效的括号（LeetCode 20）</h1><p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-parentheses/" >LeetCode 20 - Valid Parentheses<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h2><p>给定一个只包括 <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;&#123;&#39;</code>, <code>&#39;&#125;&#39;</code>, <code>&#39;[&#39;</code>, <code>&#39;]&#39;</code> 的字符串 <code>s</code>，判断字符串是否是有效的。</p>
+<p><strong>有效字符串需满足：</strong></p>
+<ol>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+<li>空字符串也为有效字符串。</li>
+</ol>
+<hr>
+<h2 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h2><ul>
+<li>使用栈结构来处理括号匹配；</li>
+<li>遇到左括号就入栈，遇到右括号时判断是否和栈顶配对；</li>
+<li>若匹配，则弹出栈顶；否则直接返回 false；</li>
+<li>最后栈为空，则为合法字符串。</li>
+</ul>
+<hr>
+<h2 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h2><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isValid = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> stack = [];</span><br><span class="line">    <span class="keyword">const</span> map = &#123;</span><br><span class="line">        <span class="string">&#x27;)&#x27;</span>: <span class="string">&#x27;(&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;&#125;&#x27;</span>: <span class="string">&#x27;&#123;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;]&#x27;</span>: <span class="string">&#x27;[&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> s) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;[&#x27;</span>].<span class="title function_">includes</span>(char)) &#123;</span><br><span class="line">            stack.<span class="title function_">push</span>(char);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.<span class="title function_">pop</span>() !== map[char]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h2><ul>
+<li>括号匹配是<strong>栈结构经典应用</strong>，请理解其底层思想；</li>
+<li>LeetCode 拓展题推荐：<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/generate-parentheses/" >22. Generate Parentheses（括号生成）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-valid-parentheses/" >32. Longest Valid Parentheses（最长有效括号）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
+</li>
+</ul>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/04/25/Day3-Block-%E5%88%86%E7%B1%BB%E3%80%81%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day3-Block 分类、变量捕获与作用域</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
 
 		
 	</div>
 
-	<div class="page-template-comments">
-		
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Day3-有效的括号</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%A7%A0-%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%EF%BC%88LeetCode-20%EF%BC%89"><span class="nav-text">🧠 算法题：有效的括号（LeetCode 20）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol></li></ol>
+
 	</div>
 </div>
-
-<div class="paginator">
+	</div>
 	
 </div>
-  
 			</div>
 
 			
@@ -427,6 +551,22 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -529,6 +669,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 

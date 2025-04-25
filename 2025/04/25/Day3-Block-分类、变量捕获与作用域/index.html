@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/404.html"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/25/day3-block-分类、变量捕获与作用域/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Page Not Found | YVTU
+            Day3-Block 分类、变量捕获与作用域 | YVTU
         
     </title>
 
@@ -372,28 +372,216 @@
 			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-	
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day3-Block 分类、变量捕获与作用域</h1>
+			</div>
+			
+		</div>
 
-	<div class="page-template-content markdown-body">
 		
-		<h1>Page Not Found</h1>
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-04-25 11:10:39</span>
+        <span class="mobile">2025-04-25 11:10:39</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-04-25 11:11:37</span>
+            <span class="mobile">2025-04-25 11:11:37</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
 		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="Block-分类、变量捕获与作用域"><a href="#Block-分类、变量捕获与作用域" class="headerlink" title="Block 分类、变量捕获与作用域"></a>Block 分类、变量捕获与作用域</h1><h2 id="一、Block-的分类"><a href="#一、Block-的分类" class="headerlink" title="一、Block 的分类"></a>一、Block 的分类</h2><p>Block 在 Objective-C 中，根据其存储位置和生命周期分为以下三类：</p>
+<table>
+<thead>
+<tr>
+<th>Block 类型</th>
+<th>存储位置</th>
+<th>特点说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Global Block</td>
+<td>全局区</td>
+<td>不捕获外部变量</td>
+</tr>
+<tr>
+<td>Stack Block</td>
+<td>栈上</td>
+<td>捕获外部变量，随栈帧销毁</td>
+</tr>
+<tr>
+<td>Heap Block</td>
+<td>堆上</td>
+<td>捕获外部变量，Block_copy 后存在堆上</td>
+</tr>
+</tbody></table>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (^block1)(<span class="type">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;Hello&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Global Block</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">void</span> (^block2)(<span class="type">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;a = %d&quot;</span>, a);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Stack Block</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> (^block3)(<span class="type">void</span>) = [block2 <span class="keyword">copy</span>];</span><br><span class="line"><span class="comment">// Heap Block</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="二、变量捕获（Captured-Variables）"><a href="#二、变量捕获（Captured-Variables）" class="headerlink" title="二、变量捕获（Captured Variables）"></a>二、变量捕获（Captured Variables）</h2><h3 id="1-默认捕获（值语义）"><a href="#1-默认捕获（值语义）" class="headerlink" title="1. 默认捕获（值语义）"></a>1. 默认捕获（值语义）</h3><p>Block 默认<strong>以值方式拷贝局部变量</strong>，不可修改。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="type">void</span> (^block)(<span class="type">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;a is %d&quot;</span>, a);</span><br><span class="line">&#125;;</span><br><span class="line">a = <span class="number">6</span>;</span><br><span class="line">block(); <span class="comment">// 输出 a is 5</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-block-修饰（引用语义）"><a href="#2-block-修饰（引用语义）" class="headerlink" title="2. __block 修饰（引用语义）"></a>2. <code>__block</code> 修饰（引用语义）</h3><p>允许在 Block 内部修改外部变量。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__block <span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="type">void</span> (^block)(<span class="type">void</span>) = ^&#123;</span><br><span class="line">    a = <span class="number">10</span>;</span><br><span class="line">&#125;;</span><br><span class="line">block();</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@&quot;a is %d&quot;</span>, a); <span class="comment">// 输出 a is 10</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-对象捕获（指针语义）"><a href="#3-对象捕获（指针语义）" class="headerlink" title="3. 对象捕获（指针语义）"></a>3. 对象捕获（指针语义）</h3><p>对象变量以指针形式捕获，会被强引用。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *str = <span class="string">@&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">void</span> (^block)(<span class="type">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;%@&quot;</span>, str);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// str 被 retain</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="三、作用域与内存管理"><a href="#三、作用域与内存管理" class="headerlink" title="三、作用域与内存管理"></a>三、作用域与内存管理</h2><h3 id="生命周期："><a href="#生命周期：" class="headerlink" title="生命周期："></a>生命周期：</h3><ul>
+<li><strong>Stack Block</strong> 生命周期短，超出作用域会被销毁。</li>
+<li>需要异步使用时，必须将 Block copy 到堆上，变为 <strong>Heap Block</strong>。</li>
+<li>ARC 下自动进行 <code>copy</code> 操作；MRC 需手动调用 <code>Block_copy</code>。</li>
+</ul>
+<h3 id="示例（ARC-异步安全）："><a href="#示例（ARC-异步安全）：" class="headerlink" title="示例（ARC 异步安全）："></a>示例（ARC 异步安全）：</h3><div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(<span class="number">0</span>, <span class="number">0</span>), ^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;Block executed&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// ARC 自动 copy 到堆</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="四、Swift-中的闭包捕获"><a href="#四、Swift-中的闭包捕获" class="headerlink" title="四、Swift 中的闭包捕获"></a>四、Swift 中的闭包捕获</h2><p>Swift 中闭包默认强引用捕获对象：</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name <span class="operator">=</span> <span class="string">&quot;Test&quot;</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">doSomething</span>() &#123;</span><br><span class="line">        <span class="type">DispatchQueue</span>.global().async &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="keyword">self</span><span class="operator">?</span>.name <span class="operator">??</span> <span class="string">&quot;nil&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 <code>[weak self]</code> &#x2F; <code>[unowned self]</code> 可避免循环引用。</p>
+<hr>
+<h2 id="五、小结对比表"><a href="#五、小结对比表" class="headerlink" title="五、小结对比表"></a>五、小结对比表</h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>是否捕获变量</th>
+<th>存储位置</th>
+<th>生命周期控制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Global Block</td>
+<td>否</td>
+<td>全局区</td>
+<td>程序生命周期内常驻</td>
+</tr>
+<tr>
+<td>Stack Block</td>
+<td>是</td>
+<td>栈上</td>
+<td>随栈帧销毁</td>
+</tr>
+<tr>
+<td>Heap Block</td>
+<td>是</td>
+<td>堆上</td>
+<td>Block_copy 后存在于堆中</td>
+</tr>
+</tbody></table>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/04/25/Day3-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day3-有效的括号</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/04/24/Day2-%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day2-用栈实现队列</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
 
 		
 	</div>
 
-	<div class="page-template-comments">
-		
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Day3-Block 分类、变量捕获与作用域</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Block-%E5%88%86%E7%B1%BB%E3%80%81%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-text">Block 分类、变量捕获与作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Block-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">一、Block 的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%EF%BC%88Captured-Variables%EF%BC%89"><span class="nav-text">二、变量捕获（Captured Variables）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%BB%98%E8%AE%A4%E6%8D%95%E8%8E%B7%EF%BC%88%E5%80%BC%E8%AF%AD%E4%B9%89%EF%BC%89"><span class="nav-text">1. 默认捕获（值语义）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-block-%E4%BF%AE%E9%A5%B0%EF%BC%88%E5%BC%95%E7%94%A8%E8%AF%AD%E4%B9%89%EF%BC%89"><span class="nav-text">2. __block 修饰（引用语义）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%B9%E8%B1%A1%E6%8D%95%E8%8E%B7%EF%BC%88%E6%8C%87%E9%92%88%E8%AF%AD%E4%B9%89%EF%BC%89"><span class="nav-text">3. 对象捕获（指针语义）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-text">三、作用域与内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9A"><span class="nav-text">生命周期：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%88ARC-%E5%BC%82%E6%AD%A5%E5%AE%89%E5%85%A8%EF%BC%89%EF%BC%9A"><span class="nav-text">示例（ARC 异步安全）：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Swift-%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85%E6%8D%95%E8%8E%B7"><span class="nav-text">四、Swift 中的闭包捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B0%8F%E7%BB%93%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="nav-text">五、小结对比表</span></a></li></ol></li></ol>
+
 	</div>
 </div>
-
-<div class="paginator">
+	</div>
 	
 </div>
-  
 			</div>
 
 			
@@ -427,6 +615,22 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -529,6 +733,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 
