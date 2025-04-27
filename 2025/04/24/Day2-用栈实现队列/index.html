@@ -355,7 +355,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">10</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -406,8 +406,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-24 11:55:20</span>
-            <span class="mobile">2025-04-24 11:55:20</span>
+            <span class="desktop">2025-04-27 12:27:14</span>
+            <span class="mobile">2025-04-27 12:27:14</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -468,19 +468,19 @@
 <li>empty()：返回队列是否为空</li>
 </ul>
 <p>要求：<br>只能使用栈的标准操作（push, pop, peek, empty）</p>
-<p>⸻</p>
+<hr>
 <p>💡 解题思路：</p>
 <ul>
 <li>入队操作（push）直接往 stackIn 中加元素；</li>
 <li>出队操作（pop 或 peek）时，如果 stackOut 为空，则将 stackIn 中的所有元素倒序转移到 stackOut；</li>
 <li>保证先进先出（FIFO）的顺序。</li>
 </ul>
-<p>⸻</p>
+<hr>
 <p>✅ JavaScript 实现：</p>
 <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">MyQueue</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span> = [];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackOut</span> = [];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span> = <span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">push</span>(x);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pop</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">pop</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">peek</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>[<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> - <span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">empty</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span> === <span class="number">0</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
 
-<p>⸻</p>
+<hr>
 <p>🧠 思考拓展：</p>
 <ul>
 <li>如果反过来是“用队列实现栈”应该怎么做？👉 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-stack-using-queues/" >LeetCode 225<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
