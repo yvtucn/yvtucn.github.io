@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/25/day3-有效的括号/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/28/day5-objective-c-runtime-基础结构/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day3-有效的括号 | YVTU
+            Day5-Objective-C Runtime 基础结构 | YVTU
         
     </title>
 
@@ -378,7 +378,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day3-有效的括号</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day5-Objective-C Runtime 基础结构</h1>
 			</div>
 			
 		</div>
@@ -399,15 +399,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-25 11:16:45</span>
-        <span class="mobile">2025-04-25 11:16:45</span>
+        <span class="desktop">2025-04-28 11:37:16</span>
+        <span class="mobile">2025-04-28 11:37:16</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-25 11:18:37</span>
-            <span class="mobile">2025-04-25 11:18:37</span>
+            <span class="desktop">2025-04-28 11:54:10</span>
+            <span class="mobile">2025-04-28 11:54:10</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -421,7 +421,7 @@
                     
                         
                         <li>
-                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
                         </li>
                     
                     
@@ -446,33 +446,141 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="🧠-算法题：有效的括号（LeetCode-20）"><a href="#🧠-算法题：有效的括号（LeetCode-20）" class="headerlink" title="🧠 算法题：有效的括号（LeetCode 20）"></a>🧠 算法题：有效的括号（LeetCode 20）</h1><p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-parentheses/" >LeetCode 20 - Valid Parentheses<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<h2 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h2><p>给定一个只包括 <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;&#123;&#39;</code>, <code>&#39;&#125;&#39;</code>, <code>&#39;[&#39;</code>, <code>&#39;]&#39;</code> 的字符串 <code>s</code>，判断字符串是否是有效的。</p>
-<p><strong>有效字符串需满足：</strong></p>
-<ol>
-<li>左括号必须用相同类型的右括号闭合。</li>
-<li>左括号必须以正确的顺序闭合。</li>
-<li>空字符串也为有效字符串。</li>
-</ol>
+			<h1 id="Objective-C-Runtime-基础结构"><a href="#Objective-C-Runtime-基础结构" class="headerlink" title="Objective-C Runtime 基础结构"></a>Objective-C Runtime 基础结构</h1><p>Objective-C 运行时系统（Runtime）是 Objective-C 语言的核心部分，它在程序运行期间负责管理类、对象、方法调用等行为。</p>
+<p>主要的结构体和组件包括：</p>
+<h2 id="1-objc-class（类结构体）"><a href="#1-objc-class（类结构体）" class="headerlink" title="1. objc_class（类结构体）"></a>1. <code>objc_class</code>（类结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> &#123;</span></span><br><span class="line">    Class isa;                <span class="comment">// 指向元类</span></span><br><span class="line">    Class super_class;        <span class="comment">// 父类</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;         <span class="comment">// 类名</span></span><br><span class="line">    <span class="type">long</span> version;             <span class="comment">// 版本信息</span></span><br><span class="line">    <span class="type">long</span> info;                <span class="comment">// 类信息标志</span></span><br><span class="line">    <span class="type">long</span> instance_size;       <span class="comment">// 类实例的大小</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_ivar_list</span> *<span class="title">ivars</span>;</span>    <span class="comment">// 成员变量列表</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_method_list</span> **<span class="title">methodLists</span>;</span> <span class="comment">// 方法列表（数组）</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_cache</span> *<span class="title">cache</span>;</span> <span class="comment">// 方法缓存</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_protocol_list</span> *<span class="title">protocols</span>;</span> <span class="comment">// 协议列表</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>注意：现代 Runtime 中，结构体已经变化了，上述是经典（早期）的描述，新的版本更复杂且高度封装。</p>
+</blockquote>
 <hr>
-<h2 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h2><ul>
-<li>使用栈结构来处理括号匹配；</li>
-<li>遇到左括号就入栈，遇到右括号时判断是否和栈顶配对；</li>
-<li>若匹配，则弹出栈顶；否则直接返回 false；</li>
-<li>最后栈为空，则为合法字符串。</li>
+<h2 id="2-objc-object（对象结构体）"><a href="#2-objc-object（对象结构体）" class="headerlink" title="2. objc_object（对象结构体）"></a>2. <code>objc_object</code>（对象结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_object</span> &#123;</span></span><br><span class="line">    Class isa;  <span class="comment">// 指向对象所属的类</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>每一个对象底层其实就是一个指针，最重要的成员就是 <code>isa</code>。</li>
+<li><code>isa</code> 既可以指向 Class，也可以指向 Meta-Class（元类）。</li>
 </ul>
 <hr>
-<h2 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h2><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isValid = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> stack = [];</span><br><span class="line">    <span class="keyword">const</span> map = &#123;</span><br><span class="line">        <span class="string">&#x27;)&#x27;</span>: <span class="string">&#x27;(&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;&#125;&#x27;</span>: <span class="string">&#x27;&#123;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;]&#x27;</span>: <span class="string">&#x27;[&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> s) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;[&#x27;</span>].<span class="title function_">includes</span>(char)) &#123;</span><br><span class="line">            stack.<span class="title function_">push</span>(char);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.<span class="title function_">pop</span>() !== map[char]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h2 id="3-objc-method（方法结构体）"><a href="#3-objc-method（方法结构体）" class="headerlink" title="3. objc_method（方法结构体）"></a>3. <code>objc_method</code>（方法结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_method</span> &#123;</span></span><br><span class="line">    SEL name;      <span class="comment">// 方法选择器（Selector）</span></span><br><span class="line">    <span class="type">char</span> *types;   <span class="comment">// 方法的参数和返回值类型编码</span></span><br><span class="line">    IMP imp;       <span class="comment">// 方法实现的函数指针</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><code>SEL</code> 是方法名的唯一标识。</li>
+<li><code>IMP</code> 是函数指针，本质上就是 C 函数的地址。</li>
+</ul>
+<hr>
+<h2 id="4-objc-ivar（成员变量结构体）"><a href="#4-objc-ivar（成员变量结构体）" class="headerlink" title="4. objc_ivar（成员变量结构体）"></a>4. <code>objc_ivar</code>（成员变量结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_ivar</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> *name;        <span class="comment">// 变量名</span></span><br><span class="line">    <span class="type">char</span> *typeEncoding; <span class="comment">// 类型编码</span></span><br><span class="line">    <span class="type">int</span> offset;         <span class="comment">// 变量在对象内存中的偏移量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>成员变量的信息，包括名字、类型和内存位置。</li>
+</ul>
+<hr>
+<h2 id="5-objc-property（属性结构体）"><a href="#5-objc-property（属性结构体）" class="headerlink" title="5. objc_property（属性结构体）"></a>5. <code>objc_property</code>（属性结构体）</h2><p>在现代 Runtime 里面，属性也有自己的结构：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;            <span class="comment">// 属性名</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *attributes;      <span class="comment">// 属性修饰列表（例如：T@&quot;NSString&quot;,C,N,V_name）</span></span><br><span class="line">&#125; <span class="type">objc_property_t</span>;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>属性其实是成员变量 + 一些特定特性（getter&#x2F;setter规则）。</li>
+</ul>
+<hr>
+<h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><table>
+<thead>
+<tr>
+<th align="left">组件</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>objc_object</code></td>
+<td align="left">所有对象的基础</td>
+</tr>
+<tr>
+<td align="left"><code>objc_class</code></td>
+<td align="left">类对象描述结构</td>
+</tr>
+<tr>
+<td align="left"><code>objc_method</code></td>
+<td align="left">方法的定义</td>
+</tr>
+<tr>
+<td align="left"><code>objc_ivar</code></td>
+<td align="left">成员变量定义</td>
+</tr>
+<tr>
+<td align="left"><code>objc_property</code></td>
+<td align="left">属性定义</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="进阶补充"><a href="#进阶补充" class="headerlink" title="进阶补充"></a>进阶补充</h1><p>在 <strong>现代 Objective-C Runtime（如 iOS 14+）</strong>，这些结构体实际上被进一步封装优化，比如：</p>
+<ul>
+<li>类使用 <code>objc_class</code> 和 <code>objc_data_bits_t</code>（联合体）分离了缓存、只读数据等。</li>
+<li>methodList 也使用更紧凑的链表存储。</li>
+<li>isa 指针通过 <strong>isa 指针优化（ISA指针打包）</strong> 包含了更多信息，比如引用计数、是否有C++析构函数等。</li>
+</ul>
+<hr>
+<p>现代 Objective-C Runtime 的优化</p>
+<ol>
+<li>objc_class 和 objc_data_bits_t 的分离</li>
+</ol>
+<p>早期（传统）的结构：</p>
+<p>在早期的 Objective-C Runtime 中，类对象（objc_class）包含了所有关于类的描述信息，包括：</p>
+<ul>
+<li>isa 指针（指向元类）</li>
+<li>super_class（父类指针）</li>
+<li>成员变量、方法列表、属性等</li>
+</ul>
+<p>这种结构虽然简单，但随着 iOS 设备性能的提高，运行时系统也需要对这些数据结构进行优化。</p>
+<p>现代优化：</p>
+<p>在 iOS 14 及之后的版本中，Objective-C Runtime 通过 分离 类的各个组成部分，提高了性能和内存效率。</p>
+<p>objc_class 现在主要包含 元类的引用，而其它数据（如方法列表、属性、成员变量等）被移到了 objc_data_bits_t 结构中。这种方式的好处是：</p>
+<ul>
+<li>缓存友好：类的元数据可以被存储在内存的紧凑区域，提高了缓存命中率。</li>
+<li>分离存储：类数据和方法数据分开存储，避免了冗余的内存占用。</li>
+<li>增强的灵活性：可以在不同的硬件架构下对这些数据进行不同的布局，以便更好地适配不同的内存和处理器特性。</li>
+</ul>
+<p>例子：</p>
+<p>objc_class 结构变得非常简洁：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> &#123;</span></span><br><span class="line">    Class isa;                <span class="comment">// 指向元类</span></span><br><span class="line">    Class super_class;        <span class="comment">// 父类</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;         <span class="comment">// 类名</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="type">objc_data_bits_t</span> data;    <span class="comment">// 类的其它元数据，如方法、属性、缓存等</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>而 objc_data_bits_t 则包含了实际的数据部分：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">union</span> <span class="title">objc_data_bits_t</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="type">method_list_t</span> *methodList;   <span class="comment">// 方法列表</span></span><br><span class="line">        <span class="type">ivar_list_t</span> *ivarList;       <span class="comment">// 成员变量列表</span></span><br><span class="line">        <span class="type">property_list_t</span> *propertyList; <span class="comment">// 属性列表</span></span><br><span class="line">        <span class="type">cache_t</span> cache;               <span class="comment">// 方法缓存</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">uintptr_t</span> raw; <span class="comment">// 原始内存表示</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
 
 <hr>
-<h2 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h2><ul>
-<li>括号匹配是<strong>栈结构经典应用</strong>，请理解其底层思想；</li>
-<li>LeetCode 拓展题推荐：<ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/generate-parentheses/" >22. Generate Parentheses（括号生成）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-valid-parentheses/" >32. Longest Valid Parentheses（最长有效括号）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<ol start="2">
+<li>methodList 存储的优化</li>
+</ol>
+<p>早期存储：</p>
+<p>传统的 methodList 是基于链表（Linked List）存储的。这种方式虽然简单，但查找方法时效率较低，尤其是在类层级很深或者方法很多的情况下。</p>
+<p>现代优化：</p>
+<p>在现代的 Runtime 系统中，methodList 不再是单纯的链表。它现在采用了一种 紧凑的链表结构，并且结合了 哈希表（Hash Table） 或者 二叉搜索树（Binary Search Tree），大大提高了方法查找的效率。</p>
+<ul>
+<li>哈希表：通过哈希值来存储方法，查找操作时间复杂度为 O(1)。</li>
+<li>二叉搜索树：如果方法列表较大，可能使用树结构来提高查找性能（特别是方法名排序后）。</li>
 </ul>
-</li>
+<p>这种优化使得对于频繁调用的方法，能够以更高的效率进行查找。</p>
+<p>优化的好处：</p>
+<ul>
+<li>方法查找速度更快。</li>
+<li>降低了内存占用，尤其在方法很多的类中表现尤为突出。</li>
 </ul>
+<ol start="3">
+<li>isa 指针优化（ISA指针打包）</li>
+</ol>
+<p>早期 isa 指针：</p>
+<p>早期的 isa 指针实际上是一个单纯的指针，它指向当前对象所属的类。当我们需要判断一个对象的类型时，必须通过这个指针进行查找。这个过程虽然有效，但随着内存和处理器架构的变化，其效率并没有得到最优的利用。</p>
+<p>现代优化：</p>
+<p>iOS 14 及之后的版本引入了 ISA 指针打包（ISA pointer packing） 的概念，使得 isa 指针变得更加高效。具体来说：</p>
+<ul>
+<li>压缩指针：isa 不仅仅是一个指针，它包含了更多的信息，包括：</li>
+<li>引用计数：可以通过 isa 字段直接获取对象的引用计数（而不需要额外的字段）。</li>
+<li>C++ 析构函数支持：对于 C++ 对象，isa 可以包含一个标记，表明该对象是否有 C++ 析构函数需要调用。</li>
+<li>指针压缩：针对 64 位设备，指针已经被压缩，节省了内存空间。</li>
+<li>指针布局：通过优化指针的布局，可以减少内存访问的延迟。例如，将常用的标记和信息放在 isa 中，减少了缓存缺失的概率。</li>
+</ul>
+<p>结构变化：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_object</span> &#123;</span></span><br><span class="line">    Class isa;   <span class="comment">// 压缩后的 isa 指针，包含更多信息</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>这种优化使得：<br>	•	内存使用：减少了内存占用。<br>	•	效率提升：访问对象所属类时的效率大幅提高。</p>
+<hr>
+<p>总结</p>
+<p>在现代 Objective-C Runtime 中，结构体的优化和指针的打包大大提升了系统的性能，尤其是在内存占用和方法查找速度上。重点优化如下：<br>	•	objc_class 和 objc_data_bits_t 的分离：提高了内存布局的紧凑性和效率。<br>	•	methodList 的优化：结合哈希表和二叉搜索树，提高了方法查找的效率。<br>	•	isa 指针优化：通过指针打包，减少了内存占用，并加速了对象的类型查找和引用计数管理。</p>
+<p>这些改进的核心目的是：提升性能、减少内存占用，特别是在 iOS 设备上，确保运行时系统能够在有限的硬件资源上高效运行。</p>
+<hr>
 
 		</div>
 
@@ -486,12 +594,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/27/Day4-Block-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%88%86%E6%9E%90/">
+				<a class="prev" rel="prev" href="/2025/04/28/Day5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-II-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day4-Block 内存管理 &amp; 循环引用分析</span>
+						<span class="post-nav-title-item">Day5-两数之和 II - 输入有序数组</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -499,9 +607,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/25/Day3-Block-%E5%88%86%E7%B1%BB%E3%80%81%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+				<a class="next" rel="next" href="/2025/04/27/Day4-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day3-Block 分类、变量捕获与作用域</span>
+						<span class="post-nav-title-item">Day4-有效的字母异位词</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -522,8 +630,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day3-有效的括号</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%A7%A0-%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%EF%BC%88LeetCode-20%EF%BC%89"><span class="nav-text">🧠 算法题：有效的括号（LeetCode 20）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol></li></ol>
+		<div class="page-title">Day5-Objective-C Runtime 基础结构</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Objective-C-Runtime-%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Objective-C Runtime 基础结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-objc-class%EF%BC%88%E7%B1%BB%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">1. objc_class（类结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-objc-object%EF%BC%88%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">2. objc_object（对象结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-objc-method%EF%BC%88%E6%96%B9%E6%B3%95%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">3. objc_method（方法结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-objc-ivar%EF%BC%88%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">4. objc_ivar（成员变量结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-objc-property%EF%BC%88%E5%B1%9E%E6%80%A7%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">5. objc_property（属性结构体）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="nav-text">小总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E8%A1%A5%E5%85%85"><span class="nav-text">进阶补充</span></a></li></ol>
 
 	</div>
 </div>
