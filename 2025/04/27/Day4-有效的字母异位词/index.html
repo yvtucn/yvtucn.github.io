@@ -318,7 +318,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-28 11:37:48</span>
-            <span class="mobile">2025-04-28 11:37:48</span>
+            <span class="desktop">2025-04-29 11:59:44</span>
+            <span class="mobile">2025-04-29 11:59:44</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -409,21 +409,22 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>🧠 算法题：有效的字母异位词（LeetCode 242）</p>
-<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram" >LeetCode 242 - Valid Anagram<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>📌 题目描述：</p>
-<p>给定两个字符串 s 和 t，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram" >LeetCode 242 - Valid Anagram<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述："><a href="#📌-题目描述：" class="headerlink" title="📌 题目描述："></a>📌 题目描述：</h3><p>给定两个字符串 s 和 t，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
 <p>字母异位词的定义：<br>如果两个字符串中的字母出现的频率相同且字符完全一致，那么这两个字符串是字母异位词。</p>
 <hr>
-<p>💡 解题思路：<br>	•	将两个字符串 s 和 t 的字母出现频次统计出来，若两个字符串的字母频次完全相同，则它们是字母异位词。<br>	•	通过使用哈希表或数组存储字母的频率。</p>
+<h3 id="💡-解题思路："><a href="#💡-解题思路：" class="headerlink" title="💡 解题思路："></a>💡 解题思路：</h3><pre><code>•	将两个字符串 s 和 t 的字母出现频次统计出来，若两个字符串的字母频次完全相同，则它们是字母异位词。
+•	通过使用哈希表或数组存储字母的频率。
+</code></pre>
 <hr>
-<p>✅ JavaScript 实现：</p>
-<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isAnagram = <span class="keyword">function</span> (<span class="params">s, t</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="property">length</span> !== t.<span class="property">length</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> count = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">26</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        count[s.<span class="title function_">charCodeAt</span>(i) - <span class="string">&#x27;a&#x27;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)]++;</span><br><span class="line">        count[t.<span class="title function_">charCodeAt</span>(i) - <span class="string">&#x27;a&#x27;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)]--;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (count[i] !== <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h3 id="✅-JavaScript-实现："><a href="#✅-JavaScript-实现：" class="headerlink" title="✅ JavaScript 实现："></a>✅ JavaScript 实现：</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isAnagram = <span class="keyword">function</span> (<span class="params">s, t</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="property">length</span> !== t.<span class="property">length</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> count = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">26</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        count[s.<span class="title function_">charCodeAt</span>(i) - <span class="string">&#x27;a&#x27;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)]++;</span><br><span class="line">        count[t.<span class="title function_">charCodeAt</span>(i) - <span class="string">&#x27;a&#x27;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)]--;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (count[i] !== <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
 
 
 <hr>
-<p>🧠 思考拓展：<br>	•	字母异位词问题的优化：如何减少不必要的比较，提升算法效率？<br>	•	对比其他字符串相关的题目，比如 387. First Unique Character in a String。</p>
+<h3 id="🧠-思考拓展："><a href="#🧠-思考拓展：" class="headerlink" title="🧠 思考拓展："></a>🧠 思考拓展：</h3><pre><code>•	字母异位词问题的优化：如何减少不必要的比较，提升算法效率？
+•	对比其他字符串相关的题目，比如 387. First Unique Character in a String。
+</code></pre>
 <hr>
 
 		</div>
@@ -475,7 +476,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">Day4-有效的字母异位词</div>
-		
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="nav-text">📌 题目描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">💡 解题思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-text">✅ JavaScript 实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95%EF%BC%9A"><span class="nav-text">🧠 思考拓展：</span></a></li></ol>
 
 	</div>
 </div>

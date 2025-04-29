@@ -318,7 +318,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-28 11:49:26</span>
-            <span class="mobile">2025-04-28 11:49:26</span>
+            <span class="desktop">2025-04-29 11:59:04</span>
+            <span class="mobile">2025-04-29 11:59:04</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -409,15 +409,15 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="🧠-算法题：两数之和-II-输入有序数组（LeetCode-167）"><a href="#🧠-算法题：两数之和-II-输入有序数组（LeetCode-167）" class="headerlink" title="🧠 算法题：两数之和 II - 输入有序数组（LeetCode 167）"></a>🧠 算法题：两数之和 II - 输入有序数组（LeetCode 167）</h1><p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" >LeetCode 167 - Two Sum II - Input Array Is Sorted<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<h2 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h2><p>给定一个已按升序排列的整数数组 <code>numbers</code> 和一个目标值 <code>target</code>，请你在数组中找出两个数，使得它们的和为目标值 <code>target</code>，并返回这两个数的下标。</p>
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" >LeetCode 167 - Two Sum II - Input Array Is Sorted<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给定一个已按升序排列的整数数组 <code>numbers</code> 和一个目标值 <code>target</code>，请你在数组中找出两个数，使得它们的和为目标值 <code>target</code>，并返回这两个数的下标。</p>
 <p><strong>注意：</strong>  </p>
 <ul>
 <li>返回的答案是一个 1 索引的数组。</li>
 <li>假设每个输入只对应一个答案，且你不可以重复使用数组中的元素。</li>
 </ul>
 <hr>
-<h2 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h2><ul>
+<h3 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h3><ul>
 <li><p>由于数组已排序，可以使用双指针法：</p>
 <ul>
 <li>初始化两个指针，一个指向数组的开头，一个指向数组的末尾。</li>
@@ -430,10 +430,10 @@
 </li>
 </ul>
 <hr>
-<h2 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h2><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span> (<span class="params">numbers, target</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> right = numbers.<span class="property">length</span> - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">const</span> sum = numbers[left] + numbers[right];</span><br><span class="line">        <span class="keyword">if</span> (sum === target) &#123;</span><br><span class="line">            <span class="keyword">return</span> [left + <span class="number">1</span>, right + <span class="number">1</span>];  <span class="comment">// 注意返回的下标是从 1 开始的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target) &#123;</span><br><span class="line">            left++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span> (<span class="params">numbers, target</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> right = numbers.<span class="property">length</span> - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">const</span> sum = numbers[left] + numbers[right];</span><br><span class="line">        <span class="keyword">if</span> (sum === target) &#123;</span><br><span class="line">            <span class="keyword">return</span> [left + <span class="number">1</span>, right + <span class="number">1</span>];  <span class="comment">// 注意返回的下标是从 1 开始的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target) &#123;</span><br><span class="line">            left++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h2 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h2><ul>
+<h3 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h3><ul>
 <li>如果数组不是有序的，如何解决这个问题？</li>
 <li>本题和 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/" >LeetCode 1. Two Sum<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 的区别是什么？它是如何利用排序优化解法的？</li>
 </ul>
@@ -449,6 +449,18 @@
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/04/29/Day6-Runtime-%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day6-Runtime 实战技巧</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
@@ -476,7 +488,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">Day5-两数之和 II - 输入有序数组</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%A7%A0-%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-II-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88LeetCode-167%EF%BC%89"><span class="nav-text">🧠 算法题：两数之和 II - 输入有序数组（LeetCode 167）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol>
 
 	</div>
 </div>
