@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/28/day5-objective-c-runtime-基础结构/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/04/30/day7-runtime&block/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day5-Objective-C Runtime 基础结构 | YVTU
+            Day7-Runtime&amp;Block | YVTU
         
     </title>
 
@@ -341,7 +341,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day5-Objective-C Runtime 基础结构</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day7-Runtime&amp;Block</h1>
 			</div>
 			
 		</div>
@@ -362,15 +362,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-28 11:37:16</span>
-        <span class="mobile">2025-04-28 11:37:16</span>
+        <span class="desktop">2025-04-30 11:35:17</span>
+        <span class="mobile">2025-04-30 11:35:17</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-28 11:54:10</span>
-            <span class="mobile">2025-04-28 11:54:10</span>
+            <span class="desktop">2025-04-30 12:04:45</span>
+            <span class="mobile">2025-04-30 12:04:45</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -409,141 +409,118 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="Objective-C-Runtime-基础结构"><a href="#Objective-C-Runtime-基础结构" class="headerlink" title="Objective-C Runtime 基础结构"></a>Objective-C Runtime 基础结构</h1><p>Objective-C 运行时系统（Runtime）是 Objective-C 语言的核心部分，它在程序运行期间负责管理类、对象、方法调用等行为。</p>
-<p>主要的结构体和组件包括：</p>
-<h2 id="1-objc-class（类结构体）"><a href="#1-objc-class（类结构体）" class="headerlink" title="1. objc_class（类结构体）"></a>1. <code>objc_class</code>（类结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> &#123;</span></span><br><span class="line">    Class isa;                <span class="comment">// 指向元类</span></span><br><span class="line">    Class super_class;        <span class="comment">// 父类</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;         <span class="comment">// 类名</span></span><br><span class="line">    <span class="type">long</span> version;             <span class="comment">// 版本信息</span></span><br><span class="line">    <span class="type">long</span> info;                <span class="comment">// 类信息标志</span></span><br><span class="line">    <span class="type">long</span> instance_size;       <span class="comment">// 类实例的大小</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_ivar_list</span> *<span class="title">ivars</span>;</span>    <span class="comment">// 成员变量列表</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_method_list</span> **<span class="title">methodLists</span>;</span> <span class="comment">// 方法列表（数组）</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_cache</span> *<span class="title">cache</span>;</span> <span class="comment">// 方法缓存</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_protocol_list</span> *<span class="title">protocols</span>;</span> <span class="comment">// 协议列表</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-<blockquote>
-<p>注意：现代 Runtime 中，结构体已经变化了，上述是经典（早期）的描述，新的版本更复杂且高度封装。</p>
-</blockquote>
-<hr>
-<h2 id="2-objc-object（对象结构体）"><a href="#2-objc-object（对象结构体）" class="headerlink" title="2. objc_object（对象结构体）"></a>2. <code>objc_object</code>（对象结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_object</span> &#123;</span></span><br><span class="line">    Class isa;  <span class="comment">// 指向对象所属的类</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li>每一个对象底层其实就是一个指针，最重要的成员就是 <code>isa</code>。</li>
-<li><code>isa</code> 既可以指向 Class，也可以指向 Meta-Class（元类）。</li>
-</ul>
-<hr>
-<h2 id="3-objc-method（方法结构体）"><a href="#3-objc-method（方法结构体）" class="headerlink" title="3. objc_method（方法结构体）"></a>3. <code>objc_method</code>（方法结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_method</span> &#123;</span></span><br><span class="line">    SEL name;      <span class="comment">// 方法选择器（Selector）</span></span><br><span class="line">    <span class="type">char</span> *types;   <span class="comment">// 方法的参数和返回值类型编码</span></span><br><span class="line">    IMP imp;       <span class="comment">// 方法实现的函数指针</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><code>SEL</code> 是方法名的唯一标识。</li>
-<li><code>IMP</code> 是函数指针，本质上就是 C 函数的地址。</li>
-</ul>
-<hr>
-<h2 id="4-objc-ivar（成员变量结构体）"><a href="#4-objc-ivar（成员变量结构体）" class="headerlink" title="4. objc_ivar（成员变量结构体）"></a>4. <code>objc_ivar</code>（成员变量结构体）</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_ivar</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> *name;        <span class="comment">// 变量名</span></span><br><span class="line">    <span class="type">char</span> *typeEncoding; <span class="comment">// 类型编码</span></span><br><span class="line">    <span class="type">int</span> offset;         <span class="comment">// 变量在对象内存中的偏移量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li>成员变量的信息，包括名字、类型和内存位置。</li>
-</ul>
-<hr>
-<h2 id="5-objc-property（属性结构体）"><a href="#5-objc-property（属性结构体）" class="headerlink" title="5. objc_property（属性结构体）"></a>5. <code>objc_property</code>（属性结构体）</h2><p>在现代 Runtime 里面，属性也有自己的结构：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;            <span class="comment">// 属性名</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *attributes;      <span class="comment">// 属性修饰列表（例如：T@&quot;NSString&quot;,C,N,V_name）</span></span><br><span class="line">&#125; <span class="type">objc_property_t</span>;</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li>属性其实是成员变量 + 一些特定特性（getter&#x2F;setter规则）。</li>
-</ul>
-<hr>
-<h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><table>
-<thead>
-<tr>
-<th align="left">组件</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>objc_object</code></td>
-<td align="left">所有对象的基础</td>
-</tr>
-<tr>
-<td align="left"><code>objc_class</code></td>
-<td align="left">类对象描述结构</td>
-</tr>
-<tr>
-<td align="left"><code>objc_method</code></td>
-<td align="left">方法的定义</td>
-</tr>
-<tr>
-<td align="left"><code>objc_ivar</code></td>
-<td align="left">成员变量定义</td>
-</tr>
-<tr>
-<td align="left"><code>objc_property</code></td>
-<td align="left">属性定义</td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="进阶补充"><a href="#进阶补充" class="headerlink" title="进阶补充"></a>进阶补充</h1><p>在 <strong>现代 Objective-C Runtime（如 iOS 14+）</strong>，这些结构体实际上被进一步封装优化，比如：</p>
-<ul>
-<li>类使用 <code>objc_class</code> 和 <code>objc_data_bits_t</code>（联合体）分离了缓存、只读数据等。</li>
-<li>methodList 也使用更紧凑的链表存储。</li>
-<li>isa 指针通过 <strong>isa 指针优化（ISA指针打包）</strong> 包含了更多信息，比如引用计数、是否有C++析构函数等。</li>
-</ul>
-<hr>
-<p>现代 Objective-C Runtime 的优化</p>
+			<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>iOS Runtime，通常称为Objective-C Runtime，是iOS开发中一个至关重要的组件。它是一套底层的C语言API，为Objective-C的动态特性提供了强大的支持。本文将对iOS Runtime进行深入的解析，从基本概念到主要功能，再到实际应用和注意事项，全方位地展示这一技术的魅力。</p>
+<h4 id="一、Runtime基本概念"><a href="#一、Runtime基本概念" class="headerlink" title="一、Runtime基本概念"></a>一、Runtime基本概念</h4><p>Runtime，即运行时，指的是程序在运行过程中进行的一系列操作。在Objective-C中，Runtime系统允许我们在程序运行时动态地操作类和对象，执行诸如检查和改变对象、交换方法实现、动态添加方法或属性等操作。这种动态性为开发者带来了极大的灵活性。</p>
+<p>Objective-C作为一门动态语言，与C语言等静态语言在编译和运行时有着显著的区别。静态语言在编译阶段就确定了所有的方法调用和对象类型，而动态语言则在运行时才确定这些操作。Objective-C通过Runtime系统实现了这一动态性，使得我们可以在运行时动态地创建类和对象、进行消息传递和转发。</p>
+<h4 id="二、Runtime数据结构"><a href="#二、Runtime数据结构" class="headerlink" title="二、Runtime数据结构"></a>二、Runtime数据结构</h4><p>在深入Runtime的功能之前，我们需要先了解其底层的数据结构。iOS Runtime的核心数据结构包括objc_class、objc_object等。</p>
 <ol>
-<li>objc_class 和 objc_data_bits_t 的分离</li>
+<li><p><strong>objc_object</strong>：这是所有Objective-C对象的基类结构体，其中包含一个isa指针，指向该对象所属的类。</p>
+</li>
+<li><p><strong>objc_class</strong>：这是类的结构体，它继承自objc_object。objc_class中包含了类的各种信息，如父类指针、方法列表、方法缓存、属性列表、协议列表等。</p>
+<ul>
+<li><strong>isa</strong>：指向该类的元类（meta-class），元类中存储了类的类方法。</li>
+<li><strong>super_class</strong>：指向该类的父类。</li>
+<li><strong>name</strong>：类的名称。</li>
+<li><strong>version</strong>：类的版本信息。</li>
+<li><strong>info</strong>：类的详细信息。</li>
+<li><strong>instance_size</strong>：该类实例对象的大小。</li>
+<li><strong>methodLists</strong>：指向该类的实例方法列表的指针的指针，可以动态修改。</li>
+<li><strong>cache</strong>：方法缓存，用于存储被频繁调用的方法，以提高查找效率。</li>
+<li><strong>protocols</strong>：指向该类的协议列表。</li>
+</ul>
+</li>
 </ol>
-<p>早期（传统）的结构：</p>
-<p>在早期的 Objective-C Runtime 中，类对象（objc_class）包含了所有关于类的描述信息，包括：</p>
-<ul>
-<li>isa 指针（指向元类）</li>
-<li>super_class（父类指针）</li>
-<li>成员变量、方法列表、属性等</li>
-</ul>
-<p>这种结构虽然简单，但随着 iOS 设备性能的提高，运行时系统也需要对这些数据结构进行优化。</p>
-<p>现代优化：</p>
-<p>在 iOS 14 及之后的版本中，Objective-C Runtime 通过 分离 类的各个组成部分，提高了性能和内存效率。</p>
-<p>objc_class 现在主要包含 元类的引用，而其它数据（如方法列表、属性、成员变量等）被移到了 objc_data_bits_t 结构中。这种方式的好处是：</p>
-<ul>
-<li>缓存友好：类的元数据可以被存储在内存的紧凑区域，提高了缓存命中率。</li>
-<li>分离存储：类数据和方法数据分开存储，避免了冗余的内存占用。</li>
-<li>增强的灵活性：可以在不同的硬件架构下对这些数据进行不同的布局，以便更好地适配不同的内存和处理器特性。</li>
-</ul>
-<p>例子：</p>
-<p>objc_class 结构变得非常简洁：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> &#123;</span></span><br><span class="line">    Class isa;                <span class="comment">// 指向元类</span></span><br><span class="line">    Class super_class;        <span class="comment">// 父类</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name;         <span class="comment">// 类名</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="type">objc_data_bits_t</span> data;    <span class="comment">// 类的其它元数据，如方法、属性、缓存等</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
-<p>而 objc_data_bits_t 则包含了实际的数据部分：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">union</span> <span class="title">objc_data_bits_t</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="type">method_list_t</span> *methodList;   <span class="comment">// 方法列表</span></span><br><span class="line">        <span class="type">ivar_list_t</span> *ivarList;       <span class="comment">// 成员变量列表</span></span><br><span class="line">        <span class="type">property_list_t</span> *propertyList; <span class="comment">// 属性列表</span></span><br><span class="line">        <span class="type">cache_t</span> cache;               <span class="comment">// 方法缓存</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">uintptr_t</span> raw; <span class="comment">// 原始内存表示</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
-
-<hr>
-<ol start="2">
-<li>methodList 存储的优化</li>
+<h4 id="三、Runtime主要功能"><a href="#三、Runtime主要功能" class="headerlink" title="三、Runtime主要功能"></a>三、Runtime主要功能</h4><p>iOS Runtime提供了许多强大的功能，这些功能使得Objective-C成为一门极具动态性的编程语言。</p>
+<ol>
+<li><p><strong>动态添加类和方法</strong>：</p>
+<p>Runtime允许我们在运行时动态地创建新的类，并向已有的类中添加新的方法或实例变量。这种动态性使得我们可以在不修改原有代码的情况下，为类添加新的功能。例如，通过<code>objc_allocateClassPair</code>和<code>objc_registerClassPair</code>函数可以动态创建和注册一个新的类；通过<code>class_addMethod</code>函数可以向已有的类中添加新的方法。</p>
+</li>
+<li><p><strong>消息传递和消息转发</strong>：</p>
+<p>Objective-C中的方法调用实际上是一种消息传递机制。当我们向一个对象发送消息时，Runtime系统会根据消息的名称（即选择器SEL）在对象的类及其父类中查找对应的方法实现。如果找到了匹配的方法，就调用该方法；如果没有找到，则进入消息转发机制。消息转发机制允许我们在运行时动态地处理未实现的方法调用，而不是直接崩溃。例如，通过实现<code>forwardingTargetForSelector:</code>方法，我们可以将未实现的消息转发给其他对象来处理。</p>
+</li>
+<li><p><strong>关联对象</strong>：</p>
+<p>Runtime允许我们给现有的类动态地关联新的属性。这种关联属性不会改变原有类的结构，也不会影响其他类的使用。这在某些情况下可以避免子类化，从而简化代码结构。例如，通过<code>objc_setAssociatedObject</code>和<code>objc_getAssociatedObject</code>函数可以为对象关联和获取新的属性。</p>
+</li>
+<li><p><strong>获取类信息</strong>：</p>
+<p>Runtime提供了一系列函数来获取类的信息，包括类名、父类、实例变量、方法列表、协议列表等。这些信息对于调试和反射等高级操作非常有用。例如，通过<code>class_getName</code>函数可以获取类的名称；通过<code>class_copyMethodList</code>函数可以获取类的方法列表。</p>
+</li>
+<li><p><strong>方法交换</strong>：</p>
+<p>Runtime允许我们在运行时交换两个方法的实现。这种功能在某些情况下可以用来实现方法的替换或调试。例如，通过<code>method_exchangeImplementations</code>函数可以交换两个方法的实现。</p>
+</li>
 </ol>
-<p>早期存储：</p>
-<p>传统的 methodList 是基于链表（Linked List）存储的。这种方式虽然简单，但查找方法时效率较低，尤其是在类层级很深或者方法很多的情况下。</p>
-<p>现代优化：</p>
-<p>在现代的 Runtime 系统中，methodList 不再是单纯的链表。它现在采用了一种 紧凑的链表结构，并且结合了 哈希表（Hash Table） 或者 二叉搜索树（Binary Search Tree），大大提高了方法查找的效率。</p>
-<ul>
-<li>哈希表：通过哈希值来存储方法，查找操作时间复杂度为 O(1)。</li>
-<li>二叉搜索树：如果方法列表较大，可能使用树结构来提高查找性能（特别是方法名排序后）。</li>
-</ul>
-<p>这种优化使得对于频繁调用的方法，能够以更高的效率进行查找。</p>
-<p>优化的好处：</p>
-<ul>
-<li>方法查找速度更快。</li>
-<li>降低了内存占用，尤其在方法很多的类中表现尤为突出。</li>
-</ul>
-<ol start="3">
-<li>isa 指针优化（ISA指针打包）</li>
+<h4 id="四、Runtime实际应用"><a href="#四、Runtime实际应用" class="headerlink" title="四、Runtime实际应用"></a>四、Runtime实际应用</h4><p>iOS Runtime在开发中有着广泛的应用，以下是一些常见的用例和示例：</p>
+<ol>
+<li><p><strong>给系统类添加属性或方法</strong>：</p>
+<p>通过Runtime，我们可以为系统类（如NSString、UIButton等）添加新的属性或方法。这种操作通常用于扩展系统类的功能，而无需创建子类。例如，我们可以为NSString类添加一个计算字符串哈希值的方法。</p>
+</li>
+<li><p><strong>方法交换</strong>：</p>
+<p>方法交换是Runtime的一个强大功能，它允许我们在运行时交换两个方法的实现。这种操作通常用于调试或实现某些特定的功能。例如，我们可以通过交换UIViewController的<code>viewDidLoad</code>和<code>viewWillAppear:</code>方法的实现来观察这两个方法在不同时机下的行为。</p>
+</li>
+<li><p><strong>KVO（Key-Value Observing）和KVC（Key-Value Coding）</strong>：</p>
+<p>KVO和KVC是Objective-C中的两种高级特性，它们分别用于观察对象属性的变化和通过键值对来访问对象的属性。这两种特性都依赖于Runtime系统来实现。例如，KVO通过Runtime在对象的属性被修改时触发相应的通知；KVC则通过Runtime在运行时动态地访问和修改对象的属性。</p>
+</li>
+<li><p><strong>字典转模型</strong>：</p>
+<p>在iOS开发中，我们经常需要将JSON字典转换为模型对象。通过Runtime，我们可以实现一个通用的字典转模型的工具类，该工具类可以自动地将JSON字典中的键值对映射到模型对象的属性上。这种操作大大提高了代码的可重用性和可维护性。</p>
+</li>
+<li><p><strong>消息转发机制</strong>：</p>
+<p>当对象接收到一个未实现的消息时，可以通过消息转发机制来动态地处理这个消息。这种机制允许我们在不改变原有代码的情况下，为对象添加新的功能或处理错误情况。例如，当对象接收到一个未实现的方法调用时，我们可以通过实现<code>forwardingTargetForSelector:</code>或<code>forwardInvocation:</code>方法来处理这个消息。</p>
+</li>
 </ol>
-<p>早期 isa 指针：</p>
-<p>早期的 isa 指针实际上是一个单纯的指针，它指向当前对象所属的类。当我们需要判断一个对象的类型时，必须通过这个指针进行查找。这个过程虽然有效，但随着内存和处理器架构的变化，其效率并没有得到最优的利用。</p>
-<p>现代优化：</p>
-<p>iOS 14 及之后的版本引入了 ISA 指针打包（ISA pointer packing） 的概念，使得 isa 指针变得更加高效。具体来说：</p>
-<ul>
-<li>压缩指针：isa 不仅仅是一个指针，它包含了更多的信息，包括：</li>
-<li>引用计数：可以通过 isa 字段直接获取对象的引用计数（而不需要额外的字段）。</li>
-<li>C++ 析构函数支持：对于 C++ 对象，isa 可以包含一个标记，表明该对象是否有 C++ 析构函数需要调用。</li>
-<li>指针压缩：针对 64 位设备，指针已经被压缩，节省了内存空间。</li>
-<li>指针布局：通过优化指针的布局，可以减少内存访问的延迟。例如，将常用的标记和信息放在 isa 中，减少了缓存缺失的概率。</li>
-</ul>
-<p>结构变化：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_object</span> &#123;</span></span><br><span class="line">    Class isa;   <span class="comment">// 压缩后的 isa 指针，包含更多信息</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h4 id="五、注意事项"><a href="#五、注意事项" class="headerlink" title="五、注意事项"></a>五、注意事项</h4><p>虽然iOS Runtime提供了许多强大的功能，但在使用时也需要注意以下几点：</p>
+<ol>
+<li><p><strong>稳定性</strong>：</p>
+<p>动态地修改类的结构和行为可能会破坏代码的稳定性。因此，在使用Runtime功能时需要谨慎考虑其对系统稳定性的影响。</p>
+</li>
+<li><p><strong>可维护性</strong>：</p>
+<p>过度使用Runtime功能可能会降低代码的可读性和可维护性。因此，在开发过程中需要权衡利弊，合理地使用Runtime功能。</p>
+</li>
+<li><p><strong>性能</strong>：</p>
+<p>虽然Runtime系统提供了许多高效的数据结构和算法来优化性能，但在某些情况下（如频繁地动态添加或删除方法），仍然可能会对性能产生一定的影响。因此，在使用Runtime功能时需要关注其对性能的影响。</p>
+</li>
+</ol>
+<h4 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h4><p>iOS Runtime是Objective-C语言动态特性的基石，它提供了一系列强大的功能来支持动态性和灵活性。通过深入了解Runtime的基本概念、数据结构、主要功能和实际应用，我们可以更好地利用这一技术来开发高效、灵活和可维护的iOS应用程序。同时，也需要注意在使用Runtime功能时保持代码的稳定性和可读性。</p>
+<h3 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h3><p>Block是苹果公司在OSX10.6和iOS4.0中引入的一项功能，它极大地丰富了C语言的特性，并提供了类似其他语言中闭包（closure）的功能。Block本质上是一个带有自动变量（局部变量）的匿名函数，其底层实现包含isa指针，因此也可以被看作是块对象。本文将深入解析iOS中的Block，包括其概念、声明与定义、捕获变量的机制、内存管理以及使用场景等方面。</p>
+<h4 id="一、Block的基础概念"><a href="#一、Block的基础概念" class="headerlink" title="一、Block的基础概念"></a>一、Block的基础概念</h4><p>Block又称为块或块对象，是苹果在改进C&#x2F;OC&#x2F;C++&#x2F;OC++等语言的编译处理时的重要成果。它的出现旨在替代指针函数，使得代码更加简洁和易用。Block的语法结构包括返回类型、变量名（可省略）、参数列表以及实现体，使用脱字符“^”和花括号“{}”来表示。</p>
+<h4 id="二、Block的声明与定义"><a href="#二、Block的声明与定义" class="headerlink" title="二、Block的声明与定义"></a>二、Block的声明与定义</h4><p>Block的声明语法相对独特，格式为“返回值类型(^block变量名)(参数列表)”。例如，“int(^personBlock)(NSString <em>,int)”声明了一个名为personBlock的Block变量，它接收两个参数（一个NSString</em>类型和一个int类型），并返回一个int类型的值。</p>
+<p>Block的定义则是在声明的基础上，使用“&#x3D;”符号和“^”符号来引入实现体。例如：</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span>* (^personBlock)(<span class="built_in">NSString</span>*,<span class="type">int</span>) = ^(<span class="built_in">NSString</span>* name, <span class="type">int</span> age)&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;年龄==%d&quot;</span>, age);</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
-<p>这种优化使得：<br>	•	内存使用：减少了内存占用。<br>	•	效率提升：访问对象所属类时的效率大幅提高。</p>
-<hr>
-<p>总结</p>
-<p>在现代 Objective-C Runtime 中，结构体的优化和指针的打包大大提升了系统的性能，尤其是在内存占用和方法查找速度上。重点优化如下：<br>	•	objc_class 和 objc_data_bits_t 的分离：提高了内存布局的紧凑性和效率。<br>	•	methodList 的优化：结合哈希表和二叉搜索树，提高了方法查找的效率。<br>	•	isa 指针优化：通过指针打包，减少了内存占用，并加速了对象的类型查找和引用计数管理。</p>
-<p>这些改进的核心目的是：提升性能、减少内存占用，特别是在 iOS 设备上，确保运行时系统能够在有限的硬件资源上高效运行。</p>
-<hr>
+<p>这段代码定义了一个名为personBlock的Block，它接收一个NSString*类型的name和一个int类型的age作为参数，打印年龄并返回name。</p>
+<h4 id="三、Block捕获变量的机制"><a href="#三、Block捕获变量的机制" class="headerlink" title="三、Block捕获变量的机制"></a>三、Block捕获变量的机制</h4><p>Block可以捕获其声明范围内的所有变量，但捕获的自动变量默认是不可修改的。如果需要修改，则需要在变量前加上<code>__block</code>修饰符。<code>__block</code>修饰符告诉编译器，该变量可能会在Block中被修改，因此需要在Block的实现体中保留一个指向该变量的指针。</p>
+<p>此外，Block总能修改实例变量、静态变量、全局变量和全局静态变量，无需加<code>__block</code>修饰符。</p>
+<h4 id="四、Block的内存管理"><a href="#四、Block的内存管理" class="headerlink" title="四、Block的内存管理"></a>四、Block的内存管理</h4><p>在iOS中，Block的内存管理是一个重要的考虑因素。Block有三种存储位置：栈（_NSConcreteStackBlock）、堆（_NSConcreteMallocBlock）和全局（_NSConcreteGlobalBlock）。</p>
+<ol>
+<li><strong>栈上的Block</strong>：当Block在方法内部声明且没有引用外部变量时，它通常被分配在栈上。栈上的Block在方法返回时会被销毁。</li>
+<li><strong>堆上的Block</strong>：当Block引用外部变量或作为属性存储时，它会被复制到堆上。堆上的Block在引用计数为0时才会被销毁。</li>
+<li><strong>全局的Block</strong>：不访问任何外部变量的Block可以被视为全局Block，它们通常被分配在全局数据区。</li>
+</ol>
+<p>在ARC（自动引用计数）环境下，系统通常会自动将Block从栈复制到堆上，以避免栈上的Block被销毁。然而，在MRC（手动引用计数）环境下，开发者需要手动管理Block的内存。</p>
+<h4 id="五、Block的使用场景"><a href="#五、Block的使用场景" class="headerlink" title="五、Block的使用场景"></a>五、Block的使用场景</h4><p>Block在iOS开发中有广泛的应用场景，包括但不限于：</p>
+<ol>
+<li><strong>作为参数传递</strong>：Block可以作为函数的参数传递，这使得函数能够接收一段代码作为参数，并在需要时执行这段代码。这种特性使得Block在回调函数、动画处理等方面非常有用。</li>
+<li><strong>闭包</strong>：Block的闭包特性使得它能够捕获并保留其声明范围内的变量，即使这些变量在Block外部已经被销毁。这使得Block能够在异步操作、定时器回调等场景中保持对外部变量的访问。</li>
+<li><strong>适配器模式</strong>：Block可以用作适配器模式中的“转换函数”，将一种接口转换为另一种接口。这在处理不同数据源或不同格式的数据时非常有用。</li>
+<li><strong>解决循环引用</strong>：在使用Block时，需要注意循环引用的问题。特别是当Block作为对象的属性存储时，如果对象也持有Block的引用，就会形成循环引用。为了避免这种情况，可以使用<code>__weak</code>关键字来声明对对象的弱引用，从而在Block中避免循环引用。</li>
+</ol>
+<h4 id="六、Block使用注意点及常见问题"><a href="#六、Block使用注意点及常见问题" class="headerlink" title="六、Block使用注意点及常见问题"></a>六、Block使用注意点及常见问题</h4><ol>
+<li><p><strong>Block作为类变量属性时用copy修饰</strong>：</p>
+<ul>
+<li>原因：Block作为类属性时，用copy修饰符可以将Block从栈拷贝到堆中，防止Block在方法返回后被销毁。</li>
+<li>注意：赋值给一个weak变量时，Block不会被copy到堆上。</li>
+</ul>
+</li>
+<li><p><strong>不能修改外部自动变量问题</strong>：</p>
+<ul>
+<li>解决方案：使用<code>__block</code>修饰符来修饰需要修改的外部自动变量。</li>
+</ul>
+</li>
+<li><p><strong>循环引用问题</strong>：</p>
+<ul>
+<li>解决方案：使用<code>__weak</code>关键字来声明对对象的弱引用，从而避免循环引用。在需要访问self属性时，可以在Block内部使用<code>[weak self]</code>和<code>[strong self]</code>的技巧来确保self在Block执行期间不会被释放。</li>
+</ul>
+</li>
+</ol>
+<h4 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h4><p>Block是iOS开发中一项非常强大的功能，它提供了简洁且易用的接口来封装代码块，并允许捕获和保留外部变量。然而，在使用Block时，也需要注意其内存管理和循环引用等问题。通过深入理解Block的底层实现和使用场景，开发者可以更加高效地利用这一功能来编写出更加优雅和健壮的代码。</p>
 
 		</div>
 
@@ -557,12 +534,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/28/Day5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-II-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">
+				<a class="prev" rel="prev" href="/2025/04/30/Day7-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day5-两数之和 II - 输入有序数组</span>
+						<span class="post-nav-title-item">Day7-合并两个有序链表</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -570,9 +547,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/27/Day4-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/">
+				<a class="next" rel="next" href="/2025/04/29/Day6-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day4-有效的字母异位词</span>
+						<span class="post-nav-title-item">Day6-删除有序数组中的重复项</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -593,8 +570,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day5-Objective-C Runtime 基础结构</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Objective-C-Runtime-%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Objective-C Runtime 基础结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-objc-class%EF%BC%88%E7%B1%BB%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">1. objc_class（类结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-objc-object%EF%BC%88%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">2. objc_object（对象结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-objc-method%EF%BC%88%E6%96%B9%E6%B3%95%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">3. objc_method（方法结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-objc-ivar%EF%BC%88%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">4. objc_ivar（成员变量结构体）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-objc-property%EF%BC%88%E5%B1%9E%E6%80%A7%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89"><span class="nav-text">5. objc_property（属性结构体）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="nav-text">小总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E8%A1%A5%E5%85%85"><span class="nav-text">进阶补充</span></a></li></ol>
+		<div class="page-title">Day7-Runtime&amp;Block</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-text">Runtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block"><span class="nav-text">Block</span></a></li></ol>
 
 	</div>
 </div>
