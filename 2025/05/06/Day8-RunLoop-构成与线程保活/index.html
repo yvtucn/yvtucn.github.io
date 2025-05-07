@@ -318,7 +318,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-06 10:21:11</span>
-            <span class="mobile">2025-05-06 10:21:11</span>
+            <span class="desktop">2025-05-07 10:26:21</span>
+            <span class="mobile">2025-05-07 10:26:21</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -437,7 +437,7 @@
 </ul>
 <hr>
 <h2 id="二、RunLoop-与线程保活"><a href="#二、RunLoop-与线程保活" class="headerlink" title="二、RunLoop 与线程保活"></a>二、RunLoop 与线程保活</h2><h3 id="1-子线程默认行为"><a href="#1-子线程默认行为" class="headerlink" title="1. 子线程默认行为"></a>1. 子线程默认行为</h3><p>任务执行完即退出，因为没有 RunLoop。</p>
-<h3 id="2-线程保活方式"><a href="#2-线程保活方式" class="headerlink" title="2. 线程保活方式"></a>2. 线程保活方式</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (void)startThread &#123;</span><br><span class="line">    NSThread *thread = [[NSThread alloc] initWithBlock:^&#123;</span><br><span class="line">        [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];</span><br><span class="line">        [[NSRunLoop currentRunLoop] run];</span><br><span class="line">    &#125;];</span><br><span class="line">    [thread start];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-线程保活方式"><a href="#2-线程保活方式" class="headerlink" title="2. 线程保活方式"></a>2. 线程保活方式</h3><div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)startThread &#123;</span><br><span class="line">    <span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithBlock:^&#123;</span><br><span class="line">        [[<span class="built_in">NSRunLoop</span> currentRunLoop] addPort:[<span class="built_in">NSPort</span> port] forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line">        [[<span class="built_in">NSRunLoop</span> currentRunLoop] run];</span><br><span class="line">    &#125;];</span><br><span class="line">    [thread start];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项</h3><ul>
 <li><code>run</code> 会阻塞线程。</li>
