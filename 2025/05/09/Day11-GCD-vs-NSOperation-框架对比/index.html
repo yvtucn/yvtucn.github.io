@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/23/day1-uikit事件传递机制-responder-chain/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/09/day11-gcd-vs-nsoperation-框架对比/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day1-UIKit事件传递机制 &amp; Responder Chain | YVTU
+            Day11-GCD vs NSOperation 框架对比 | YVTU
         
     </title>
 
@@ -341,7 +341,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day1-UIKit事件传递机制 &amp; Responder Chain</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day11-GCD vs NSOperation 框架对比</h1>
 			</div>
 			
 		</div>
@@ -362,15 +362,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-23 11:50:13</span>
-        <span class="mobile">2025-04-23 11:50:13</span>
+        <span class="desktop">2025-05-09 10:19:06</span>
+        <span class="mobile">2025-05-09 10:19:06</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-24 12:09:11</span>
-            <span class="mobile">2025-04-24 12:09:11</span>
+            <span class="desktop">2025-05-09 10:23:04</span>
+            <span class="mobile">2025-05-09 10:23:04</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -409,98 +409,161 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="UIKit-事件传递机制-Responder-Chain"><a href="#UIKit-事件传递机制-Responder-Chain" class="headerlink" title="UIKit 事件传递机制 &amp; Responder Chain"></a>UIKit 事件传递机制 &amp; Responder Chain</h1><h2 id="一、事件类型"><a href="#一、事件类型" class="headerlink" title="一、事件类型"></a>一、事件类型</h2><p>UIKit 中主要的事件类型包括：</p>
-<ul>
-<li><strong>触摸事件（Touch Events）</strong>：如 tap、swipe、pinch 等。</li>
-<li><strong>运动事件（Motion Events）</strong>：如摇动设备。</li>
-<li><strong>远程控制事件（Remote-Control Events）</strong>：如耳机控制、CarPlay。</li>
-<li><strong>按键事件（Press Events）</strong>（仅限 tvOS 或支持硬件键盘时的 iOS）。</li>
-</ul>
-<hr>
-<h2 id="二、事件传递流程"><a href="#二、事件传递流程" class="headerlink" title="二、事件传递流程"></a>二、事件传递流程</h2><ol>
-<li><p><strong>事件产生</strong>：</p>
-<ul>
-<li>事件由硬件（屏幕、传感器等）检测后交给系统。</li>
-<li>iOS 将事件加入到主线程的 <code>UIApplication</code> 对象中进行分发。</li>
-</ul>
-</li>
-<li><p><strong>事件分发路径</strong>：</p>
-<ul>
-<li><code>UIApplication</code> → <code>UIWindow</code> → <code>UIView</code></li>
-</ul>
-</li>
-<li><p><strong>命中测试（Hit-Testing）</strong>：</p>
-<ul>
-<li>从根视图（window 的 rootView）开始递归查找目标视图。</li>
-<li>使用两个方法：<ul>
-<li><code>point(inside:with:)</code></li>
-<li><code>hitTest(_:with:)</code></li>
-</ul>
-</li>
-<li>最终找到最合适的视图接收触摸事件。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="三、Responder-Chain（响应者链）"><a href="#三、Responder-Chain（响应者链）" class="headerlink" title="三、Responder Chain（响应者链）"></a>三、Responder Chain（响应者链）</h2><h3 id="1-什么是-Responder-Chain？"><a href="#1-什么是-Responder-Chain？" class="headerlink" title="1. 什么是 Responder Chain？"></a>1. 什么是 Responder Chain？</h3><p>Responder Chain 是一条事件响应链，用来处理视图无法响应的事件。</p>
-<h3 id="2-Responder-Chain-构成"><a href="#2-Responder-Chain-构成" class="headerlink" title="2. Responder Chain 构成"></a>2. Responder Chain 构成</h3><p>一个 UIResponder 对象（如 UIView、UIViewController）可以传递事件给其上层响应者：<br>UIView → UIViewController → UIWindow → UIApplication → AppDelegate</p>
-<p>如果某个对象无法处理事件，它会把事件传递给下一个响应者。</p>
-<h3 id="3-UIResponder-方法"><a href="#3-UIResponder-方法" class="headerlink" title="3. UIResponder 方法"></a>3. UIResponder 方法</h3><table>
+			<h2 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h2><table>
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
+<th>方面</th>
+<th>GCD</th>
+<th>NSOperation</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>touchesBegan(_:with:)</code></td>
-<td>开始触摸</td>
+<td>所属框架</td>
+<td>C 语言底层 API，Foundation 框架</td>
+<td>Foundation 框架的面向对象封装</td>
 </tr>
 <tr>
-<td><code>touchesMoved(_:with:)</code></td>
-<td>触摸移动</td>
+<td>编程范式</td>
+<td>函数式（Block）</td>
+<td>面向对象（Operation 对象）</td>
 </tr>
 <tr>
-<td><code>touchesEnded(_:with:)</code></td>
-<td>触摸结束</td>
+<td>线程管理</td>
+<td>自动管理线程</td>
+<td>基于 NSOperationQueue，封装良好</td>
 </tr>
 <tr>
-<td><code>touchesCancelled(_:with:)</code></td>
-<td>触摸被取消</td>
+<td>适用场景</td>
+<td>性能优先，轻量并发控制</td>
+<td>更复杂的任务依赖和管理需求</td>
 </tr>
 </tbody></table>
-<p>还可以通过 <code>canBecomeFirstResponder</code> 和 <code>becomeFirstResponder()</code> 控制焦点。</p>
-<hr>
-<h2 id="四、自定义事件传递（常见场景）"><a href="#四、自定义事件传递（常见场景）" class="headerlink" title="四、自定义事件传递（常见场景）"></a>四、自定义事件传递（常见场景）</h2><h3 id="1-UIView-不响应事件"><a href="#1-UIView-不响应事件" class="headerlink" title="1. UIView 不响应事件"></a>1. UIView 不响应事件</h3><p>可能是因为以下原因：</p>
-<ul>
-<li><code>isUserInteractionEnabled = false</code></li>
-<li><code>alpha &lt; 0.01</code></li>
-<li><code>hidden = true</code></li>
-</ul>
-<h3 id="2-自定义控件事件传递"><a href="#2-自定义控件事件传递" class="headerlink" title="2. 自定义控件事件传递"></a>2. 自定义控件事件传递</h3><p>可重写以下方法：</p>
-<ul>
-<li><code>hitTest(_:with:)</code>：决定谁是事件的最终响应者。</li>
-<li><code>point(inside:with:)</code>：判断点是否在当前视图内。</li>
-</ul>
-<hr>
-<h2 id="五、Responder-Chain-应用场景"><a href="#五、Responder-Chain-应用场景" class="headerlink" title="五、Responder Chain 应用场景"></a>五、Responder Chain 应用场景</h2><ul>
-<li>控件事件传递：如 UIButton 点击事件向上传递。</li>
-<li>菜单处理：如复制粘贴菜单响应。</li>
-<li>键盘响应管理。</li>
-<li>自定义事件路由（target-action 无法处理时）。</li>
-</ul>
-<hr>
-<h2 id="六、调试技巧"><a href="#六、调试技巧" class="headerlink" title="六、调试技巧"></a>六、调试技巧</h2><ul>
-<li>使用 View Debugger 检查视图层级。</li>
-<li>打断点调试 <code>hitTest</code> 和 <code>touchesBegan</code>。</li>
-<li>查看 <code>next</code> 属性追踪 Responder Chain。</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ul>
-<li>UIKit 事件从 UIApplication 开始，经过 UIWindow 最终传递给具体的 UIView。</li>
-<li>Responder Chain 是事件冒泡机制的实现，支持事件的多级处理。</li>
-<li>通过合理利用 <code>hitTest:</code> 和 <code>Responder Chain</code>，可以实现复杂交互需求。</li>
-</ul>
+<h2 id="二、核心组件对比"><a href="#二、核心组件对比" class="headerlink" title="二、核心组件对比"></a>二、核心组件对比</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>GCD</th>
+<th>NSOperation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行体</td>
+<td>dispatch_async + Block</td>
+<td>自定义 NSOperation 子类 或 BlockOperation</td>
+</tr>
+<tr>
+<td>队列管理</td>
+<td>dispatch_queue</td>
+<td>NSOperationQueue</td>
+</tr>
+<tr>
+<td>最大并发数控制</td>
+<td>不支持（除非用信号量）</td>
+<td>支持（<code>maxConcurrentOperationCount</code>）</td>
+</tr>
+<tr>
+<td>任务取消</td>
+<td>不支持</td>
+<td>支持（<code>cancel</code> 方法 + 自定义取消逻辑）</td>
+</tr>
+<tr>
+<td>任务依赖</td>
+<td>不支持</td>
+<td>支持（<code>addDependency:</code>）</td>
+</tr>
+<tr>
+<td>任务状态监控</td>
+<td>不支持</td>
+<td>支持（如 isReady, isExecuting, isFinished）</td>
+</tr>
+<tr>
+<td>QoS 支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>同步、异步支持</td>
+<td>支持</td>
+<td>主要是异步，依赖队列控制</td>
+</tr>
+<tr>
+<td>定时调度</td>
+<td>支持（dispatch_after, dispatch_timer）</td>
+<td>不直接支持</td>
+</tr>
+</tbody></table>
+<h2 id="三、使用对比示例"><a href="#三、使用对比示例" class="headerlink" title="三、使用对比示例"></a>三、使用对比示例</h2><h3 id="GCD-示例："><a href="#GCD-示例：" class="headerlink" title="GCD 示例："></a>GCD 示例：</h3><div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global(qos: .background).async &#123;</span><br><span class="line">    <span class="comment">// 后台线程任务</span></span><br><span class="line">    <span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">        <span class="comment">// 回到主线程更新 UI</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="NSOperation-示例："><a href="#NSOperation-示例：" class="headerlink" title="NSOperation 示例："></a>NSOperation 示例：</h3><div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> operationQueue <span class="operator">=</span> <span class="type">OperationQueue</span>()</span><br><span class="line"><span class="keyword">let</span> operation <span class="operator">=</span> <span class="type">BlockOperation</span> &#123;</span><br><span class="line">    <span class="comment">// 后台任务</span></span><br><span class="line">    <span class="type">OperationQueue</span>.main.addOperation &#123;</span><br><span class="line">        <span class="comment">// 更新 UI</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">operationQueue.addOperation(operation)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="四、使用建议"><a href="#四、使用建议" class="headerlink" title="四、使用建议"></a>四、使用建议</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐框架</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>简单异步任务</td>
+<td>GCD</td>
+<td>轻量、简洁、性能好</td>
+</tr>
+<tr>
+<td>需要取消&#x2F;暂停任务</td>
+<td>NSOperation</td>
+<td>内建支持取消、暂停、状态管理</td>
+</tr>
+<tr>
+<td>需要任务依赖</td>
+<td>NSOperation</td>
+<td>提供 <code>addDependency</code></td>
+</tr>
+<tr>
+<td>任务较为独立</td>
+<td>GCD</td>
+<td>开销小</td>
+</tr>
+<tr>
+<td>复杂的任务调度系统</td>
+<td>NSOperation</td>
+<td>面向对象，利于维护和扩展</td>
+</tr>
+</tbody></table>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>GCD</th>
+<th>NSOperation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>简洁性</td>
+<td>✅ 高</td>
+<td>❌ 相对复杂</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>❌ 低</td>
+<td>✅ 高</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>✅ 高（偏底层）</td>
+<td>❌ 稍逊一筹</td>
+</tr>
+<tr>
+<td>可读性&#x2F;可维护性</td>
+<td>❌ 差（block 链嵌套）</td>
+<td>✅ 高（封装明确）</td>
+</tr>
+<tr>
+<td>控制能力</td>
+<td>❌ 限</td>
+<td>✅ 完整</td>
+</tr>
+</tbody></table>
 
 		</div>
 
@@ -514,12 +577,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/23/Day1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+				<a class="prev" rel="prev" href="/2025/05/09/Day11-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day1-两数之和</span>
+						<span class="post-nav-title-item">Day11-环形链表</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -527,9 +590,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/23/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+				<a class="next" rel="next" href="/2025/05/08/Day10-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">学习计划</span>
+						<span class="post-nav-title-item">Day10-合并两个有序链表</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -550,8 +613,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day1-UIKit事件传递机制 &amp; Responder Chain</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIKit-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6-Responder-Chain"><span class="nav-text">UIKit 事件传递机制 &amp; Responder Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">一、事件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%B5%81%E7%A8%8B"><span class="nav-text">二、事件传递流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Responder-Chain%EF%BC%88%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE%EF%BC%89"><span class="nav-text">三、Responder Chain（响应者链）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Responder-Chain%EF%BC%9F"><span class="nav-text">1. 什么是 Responder Chain？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Responder-Chain-%E6%9E%84%E6%88%90"><span class="nav-text">2. Responder Chain 构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UIResponder-%E6%96%B9%E6%B3%95"><span class="nav-text">3. UIResponder 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%EF%BC%88%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-text">四、自定义事件传递（常见场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UIView-%E4%B8%8D%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6"><span class="nav-text">1. UIView 不响应事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="nav-text">2. 自定义控件事件传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Responder-Chain-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">五、Responder Chain 应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="nav-text">六、调试技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">七、总结</span></a></li></ol></li></ol>
+		<div class="page-title">Day11-GCD vs NSOperation 框架对比</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-text">一、基本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E5%AF%B9%E6%AF%94"><span class="nav-text">二、核心组件对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94%E7%A4%BA%E4%BE%8B"><span class="nav-text">三、使用对比示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">GCD 示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation-%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">NSOperation 示例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="nav-text">四、使用建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">五、总结</span></a></li></ol>
 
 	</div>
 </div>

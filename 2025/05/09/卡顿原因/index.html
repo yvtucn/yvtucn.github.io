@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="yvtu">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/09/卡顿原因/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/rabbit.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/rabbit.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/rabbit.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            卡顿原因 | YVTU
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"yvtucn.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":null},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"YVTU","subtitle":{"text":["Chasing Myths, Touching Stars."],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"},"About":{"icon":"fa-regular fa-user","path":"/about/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/4/21 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/rabbit.svg" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YVTU
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks/"
+                                        >
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                    BOOKMARKS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks/"
+                        >
+                            <span>
+                                BOOKMARKS
+                            </span>
+                            
+                                <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">27</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">卡顿原因</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-09 10:26:18</span>
+        <span class="mobile">2025-05-09 10:26:18</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-09 10:48:21</span>
+            <span class="mobile">2025-05-09 10:48:21</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8D%A1%E9%A1%BF%E7%9B%91%E6%8E%A7/">卡顿监控</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>iOS开发中，由于UIKit的非线程安全性，所有UI操作必须在主线程执行。系统每16ms（1&#x2F;60帧）重绘UI至屏幕。若主线程进行耗时操作或发生死锁，会阻碍UI刷新，导致卡顿甚至卡死。主线程基于Runloop机制处理任务，Runloop支持多种事件回调，包括事件进入、处理前后等时机。若主线程在任一环节被阻塞，会导致UI和交互都无法进行，这是卡死、卡顿的根本原因。</p>
+<h2 id="线程和锁"><a href="#线程和锁" class="headerlink" title="线程和锁"></a>线程和锁</h2><p>线程和锁的使用是导致卡死的主要原因，常见问题包括：</p>
+<ul>
+<li>死锁问题：如dispatch_once中同步访问主线程导致的死锁。</li>
+<li>锁竞争：子线程占用锁资源导致主线程卡死。</li>
+<li>磁盘IO密集：主线程磁盘IO耗时过长。</li>
+<li>跨进程通信：如UIPasteBoard、NSUserDefaults等导致的卡死。</li>
+<li>OC方法调用死锁：如dyld lock、selector lock和OC runtime lock互相等待。</li>
+</ul>
+<h2 id="同步原语"><a href="#同步原语" class="headerlink" title="同步原语"></a>同步原语</h2><p>同步原语（synchronization primitive）会阻塞读写任务执行。以下是iOS中常用的会阻塞读写任务执行的同步原语：</p>
+<h3 id="锁（Locks）"><a href="#锁（Locks）" class="headerlink" title="锁（Locks）"></a>锁（Locks）</h3><ul>
+<li>NSLock<ul>
+<li>基本的互斥锁，用于保护临界区，确保同一时间只有一个线程访问资源。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLock</span> *lock = [[<span class="built_in">NSLock</span> alloc] init];</span><br><span class="line">[lock lock];</span><br><span class="line"><span class="comment">// 访问共享资源</span></span><br><span class="line">[lock unlock];</span><br></pre></td></tr></table></figure></div></li>
+<li>NSRecursiveLock<ul>
+<li>递归锁，允许同一个线程多次获取锁，适用于需要递归调用的场景。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSRecursiveLock</span> *recursiveLock = [[<span class="built_in">NSRecursiveLock</span> alloc] init];</span><br><span class="line">[recursiveLock lock];</span><br><span class="line"><span class="comment">// 递归访问共享资源</span></span><br><span class="line">[recursiveLock unlock];</span><br></pre></td></tr></table></figure></div></li>
+<li>NSCondition<ul>
+<li>条件锁，结合互斥锁和条件变量，可用于线程之间的等待和通知机制。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSCondition</span> *condition = [[<span class="built_in">NSCondition</span> alloc] init];</span><br><span class="line">[condition lock];</span><br><span class="line"><span class="comment">// 等待某个条件</span></span><br><span class="line">[condition wait];</span><br><span class="line"><span class="comment">// 条件满足后继续执行</span></span><br><span class="line">[condition unlock];</span><br></pre></td></tr></table></figure></div></li>
+<li>NSConditionLock<ul>
+<li>带有条件的锁，可以基于条件值来锁定和解锁。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSConditionLock</span> *conditionLock = [[<span class="built_in">NSConditionLock</span> alloc] initWithCondition:<span class="number">0</span>];</span><br><span class="line">[conditionLock lockWhenCondition:<span class="number">1</span>];</span><br><span class="line"><span class="comment">// 访问共享资源</span></span><br><span class="line">[conditionLock unlockWithCondition:<span class="number">0</span>];</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="GCD（Grand-Central-Dispatch）"><a href="#GCD（Grand-Central-Dispatch）" class="headerlink" title="GCD（Grand Central Dispatch）"></a>GCD（Grand Central Dispatch）</h3><ul>
+<li>信号量（Dispatch Semaphore）<ul>
+<li>用于控制同时访问特定资源的线程数量，可以用于实现简单的锁机制。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> semaphore <span class="operator">=</span> <span class="type">DispatchSemaphore</span>(value: <span class="number">1</span>)</span><br><span class="line">semaphore.wait()</span><br><span class="line"><span class="comment">// 访问共享资源</span></span><br><span class="line">semaphore.signal()</span><br></pre></td></tr></table></figure></div></li>
+<li>屏障（Dispatch Barrier）<ul>
+<li>用于在并发队列中创建同步点，确保在屏障之前的任务完成后，再执行屏障任务，屏障任务完成后，才继续执行后续任务。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> concurrentQueue <span class="operator">=</span> <span class="type">DispatchQueue</span>(label: <span class="string">&quot;com.example.queue&quot;</span>, attributes: .concurrent)</span><br><span class="line">concurrentQueue.async(flags: .barrier) &#123;</span><br><span class="line">    <span class="comment">// 写操作，确保独占访问</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="POSIX-线程（pthread）"><a href="#POSIX-线程（pthread）" class="headerlink" title="POSIX 线程（pthread）"></a>POSIX 线程（pthread）</h3><ul>
+<li><p>读写锁（pthread_rwlock_t）</p>
+<ul>
+<li>允许多个线程同时读，或者一个线程写，适用于读多写少的场景。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">pthread_rwlock_t</span> rwlock = PTHREAD_RWLOCK_INITIALIZER;</span><br><span class="line"><span class="comment">// 读锁</span></span><br><span class="line">pthread_rwlock_rdlock(&amp;rwlock);</span><br><span class="line"><span class="comment">// 读取共享资源</span></span><br><span class="line">pthread_rwlock_unlock(&amp;rwlock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写锁</span></span><br><span class="line">pthread_rwlock_wrlock(&amp;rwlock);</span><br><span class="line"><span class="comment">// 写入共享资源</span></span><br><span class="line">pthread_rwlock_unlock(&amp;rwlock);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>互斥锁（pthread_mutex_t）</p>
+<ul>
+<li>基本的互斥锁，类似于NSLock。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">pthread_mutex_t</span> mutex = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line">pthread_mutex_lock(&amp;mutex);</span><br><span class="line"><span class="comment">// 访问共享资源</span></span><br><span class="line">pthread_mutex_unlock(&amp;mutex);</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="Objective-C-的-synchronized-指令"><a href="#Objective-C-的-synchronized-指令" class="headerlink" title="Objective-C 的 @synchronized 指令"></a>Objective-C 的 @synchronized 指令</h3><ul>
+<li>@synchronized<ul>
+<li>语法糖，用于在Objective-C中创建互斥锁，保护代码块。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synchronized</span>(<span class="keyword">self</span>) &#123;</span><br><span class="line">    <span class="comment">// 访问共享资源</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="低级锁"><a href="#低级锁" class="headerlink" title="低级锁"></a>低级锁</h3><ul>
+<li>os_unfair_lock<ul>
+<li>低级别的锁，替代了过时的OSSpinLock，适用于需要高性能的锁场景。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> unfairLock <span class="operator">=</span> os_unfair_lock()</span><br><span class="line">os_unfair_lock_lock(<span class="operator">&amp;</span>unfairLock)</span><br><span class="line"><span class="comment">// 访问共享资源</span></span><br><span class="line">os_unfair_lock_unlock(<span class="operator">&amp;</span>unfairLock)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="原子属性"><a href="#原子属性" class="headerlink" title="原子属性"></a>原子属性</h3><ul>
+<li>原子性属性（Atomic Properties）<ul>
+<li>在Objective-C中，通过设置属性为atomic，编译器会自动生成线程安全的访问器，内部使用锁机制确保原子性。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (atomic, <span class="keyword">strong</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="高层次抽象"><a href="#高层次抽象" class="headerlink" title="高层次抽象"></a>高层次抽象</h3><ul>
+<li>NSOperationQueue 和 操作依赖（Dependencies）<ul>
+<li>虽然不是直接的锁机制，但通过设置操作的依赖关系，可以控制任务的执行顺序，间接实现同步。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</span><br><span class="line"><span class="built_in">NSOperation</span> *op1 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">    <span class="comment">// 任务1</span></span><br><span class="line">&#125;];</span><br><span class="line"><span class="built_in">NSOperation</span> *op2 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">    <span class="comment">// 任务2，依赖任务1</span></span><br><span class="line">&#125;];</span><br><span class="line">[op2 addDependency:op1];</span><br><span class="line">[queue addOperations:@[op1, op2] waitUntilFinished:<span class="literal">NO</span>];</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="Swift-并发（Swift-Concurrency）"><a href="#Swift-并发（Swift-Concurrency）" class="headerlink" title="Swift 并发（Swift Concurrency）"></a>Swift 并发（Swift Concurrency）</h3><ul>
+<li>Actors<ul>
+<li>在Swift 5.5及以上版本中引入的Actor模型，用于保护数据，确保同一时间只有一个任务可以访问其内部状态。</li>
+<li>示例：</li>
+</ul>
+  <div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">actor</span> <span class="title class_">MyActor</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myActor <span class="operator">=</span> <span class="type">MyActor</span>()</span><br><span class="line"><span class="type">Task</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> myActor.increment()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>这些同步原语各有优缺点，选择合适的同步机制取决于具体的应用场景。例如，pthread_rwlock_t适用于读多写少的情况，而NSLock或@synchronized则适用于简单的互斥需求。GCD的信号量和屏障则提供了更高层次的并发控制手段。</p>
+<h2 id="CPU-负载"><a href="#CPU-负载" class="headerlink" title="CPU 负载"></a>CPU 负载</h2><p>CPU 负载过重也会导致耗时长，CPU主要负责用户交互的处理，如果能够将运算转移到 GPU 上，CPU 就可以更轻松的处理来自用户的交互。比如可以通过使用 CoreAnimation 中 layer.cornerRadius 属性和 masksToBounds 属性替代圆角图片、使用 CoreGraphics 绘制图形替代图片、使用 CoreAnimation 绘制动画替代 UIView 动画等方式优化性能。</p>
+<p>以下是一些常见的方法和技术，可以在iOS中将计算任务从CPU转移到GPU：</p>
+<h3 id="Metal-框架"><a href="#Metal-框架" class="headerlink" title="Metal 框架"></a>Metal 框架</h3><ul>
+<li>Metal 是苹果为iOS和macOS提供的底层图形和计算API，它允许开发者直接访问GPU来执行图形渲染和并行计算任务。</li>
+<li>使用场景包括：<ul>
+<li>渲染3D图形：Metal提供高效的图形渲染功能，比OpenGL ES更高效。</li>
+<li>图像处理：可以使用Metal编写自定义着色器（Shaders）进行实时图像处理，如滤镜应用、视频处理等。</li>
+<li>并行计算：通过Metal的计算管线（Compute Pipeline），可以编写计算着色器（Compute Shaders）在GPU上执行大量并行计算任务，如物理模拟、数据分析等。</li>
+<li>示例代码：</li>
+</ul>
+  <div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Metal进行简单的计算操作</span></span><br><span class="line"><span class="keyword">let</span> device <span class="operator">=</span> <span class="type">MTLCreateSystemDefaultDevice</span>()</span><br><span class="line"><span class="keyword">let</span> commandQueue <span class="operator">=</span> device<span class="operator">?</span>.makeCommandQueue()</span><br><span class="line"><span class="keyword">let</span> shaderLibrary <span class="operator">=</span> device<span class="operator">?</span>.makeDefaultLibrary()</span><br><span class="line"><span class="keyword">let</span> computeFunction <span class="operator">=</span> shaderLibrary<span class="operator">?</span>.makeFunction(name: <span class="string">&quot;computeShader&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> computePipelineState <span class="operator">=</span> <span class="keyword">try?</span> device<span class="operator">?</span>.makeComputePipelineState(function: computeFunction<span class="operator">!</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="Core-Image"><a href="#Core-Image" class="headerlink" title="Core Image"></a>Core Image</h3><ul>
+<li>Core Image 是一个强大的图像处理框架，内置了许多优化的滤镜（Filters），并能够自动将图像处理任务分配到GPU上执行。</li>
+<li>通过Core Image，你可以非常容易地进行图像增强、滤镜应用、面部识别等，而这些操作都会尽量在GPU上执行，以减轻CPU的负担。</li>
+<li>示例代码：</li>
+</ul>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ciImage <span class="operator">=</span> <span class="type">CIImage</span>(image: inputImage)</span><br><span class="line"><span class="keyword">let</span> filter <span class="operator">=</span> <span class="type">CIFilter</span>(name: <span class="string">&quot;CISepiaTone&quot;</span>)</span><br><span class="line">filter<span class="operator">?</span>.setValue(ciImage, forKey: kCIInputImageKey)</span><br><span class="line">filter<span class="operator">?</span>.setValue(<span class="number">0.8</span>, forKey: kCIInputIntensityKey)</span><br><span class="line"><span class="keyword">let</span> outputImage <span class="operator">=</span> filter<span class="operator">?</span>.outputImage</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Core-Animation"><a href="#Core-Animation" class="headerlink" title="Core Animation"></a>Core Animation</h3><ul>
+<li>Core Animation 是iOS的高效动画框架，它会将大部分动画的执行过程自动转移到GPU上。这包括视图的平移、缩放、旋转、淡入淡出等基本动画效果。</li>
+<li>通过使用CALayer和各种动画属性（如position、transform等），你可以创建平滑的动画，这些动画将在GPU上硬件加速执行。</li>
+<li>示例代码：</li>
+</ul>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> layer <span class="operator">=</span> <span class="type">CALayer</span>()</span><br><span class="line">layer.position <span class="operator">=</span> <span class="type">CGPoint</span>(x: <span class="number">100</span>, y: <span class="number">100</span>)</span><br><span class="line"><span class="keyword">let</span> animation <span class="operator">=</span> <span class="type">CABasicAnimation</span>(keyPath: <span class="string">&quot;position&quot;</span>)</span><br><span class="line">animation.toValue <span class="operator">=</span> <span class="type">CGPoint</span>(x: <span class="number">200</span>, y: <span class="number">200</span>)</span><br><span class="line">animation.duration <span class="operator">=</span> <span class="number">1.0</span></span><br><span class="line">layer.add(animation, forKey: <span class="string">&quot;positionAnimation&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="SpriteKit-和-SceneKit"><a href="#SpriteKit-和-SceneKit" class="headerlink" title="SpriteKit 和 SceneKit"></a>SpriteKit 和 SceneKit</h3><ul>
+<li>SpriteKit 和 SceneKit 是两个高层次的框架，分别用于2D和3D游戏开发。它们内部利用GPU进行图形渲染和物理模拟，极大地减少了CPU的负担。</li>
+<li>SpriteKit 用于2D游戏，可以通过简单的代码创建和渲染复杂的场景。</li>
+<li>SceneKit 用于3D游戏，支持光照、阴影、物理引擎等高级特性，这些都在GPU上进行计算。</li>
+<li>示例代码：</li>
+</ul>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> scene <span class="operator">=</span> <span class="type">SKScene</span>(size: <span class="type">CGSize</span>(width: <span class="number">1024</span>, height: <span class="number">768</span>))</span><br><span class="line"><span class="keyword">let</span> spriteNode <span class="operator">=</span> <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">&quot;Spaceship&quot;</span>)</span><br><span class="line">spriteNode.position <span class="operator">=</span> <span class="type">CGPoint</span>(x: scene.size.width<span class="regexp">/2, y: scene.size.height/</span><span class="number">2</span>)</span><br><span class="line">scene.addChild(spriteNode)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="OpenGL-ES"><a href="#OpenGL-ES" class="headerlink" title="OpenGL ES"></a>OpenGL ES</h3><ul>
+<li>虽然OpenGL ES已经被Metal取代为主要的图形API，但它仍然可以用于将图形渲染任务转移到GPU上。使用OpenGL ES，开发者可以编写自定义着色器，并在GPU上执行图形渲染。</li>
+<li>示例代码：</li>
+</ul>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建OpenGL ES上下文</span></span><br><span class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];</span><br><span class="line">[EAGLContext setCurrentContext:context];</span><br></pre></td></tr></table></figure></div>
+<h3 id="Core-Graphics-Quartz-2D"><a href="#Core-Graphics-Quartz-2D" class="headerlink" title="Core Graphics (Quartz 2D)"></a>Core Graphics (Quartz 2D)</h3><ul>
+<li>Core Graphics 虽然主要在CPU上执行，但是在一些情况下，特别是当使用硬件加速的绘图操作时（如在UIView上进行绘图操作），系统会自动将部分绘图操作转移到GPU上。</li>
+<li>Core Graphics主要用于绘制矢量图形、处理图像、渲染文本等。</li>
+</ul>
+<h3 id="VideoToolbox"><a href="#VideoToolbox" class="headerlink" title="VideoToolbox"></a>VideoToolbox</h3><ul>
+<li>VideoToolbox 是一个用于硬件加速的视频编码、解码的框架。通过使用VideoToolbox，可以将视频编解码任务转移到GPU上，从而大大减轻CPU的压力，尤其在处理高清视频时效果显著。</li>
+<li>示例代码：</li>
+</ul>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> videoSession: <span class="type">VTDecompressionSession</span>?</span><br><span class="line"><span class="type">VTDecompressionSessionCreate</span>(<span class="literal">nil</span>, formatDescription, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="operator">&amp;</span>videoSession)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Accelerate-框架"><a href="#Accelerate-框架" class="headerlink" title="Accelerate 框架"></a>Accelerate 框架</h3><ul>
+<li>Accelerate 框架包含了一组高度优化的数学计算函数库，包括向量运算、矩阵运算、FFT（快速傅里叶变换）等。虽然主要在CPU上运行，但在某些情况下（如使用vImage），可以通过Metal Performance Shaders (MPS)将部分计算任务转移到GPU上。</li>
+</ul>
+<h2 id="磁盘-IO-过于密集"><a href="#磁盘-IO-过于密集" class="headerlink" title="磁盘 IO 过于密集"></a>磁盘 IO 过于密集</h2><p>磁盘 IO 过于密集可能会导致应用程序卡顿，这是因为磁盘操作通常是阻塞性的，尤其是在读取或写入大量数据时。为了缓解这一问题，可以将磁盘 IO 操作放到后台线程中执行，避免阻塞主线程。这时，Swift Concurrency 技术（如 async&#x2F;await 和 Task）可以派上用场。</p>
+<p>下面是一个使用 SwiftUI 和 Swift Concurrency 处理磁盘 IO 的示例代码。这个例子展示了如何在后台线程中执行磁盘读取操作，并将结果更新到 UI 上。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> data: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Loading...&quot;</span> <span class="comment">// `data` 用于存储从磁盘读取的数据，并在 UI 中显示。</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span> &#123;</span><br><span class="line">            <span class="type">Text</span>(data)</span><br><span class="line">                .padding()</span><br><span class="line">            <span class="type">Button</span>(<span class="string">&quot;Load Data&quot;</span>) &#123;</span><br><span class="line">                loadData()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() &#123;</span><br><span class="line">        <span class="comment">// 通过 `Task` 创建一个并发上下文来运行异步代码块。在这个代码块中执行耗时的磁盘 IO 操作。</span></span><br><span class="line">        <span class="type">Task</span> &#123;</span><br><span class="line">            <span class="comment">// 在后台执行磁盘 IO 操作</span></span><br><span class="line">            <span class="keyword">let</span> loadedData <span class="operator">=</span> <span class="keyword">await</span> performDiskIO()</span><br><span class="line">            <span class="comment">// 在主线程更新 UI</span></span><br><span class="line">            <span class="keyword">await</span> <span class="type">MainActor</span>.run &#123;</span><br><span class="line">                data <span class="operator">=</span> loadedData</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 模拟一个磁盘 IO 操作，可能是从文件中读取大数据</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">performDiskIO</span>() <span class="keyword">async</span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="comment">// 模拟磁盘操作耗时</span></span><br><span class="line">        <span class="keyword">try?</span> <span class="keyword">await</span> <span class="type">Task</span>.sleep(nanoseconds: <span class="number">2_000_000_000</span>) <span class="comment">// 2 seconds delay</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 这里可以进行实际的磁盘读取操作</span></span><br><span class="line">        <span class="comment">// 例如读取文件内容：</span></span><br><span class="line">        <span class="comment">// let fileURL = ...</span></span><br><span class="line">        <span class="comment">// let data = try? String(contentsOf: fileURL)</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Data Loaded Successfully!&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@main</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">DiskIOApp</span>: <span class="title class_ inherited__">App</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">Scene</span> &#123;</span><br><span class="line">        <span class="type">WindowGroup</span> &#123;</span><br><span class="line">            <span class="type">ContentView</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="跨进程通信导致卡顿"><a href="#跨进程通信导致卡顿" class="headerlink" title="跨进程通信导致卡顿"></a>跨进程通信导致卡顿</h2><p>进程间通信（IPC）是一种重要的机制，它允许不同的进程或应用程序之间交换信息。然而，某些系统API的调用可能会导致卡顿或性能问题，特别是在以下几种情况下：</p>
+<h3 id="CNCopyCurrentNetworkInfo-获取-WiFi-信息"><a href="#CNCopyCurrentNetworkInfo-获取-WiFi-信息" class="headerlink" title="CNCopyCurrentNetworkInfo 获取 WiFi 信息"></a>CNCopyCurrentNetworkInfo 获取 WiFi 信息</h3><p>CNCopyCurrentNetworkInfo 用于获取当前的 WiFi 网络信息。由于它涉及到与系统的网络服务交互，可能会导致性能问题，特别是在频繁调用时。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;SystemConfiguration/CaptiveNetwork.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSDictionary</span> *networkInfo = (__bridge <span class="built_in">NSDictionary</span> *)<span class="built_in">CNCopyCurrentNetworkInfo</span>((__bridge <span class="built_in">CFStringRef</span>)<span class="string">@&quot;en0&quot;</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@&quot;Network Info: %@&quot;</span>, networkInfo);</span><br></pre></td></tr></table></figure></div>
+<p>在获取 WiFi 信息时，如果调用频繁，可能会对性能产生负面影响。</p>
+<h3 id="设置系统钥匙串-Keychain-中的值"><a href="#设置系统钥匙串-Keychain-中的值" class="headerlink" title="设置系统钥匙串 (Keychain) 中的值"></a>设置系统钥匙串 (Keychain) 中的值</h3><p>钥匙串用于存储敏感数据，如密码。操作钥匙串通常涉及加密操作，这可能会导致一定的性能开销，特别是在操作较多或数据较大时。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Security/Security.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *service = <span class="string">@&quot;com.example.myapp&quot;</span>;</span><br><span class="line"><span class="built_in">NSString</span> *account = <span class="string">@&quot;user@example.com&quot;</span>;</span><br><span class="line"><span class="built_in">NSString</span> *password = <span class="string">@&quot;password123&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSDictionary</span> *query = @&#123;</span><br><span class="line">    (<span class="type">id</span>)kSecClass: (<span class="type">id</span>)kSecClassGenericPassword,</span><br><span class="line">    (<span class="type">id</span>)kSecAttrService: service,</span><br><span class="line">    (<span class="type">id</span>)kSecAttrAccount: account,</span><br><span class="line">    (<span class="type">id</span>)kSecValueData: [password dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">SecItemAdd((__bridge <span class="built_in">CFDictionaryRef</span>)query, <span class="literal">NULL</span>); <span class="comment">// 添加或更新钥匙串项</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="NSUserDefaults-调用写操作"><a href="#NSUserDefaults-调用写操作" class="headerlink" title="NSUserDefaults 调用写操作"></a>NSUserDefaults 调用写操作</h3><p>使用 NSUserDefaults 造成的跨进程通信导致的卡顿，可以使用 Swift Concurrency 来实现一个轻量级的键值存储方案，利用 Swift 的 async&#x2F;await 来处理并发操作。以下是一个使用 Swift 和 SwiftUI 的可运行示例，展示了如何实现和使用一个基于 Swift Concurrency 的轻量级键值存储类。</p>
+<p>轻量级 UserDefaults 替代实现</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="comment">// `LightweightUserDefaults` 类是一个 `actor`，用于确保其内部状态在并发环境中是安全的。`actor` 会自动处理并发的访问，因此不需要手动使用锁或队列。</span></span><br><span class="line"><span class="keyword">actor</span> <span class="title class_">LightweightUserDefaults</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> storage: [<span class="type">String</span>: <span class="keyword">Any</span>] <span class="operator">=</span> [:]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">set</span>(<span class="keyword">_</span> <span class="params">value</span>: <span class="keyword">Any</span><span class="operator">?</span>, <span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> value <span class="operator">=</span> value &#123;</span><br><span class="line">            storage[key] <span class="operator">=</span> value</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            storage.removeValue(forKey: key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">value</span>(<span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> -&gt; <span class="keyword">Any</span><span class="operator">?</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> storage[key]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">removeValue</span>(<span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> &#123;</span><br><span class="line">        storage.removeValue(forKey: key)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>SwiftUI 示例</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过按钮调用异步方法将用户输入存储、读取和清除到自定义的键值存储类中。</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@StateObject</span> <span class="keyword">private</span> <span class="keyword">var</span> userDefaults <span class="operator">=</span> <span class="type">LightweightUserDefaultsWrapper</span>()</span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> inputText: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span>(spacing: <span class="number">20</span>) &#123;</span><br><span class="line">            <span class="type">TextField</span>(<span class="string">&quot;Enter some text&quot;</span>, text: <span class="variable">$inputText</span>)</span><br><span class="line">                .textFieldStyle(<span class="type">RoundedBorderTextFieldStyle</span>())</span><br><span class="line">                .padding()</span><br><span class="line"></span><br><span class="line">            <span class="type">Button</span>(<span class="string">&quot;Save to Custom UserDefaults&quot;</span>) &#123;</span><br><span class="line">                <span class="type">Task</span> &#123;</span><br><span class="line">                    <span class="keyword">await</span> userDefaults.save(inputText, forKey: <span class="string">&quot;userInput&quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">Button</span>(<span class="string">&quot;Load from Custom UserDefaults&quot;</span>) &#123;</span><br><span class="line">                <span class="type">Task</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">let</span> loadedText <span class="operator">=</span> <span class="keyword">await</span> userDefaults.load(forKey: <span class="string">&quot;userInput&quot;</span>) <span class="keyword">as?</span> <span class="type">String</span> &#123;</span><br><span class="line">                        inputText <span class="operator">=</span> loadedText</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">Button</span>(<span class="string">&quot;Clear Custom UserDefaults&quot;</span>) &#123;</span><br><span class="line">                <span class="type">Task</span> &#123;</span><br><span class="line">                    <span class="keyword">await</span> userDefaults.clear(forKey: <span class="string">&quot;userInput&quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        .padding()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于与 SwiftUI 的视图绑定，并在需要时调用异步的存储和读取操作。</span></span><br><span class="line"><span class="meta">@MainActor</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LightweightUserDefaultsWrapper</span>: <span class="title class_ inherited__">ObservableObject</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">let</span> lightweightUserDefaults <span class="operator">=</span> <span class="type">LightweightUserDefaults</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">save</span>(<span class="keyword">_</span> <span class="params">value</span>: <span class="keyword">Any</span><span class="operator">?</span>, <span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> lightweightUserDefaults.set(value, forKey: key)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">load</span>(<span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> -&gt; <span class="keyword">Any</span><span class="operator">?</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> lightweightUserDefaults.value(forKey: key)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">clear</span>(<span class="params">forKey</span> <span class="params">key</span>: <span class="type">String</span>) <span class="keyword">async</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> lightweightUserDefaults.removeValue(forKey: key)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@main</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyApp</span>: <span class="title class_ inherited__">App</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">Scene</span> &#123;</span><br><span class="line">        <span class="type">WindowGroup</span> &#123;</span><br><span class="line">            <span class="type">ContentView</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="CLLocationManager-获取当前位置权限状态"><a href="#CLLocationManager-获取当前位置权限状态" class="headerlink" title="CLLocationManager 获取当前位置权限状态"></a>CLLocationManager 获取当前位置权限状态</h3><p>CLLocationManager 用于定位服务，如果频繁调用定位权限状态的获取，可能会导致性能问题。特别是在获取权限状态时，系统会进行一些额外的操作，这可能会造成卡顿。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CLLocationManager</span> *locationManager = [[<span class="built_in">CLLocationManager</span> alloc] init];</span><br><span class="line"><span class="built_in">CLAuthorizationStatus</span> status = [<span class="built_in">CLLocationManager</span> authorizationStatus];</span><br><span class="line"><span class="comment">// 获取当前的定位权限状态</span></span><br></pre></td></tr></table></figure></div>
+<p>频繁调用 authorizationStatus 可能导致性能问题，特别是当应用在进行定位相关的操作时。</p>
+<h3 id="UIPasteboard-设置和获取值"><a href="#UIPasteboard-设置和获取值" class="headerlink" title="UIPasteboard 设置和获取值"></a>UIPasteboard 设置和获取值</h3><p>UIPasteboard 用于实现剪贴板功能，读取和写入剪贴板数据可能会涉及到 IPC 操作。如果操作过于频繁或数据过大，可能会导致卡顿。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPasteboard</span> *pasteboard = [<span class="built_in">UIPasteboard</span> generalPasteboard];</span><br><span class="line">pasteboard.string = <span class="string">@&quot;SomeString&quot;</span>; <span class="comment">// 设置剪贴板内容</span></span><br><span class="line"><span class="built_in">NSString</span> *clipboardContent = pasteboard.string; <span class="comment">// 获取剪贴板内容</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="UIApplication-通过-openURL-打开其他应用"><a href="#UIApplication-通过-openURL-打开其他应用" class="headerlink" title="UIApplication 通过 openURL 打开其他应用"></a>UIApplication 通过 openURL 打开其他应用</h3><p>使用 UIApplication 的 openURL: 方法可以打开其他应用程序。如果调用频繁或目标应用处理慢，可能会导致卡顿。</p>
+<div class="code-container" data-rel="Objc"><figure class="iseeu highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSURL</span> *url = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@&quot;myapp://&quot;</span>];</span><br><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] openURL:url options:@&#123;&#125; completionHandler:^(<span class="type">BOOL</span> success) &#123;</span><br><span class="line">    <span class="keyword">if</span> (success) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;Opened URL successfully&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;Failed to open URL&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></div>
+<p>如果目标应用的响应时间较长，可能会影响当前应用的流畅度。</p>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">#性能优化</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%8D%A1%E9%A1%BF%E7%9B%91%E6%8E%A7/">#卡顿监控</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/09/Day11-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day11-环形链表</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">卡顿原因</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E9%94%81"><span class="nav-text">线程和锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD"><span class="nav-text">同步原语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%EF%BC%88Locks%EF%BC%89"><span class="nav-text">锁（Locks）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD%EF%BC%88Grand-Central-Dispatch%EF%BC%89"><span class="nav-text">GCD（Grand Central Dispatch）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX-%E7%BA%BF%E7%A8%8B%EF%BC%88pthread%EF%BC%89"><span class="nav-text">POSIX 线程（pthread）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective-C-%E7%9A%84-synchronized-%E6%8C%87%E4%BB%A4"><span class="nav-text">Objective-C 的 @synchronized 指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8E%E7%BA%A7%E9%94%81"><span class="nav-text">低级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E5%B1%9E%E6%80%A7"><span class="nav-text">原子属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E5%B1%82%E6%AC%A1%E6%8A%BD%E8%B1%A1"><span class="nav-text">高层次抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-%E5%B9%B6%E5%8F%91%EF%BC%88Swift-Concurrency%EF%BC%89"><span class="nav-text">Swift 并发（Swift Concurrency）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-%E8%B4%9F%E8%BD%BD"><span class="nav-text">CPU 负载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metal-%E6%A1%86%E6%9E%B6"><span class="nav-text">Metal 框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Image"><span class="nav-text">Core Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Animation"><span class="nav-text">Core Animation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpriteKit-%E5%92%8C-SceneKit"><span class="nav-text">SpriteKit 和 SceneKit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL-ES"><span class="nav-text">OpenGL ES</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Graphics-Quartz-2D"><span class="nav-text">Core Graphics (Quartz 2D)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VideoToolbox"><span class="nav-text">VideoToolbox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Accelerate-%E6%A1%86%E6%9E%B6"><span class="nav-text">Accelerate 框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98-IO-%E8%BF%87%E4%BA%8E%E5%AF%86%E9%9B%86"><span class="nav-text">磁盘 IO 过于密集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E5%AF%BC%E8%87%B4%E5%8D%A1%E9%A1%BF"><span class="nav-text">跨进程通信导致卡顿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CNCopyCurrentNetworkInfo-%E8%8E%B7%E5%8F%96-WiFi-%E4%BF%A1%E6%81%AF"><span class="nav-text">CNCopyCurrentNetworkInfo 获取 WiFi 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E9%92%A5%E5%8C%99%E4%B8%B2-Keychain-%E4%B8%AD%E7%9A%84%E5%80%BC"><span class="nav-text">设置系统钥匙串 (Keychain) 中的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSUserDefaults-%E8%B0%83%E7%94%A8%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-text">NSUserDefaults 调用写操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLLocationManager-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE%E6%9D%83%E9%99%90%E7%8A%B6%E6%80%81"><span class="nav-text">CLLocationManager 获取当前位置权限状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIPasteboard-%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%8E%B7%E5%8F%96%E5%80%BC"><span class="nav-text">UIPasteboard 设置和获取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIApplication-%E9%80%9A%E8%BF%87-openURL-%E6%89%93%E5%BC%80%E5%85%B6%E4%BB%96%E5%BA%94%E7%94%A8"><span class="nav-text">UIApplication 通过 openURL 打开其他应用</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<!-- <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">yvtu</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer> -->
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
