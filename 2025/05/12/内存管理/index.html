@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="yvtu">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/12/内存管理/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/rabbit.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/rabbit.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/rabbit.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            内存管理 | YVTU
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"yvtucn.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":null},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"YVTU","subtitle":{"text":["Chasing Myths, Touching Stars."],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"},"About":{"icon":"fa-regular fa-user","path":"/about/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/4/21 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/rabbit.svg" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YVTU
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks/"
+                                        >
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                    BOOKMARKS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks/"
+                        >
+                            <span>
+                                BOOKMARKS
+                            </span>
+                            
+                                <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">34</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">内存管理</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-12 10:59:42</span>
+        <span class="mobile">2025-05-12 10:59:42</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-12 11:29:04</span>
+            <span class="mobile">2025-05-12 11:29:04</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>iOS的Objective-C和Swift运行时使用引用计数来管理对象的生命周期。新建对象时引用计数+1，指针指向对象时+1，指针不再指向对象时-1，当引用计数为0时对象被销毁。</p>
+<p>TaggedPointer为小型数据（如NSNumber、NSDate、NSString等）提供的一种内存节省技术。TaggedPointer是一个特别的指针，它分为两部分：一部分直接保存数据，另一部分作为特殊标记。TaggedPointer是一种特别的指针，用于存储小型数据，以减少内存占用。它分为数据部分和标记部分，不指向任何实际的内存地址。</p>
+<h3 id="ARC与MRC的区别"><a href="#ARC与MRC的区别" class="headerlink" title="ARC与MRC的区别"></a>ARC与MRC的区别</h3><p>ARC（自动引用计数）是iOS 5及之后版本引入的一种编译器特性，自动管理对象的生命周期，减少了内存泄漏和野指针的风险。ARC下，开发者不再需要手动调用retain、release、autorelease等内存管理方法。</p>
+<p>MRC（手动引用计数）在ARC之前，开发者需要手动管理对象的内存，通过retain、release、autorelease等方法来控制对象的生命周期。</p>
+<h3 id="SideTables和SideTable"><a href="#SideTables和SideTable" class="headerlink" title="SideTables和SideTable"></a>SideTables和SideTable</h3><p>SideTables是一个包含8个SideTable的哈希数组，用于存储对象的引用计数和弱引用信息。每个SideTable对应多个对象。</p>
+<p>SideTable包含三个主要成员：自旋锁（spinlockt）、引用计数表（RefcountMap）、弱引用表（weaktable_t）。自旋锁用于防止多线程访问冲突，引用计数表存储对象的引用计数，弱引用表存储对象的弱引用信息。</p>
+<p><strong>weak_table_t和weak_entry_t</strong></p>
+<p>weak_table_t是一个存储弱引用信息的哈希表，其元素是weak_entry_t类型。</p>
+<p>weak_entry_t存储了弱引用该对象的指针的指针，即objc_object new_referrer。当对象被销毁时，weak引用的指针会被自动置为nil，防止野指针的出现。</p>
+<p>相关提案和技术演进</p>
+<p>相关提案包括 <a class="link"   target="_blank" rel="noopener" href="https://github.com/apple/swift-evolution/blob/main/proposals/0349-unaligned-loads-and-stores.md" >SE-0349 Unaligned Loads and Stores from Raw Memory<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 、<a class="link"   target="_blank" rel="noopener" href="https://github.com/apple/swift-evolution/blob/main/proposals/0334-pointer-usability-improvements.md" >SE-0334 Pointer API Usability Improvements<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 、<a class="link"   target="_blank" rel="noopener" href="https://github.com/apple/swift-evolution/blob/main/proposals/0333-with-memory-rebound.md" >SE-0333 Expand usability of withMemoryRebound<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>Set 使用新的 Temporary Buffers 功能，让 intersect 速度提升了 4 到 6 倍。</p>
+<h2 id="自动引用计数-ARC-机制"><a href="#自动引用计数-ARC-机制" class="headerlink" title="自动引用计数(ARC)机制"></a>自动引用计数(ARC)机制</h2><p>ARC 是 Swift 用来管理应用程序内存的技术，它会自动跟踪和管理你的应用程序使用的内存，不需要开发者手动分配或释放内存。</p>
+<h3 id="ARC-的基本原理"><a href="#ARC-的基本原理" class="headerlink" title="ARC 的基本原理"></a>ARC 的基本原理</h3><p>ARC 在对象的生命周期内自动管理内存的分配与释放。每当你创建一个类的实例时，ARC 会为这个实例分配内存，并在不再需要它时自动释放内存。ARC 通过维护一个“引用计数”来决定对象的生命周期：每次引用增加时计数加一，每次引用减少时计数减一。当引用计数为零时，ARC 会自动释放对象所占的内存。</p>
+<h3 id="强引用、弱引用和无主引用"><a href="#强引用、弱引用和无主引用" class="headerlink" title="强引用、弱引用和无主引用"></a>强引用、弱引用和无主引用</h3><p>ARC 的核心在于管理引用类型变量之间的强引用（strong reference）。强引用意味着只要对象被某个变量持有，引用计数就不会为零，对象也就不会被释放。然而，如果两个对象之间形成了强引用循环（即两个对象互相引用），ARC 将无法自动释放它们，导致内存泄漏。</p>
+<p>为了解决强引用循环的问题，Swift 引入了弱引用（weak reference）和无主引用（unowned reference）。弱引用不增加对象的引用计数，当对象被释放时，弱引用会自动变为 nil。无主引用则是一种非可选类型引用，当对象被释放时，无主引用不会变为 nil，但如果访问已经被释放的对象则会导致运行时错误。因此，无主引用通常用于对象生命周期一致的情况下，而弱引用则适用于对象可能会独立释放的情况。</p>
+<h3 id="循环引用的示例与解决方案"><a href="#循环引用的示例与解决方案" class="headerlink" title="循环引用的示例与解决方案"></a>循环引用的示例与解决方案</h3><p>当两个类互相持有对方的强引用时，会导致循环引用问题，导致内存无法正确释放。这类问题通常发生在闭包与类实例之间。为了打破这种循环引用，可以在闭包中使用捕获列表（capture list）将闭包中的引用声明为弱引用或无主引用。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Element</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> title: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> description: <span class="type">String</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> convertToWeb: () -&gt; <span class="type">String</span> <span class="operator">=</span> &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> description <span class="operator">=</span> <span class="keyword">self</span>.description &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&lt;div class=&#x27;line&#x27;&gt;&lt;h2&gt;<span class="subst">\(<span class="keyword">self</span>.title)</span>&lt;/h2&gt;&lt;p&gt;<span class="subst">\(description)</span>&lt;/p&gt;&lt;/div&gt;&quot;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&lt;div class=&#x27;line&#x27;&gt;&lt;h2&gt;<span class="subst">\(<span class="keyword">self</span>.title)</span>&lt;/h2&gt;&lt;/div&gt;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(<span class="params">title</span>: <span class="type">String</span>, <span class="params">description</span>: <span class="type">String</span>? <span class="operator">=</span> <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.title <span class="operator">=</span> title</span><br><span class="line">        <span class="keyword">self</span>.description <span class="operator">=</span> description</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(title)</span> is being deinitialized&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> elm: <span class="type">Element</span>? <span class="operator">=</span> <span class="type">Element</span>(title: <span class="string">&quot;Inception&quot;</span>, description: <span class="string">&quot;A mind-bending thriller by Christopher Nolan.&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> html <span class="operator">=</span> elm<span class="operator">?</span>.convertToWeb() &#123;</span><br><span class="line">                <span class="type">Text</span>(html)</span><br><span class="line">                    .padding()</span><br><span class="line">                    .background(<span class="type">Color</span>.yellow)</span><br><span class="line">                    .cornerRadius(<span class="number">10</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">Button</span>(<span class="string">&quot;Clear&quot;</span>) &#123;</span><br><span class="line">                elm <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">            &#125;</span><br><span class="line">            .padding()</span><br><span class="line">            .background(<span class="type">Color</span>.red)</span><br><span class="line">            .foregroundColor(.white)</span><br><span class="line">            .cornerRadius(<span class="number">10</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        .padding()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在这个示例中，convertToWeb 是一个闭包，使用了 [unowned self] 捕获列表，以避免闭包与 Element 实例之间的强引用循环。</p>
+<h3 id="闭包中的循环引用"><a href="#闭包中的循环引用" class="headerlink" title="闭包中的循环引用"></a>闭包中的循环引用</h3><p>闭包是一种在 Swift 中广泛使用的功能，但由于闭包会捕获它们使用的任何外部变量，可能会引入循环引用。为了防止这种情况发生，Swift 提供了捕获列表，使你可以显式指定在闭包中如何捕获外部变量（如使用 weak 或 unowned 关键字）。</p>
+<h2 id="iOS虚拟内存"><a href="#iOS虚拟内存" class="headerlink" title="iOS虚拟内存"></a>iOS虚拟内存</h2><p>可以通过ADRP（Address Relative to Page）汇编指令找到特定符号在虚拟内存中的地址。ADRP（Address Relative to Page）是ARM架构中用于计算地址的汇编指令，其作用是计算一个标签（label）或符号相对于当前页面基地址的偏移量，并将这个偏移量乘以页面大小（通常为4KB，即0x1000）后的结果存储到指定的寄存器中。这一指令在处理大范围的内存地址时非常有用，尤其是在虚拟内存环境中，可以有效减少地址计算所需的指令数量。</p>
+<p>iOS中的地址空间布局随机化（ASLR, Address Space Layout Randomization）技术。虚拟内存是现代操作系统为了提供更大内存空间、实现内存保护和管理而采用的一种技术。它将物理内存与逻辑内存（即用户视角的内存）分离，通过分页机制（Paging）实现。ASLR则是一种安全特性，它通过在程序加载时随机化代码和数据在内存中的位置，来增加攻击者预测和利用内存地址的难度。</p>
+<p>在iOS中，ASLR会导致每次启动App时，App的虚拟内存地址都会发生变化。这就使得在调试过程中，需要通过一些技巧来获取符号的真实地址。其中，一种常用的方法是通过ADRP指令来计算符号的虚拟内存地址。</p>
+<p>在ARM64汇编中，ADRP指令的格式如下：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADRP Xd, label</span><br></pre></td></tr></table></figure></div>
+<p>其中，Xd是目标寄存器，label是一个符号的地址。</p>
+<p>ADRP指令的作用是将一个符号的地址的高20位加载到寄存器中，然后通过ADD指令将低12位加上去。这样就可以得到一个符号的虚拟内存地址。</p>
+<p>在LLDB中，可以通过image list命令查看当前App的ASLR偏移量，然后通过image lookup -n命令查看目标符号的地址。在GDB中，可以通过info sharedlibrary命令查看当前App的ASLR偏移量，然后通过info address命令查看目标符号的地址。</p>
+<p>在iOS的Mach-O文件中，符号（如类名、函数名等）的地址在编译链接阶段就已经确定，但在程序运行时可能会受到ASLR的影响而发生变化。然而，在Mach-O文件中直接查看时，这些地址是不包含ASLR偏移量的。因此，为了获取符号在运行时的真实地址，需要通过ADRP指令计算出符号的虚拟内存地址，然后再加上ASLR偏移量。</p>
+<h2 id="Swift内存安全性及其实现机制"><a href="#Swift内存安全性及其实现机制" class="headerlink" title="Swift内存安全性及其实现机制"></a>Swift内存安全性及其实现机制</h2><p>Swift 通过确保内存的“独占访问”（Exclusive Access）来避免常见的内存安全问题，例如数据竞争（Data Race）和未定义行为（Undefined Behavior）。在 Swift 中，内存的访问方式被严格控制，尤其是在对变量进行读写时，系统会确保在一个时间点上，只有一个代码段可以对该内存进行修改。这一设计通过限制变量的访问方式和时间，极大程度上避免了内存冲突。</p>
+<h3 id="内存安全的重要性"><a href="#内存安全的重要性" class="headerlink" title="内存安全的重要性"></a>内存安全的重要性</h3><p>内存安全是指在编程中确保内存的正确访问和管理，以避免常见的错误，如越界访问、使用已释放的内存或并发访问导致的数据损坏等。Swift 作为一种现代编程语言，通过其设计和编译时检查，实现了内存安全的目标。</p>
+<h3 id="独占访问的概念"><a href="#独占访问的概念" class="headerlink" title="独占访问的概念"></a>独占访问的概念</h3><p>Swift 如何通过独占访问机制来实现内存安全。当变量正在被一个代码段修改时，Swift 不允许其他代码段同时访问该变量的内存地址。Swift 强制执行这一规则，即使在单线程环境中也不例外。通过这种方式，Swift 有效避免了数据竞争和未定义行为。</p>
+<p>在 Swift 中，内存的访问被分为读访问和写访问。读访问是指读取变量的值，而写访问是指修改变量的值。Swift 允许多个读访问同时发生，但在写访问期间，任何其他访问（无论是读还是写）都会导致冲突，从而触发编译错误。</p>
+<h3 id="访问冲突的具体示例"><a href="#访问冲突的具体示例" class="headerlink" title="访问冲突的具体示例"></a>访问冲突的具体示例</h3><p>Swift 中可能导致内存访问冲突的情况。一个常见的例子是，当一个函数在执行时同时访问同一变量，且该变量的某些属性正在被修改，这种情况下就会产生冲突。例如：</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">adjustRatings</span>(<span class="keyword">_</span> <span class="params">rating1</span>: <span class="keyword">inout</span> <span class="type">Int</span>, <span class="keyword">_</span> <span class="params">rating2</span>: <span class="keyword">inout</span> <span class="type">Int</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> total <span class="operator">=</span> rating1 <span class="operator">+</span> rating2</span><br><span class="line">    rating1 <span class="operator">=</span> total <span class="operator">/</span> <span class="number">2</span></span><br><span class="line">    rating2 <span class="operator">=</span> total <span class="operator">-</span> rating1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> movieRating <span class="operator">=</span> <span class="number">85</span></span><br><span class="line">adjustRatings(<span class="operator">&amp;</span>movieRating, <span class="operator">&amp;</span>movieRating)</span><br></pre></td></tr></table></figure></div>
+<p>在这个示例中，adjustRatings(&amp;movieRating, &amp;movieRating) 试图同时修改 movieRating 的两个属性，这在 Swift 中会触发编译错误，因为这种情况下无法保证内存的独占访问。</p>
+<h3 id="结构体的内存访问"><a href="#结构体的内存访问" class="headerlink" title="结构体的内存访问"></a>结构体的内存访问</h3><p>Swift 中结构体的内存管理。与类不同，结构体是值类型，这意味着它们的每一个实例都有自己独立的内存空间。因此，对结构体的访问也需要遵守独占访问规则。特别是在结构体内部有多个属性时，Swift 会确保在修改一个属性时，其他属性不会被同时访问。</p>
+<p>内存访问的例外情况</p>
+<p>尽管 Swift 对内存访问进行了严格的控制，但也有一些例外情况。在某些情况下，Swift 会允许非独占访问，例如全局变量和静态变量。这些变量的生命周期与程序一致，通常不会发生数据竞争，因此 Swift 对它们的访问控制相对宽松。</p>
+<h3 id="Swift-的内存安全与性能"><a href="#Swift-的内存安全与性能" class="headerlink" title="Swift 的内存安全与性能"></a>Swift 的内存安全与性能</h3><p>尽管 Swift 的内存安全机制确保了程序的稳定性，但它也带来了一定的性能开销。如何在不牺牲安全性的前提下优化程序性能。例如，通过在合适的场景下使用 inout 参数，开发者可以在保留独占访问的同时，减少不必要的内存复制。</p>
+<h2 id="Swift内存操作"><a href="#Swift内存操作" class="headerlink" title="Swift内存操作"></a>Swift内存操作</h2><h3 id="Swift-编程语言中进行不安全内存操作的技术和注意事项。"><a href="#Swift-编程语言中进行不安全内存操作的技术和注意事项。" class="headerlink" title="Swift 编程语言中进行不安全内存操作的技术和注意事项。"></a>Swift 编程语言中进行不安全内存操作的技术和注意事项。</h3><p>Swift 通常通过引用计数和内存自动管理来保证内存安全，然而在某些高性能或特定底层操作中，开发者可能需要直接操作内存。这时就需要使用到 Swift 的 Unsafe 系列指针类型，例如 UnsafeMutablePointer 和 UnsafePointer。</p>
+<p>UnsafePointer 是一个指向某种类型的指针，它允许只读访问内存地址上的数据。这意味着你可以读取该地址的数据但不能修改它。相反，UnsafeMutablePointer 允许你修改指针指向的内存区域内的数据。使用 UnsafeMutablePointer 修改内存时，必须确保内存已经正确地分配且不会被其他代码同时访问。否则，可能会导致程序崩溃或出现难以调试的问题。Swift 提供的一些辅助工具 withUnsafePointer(to:<em>:) 和 withUnsafeMutablePointer(to:</em>:)，它们可以在有限的范围内确保内存操作的安全性。这些函数的使用可以帮助开发者避免一些常见的错误，确保指针的生命周期和作用域受到控制。</p>
+<h2 id="内存分配器libMalloc"><a href="#内存分配器libMalloc" class="headerlink" title="内存分配器libMalloc"></a>内存分配器libMalloc</h2><h3 id="libMalloc"><a href="#libMalloc" class="headerlink" title="libMalloc"></a>libMalloc</h3><p>iOS底层堆内存分配器libMallociOS底层堆内存分配器<a class="link"   target="_blank" rel="noopener" href="https://github.com/apple-oss-distributions/libmalloc" >libMalloc<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，libMalloc是iOS系统中广泛使用的内存分配器，提供高效的内存管理策略。学习libMalloc源码有助于深入理解iOS内存管理机制，优化内存使用效率。</p>
+<p>Zone是libMalloc管理内存的基础单元，负责处理内存分配、释放等操作。常见的内存操作API（如malloc、free、realloc）均通过Zone实现。Zone的核心数据结构，包含多个函数指针，分别对应不同的内存操作函数。如size、malloc、calloc、valloc、free、realloc等，分别处理内存块的大小查询、分配、释放等操作。reserved1和reserved2，用于保留给CFAllocator使用，用户不应直接访问。通过malloc_zone_register_while_locked函数将Zone注册到全局Zone列表中。在内存分配时，根据配置和当前状态选择合适的Zone进行处理。</p>
+<p>default_zone是libMalloc默认使用的Zone，通过runtime_default_zone()函数获取。default_zone的实际逻辑可能由scalable_zone或nano_zone等具体Zone实现。</p>
+<p>scalable_zone是处理大多数内存分配请求的默认Zone。根据内存大小，采用tiny、small、medium、large四种不同策略进行管理。szone_t，扩展自malloc_zone_t，包含tiny、small、medium策略的相关数据结构和large策略的管理字段。对于大块内存的分配，系统可能选择scalable zone，该zone具有更好的扩展性和灵活性。</p>
+<p>nano_zone专门用于管理小内存（如256字节以下）的Zone，以提高小内存分配的效率。提供了V1和V2两个版本的实现，V2版本在性能和管理逻辑上进行了优化。通过nanov2_create_zone函数创建并初始化nano_zone。nano_zone_t是nano zone的具体实现，包含malloc_zone_t基础结构和额外的内存管理信息。该函数负责创建nano zone，并对malloc_zone_t中的函数指针进行重新赋值，以使用nano zone特有的内存分配策略。nano_calloc函数根据请求的内存大小选择直接在nano zone中分配或回退到helper zone进行分配。当nano zone无法满足内存分配请求时，会回退到helper zone进行分配。nano zone中的内存分配会进行16字节对齐，以提高内存访问效率。nano zone通过维护一个高效的缓存机制来减少内存分配和释放的开销。系统提供了调试和日志记录功能，帮助开发者跟踪内存分配和释放的过程，以便发现和解决内存泄漏等问题。</p>
+<p>malloc_zone_t是一个包含多个函数指针的结构体，用于存储内存分配、释放等操作的实现地址。包括malloc、calloc、free、realloc等函数指针，这些函数指针指向具体的内存管理函数实现。包含两个reserved字段，供CFAllocator使用，开发者不应直接访问。</p>
+<p>calloc函数通过调用malloc_zone_calloc函数来分配内存，并将分配的内存清零。default_zone是一个特殊的zone，用于引导程序进入创建真正zone的流程。根据系统配置和内存需求，选择nano zone或scalable zone进行内存分配。</p>
+<p>malloc_zone_register_while_locked该函数用于为zone设置名称，便于调试和日志记录中识别不同的zone。通过zone名称，开发者可以更容易地跟踪和定位内存分配和释放的问题。</p>
+<h3 id="系统内容分配方式"><a href="#系统内容分配方式" class="headerlink" title="系统内容分配方式"></a>系统内容分配方式</h3><p>CPU 通常有内核态和用户态两种运行模式，内核态拥有更高的权限，可以访问系统资源，而用户态只能访问受限资源。系统内存分配方式通常包括内核态和用户态两种，内核态分配由内核管理，用户态分配由用户程序管理。</p>
+<p>程序通过系统调用（System Call）从用户态向内核态传递信息，请求操作系统服务，如打开文件、网络通信等。内核态内存分配通常由内核管理，内核通过内存管理单元（MMU）管理内存映射、分页等操作，确保内存分配的安全性和有效性。</p>
+<p>C语言标准库提供了对系统调用的封装，使程序员编写的程序能跨平台运行，无需修改底层代码。C标准库中的malloc、free等函数封装了内核态的内存分配和释放操作，提供了用户态内存管理的接口。堆区用于动态内存分配，栈区用于函数调用的局部变量等。两者之间的空白区域允许栈区增长。</p>
+<p>malloc是标准库中的内存分配函数，负责在堆区搜索并分配空闲内存块。当malloc内部管理的空闲内存不足时，会通过系统调用（如brk或mmap）向操作系统请求扩大堆区。系统调用完成后，malloc返回的是虚拟内存地址，物理内存的分配在实际使用时才发生。</p>
+<p>进程看到的内存是操作系统提供的虚拟内存，与物理内存不完全对应。当程序首次访问新申请的内存时，缺页中断发生，操作系统分配物理内存并完成映射。</p>
+<p>频繁调用malloc会影响系统性能，特别是在高性能程序中。理解内存申请的复杂性有助于选择合适的内存分配器，优化内存使用策略，减少不必要的内存分配。</p>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">#性能优化</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">#内存管理</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/05/12/%E6%A3%80%E6%B5%8B%E5%92%8C%E8%AF%8A%E6%96%AD%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">检测和诊断内存问题</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/12/Day12-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day12-二叉树的最大深度</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">内存管理</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0"><span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC%E4%B8%8EMRC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">ARC与MRC的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SideTables%E5%92%8CSideTable"><span class="nav-text">SideTables和SideTable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0-ARC-%E6%9C%BA%E5%88%B6"><span class="nav-text">自动引用计数(ARC)机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-text">ARC 的基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8%E3%80%81%E5%BC%B1%E5%BC%95%E7%94%A8%E5%92%8C%E6%97%A0%E4%B8%BB%E5%BC%95%E7%94%A8"><span class="nav-text">强引用、弱引用和无主引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E7%9A%84%E7%A4%BA%E4%BE%8B%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">循环引用的示例与解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E4%B8%AD%E7%9A%84%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8"><span class="nav-text">闭包中的循环引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="nav-text">iOS虚拟内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift%E5%86%85%E5%AD%98%E5%AE%89%E5%85%A8%E6%80%A7%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-text">Swift内存安全性及其实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AE%89%E5%85%A8%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-text">内存安全的重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%AC%E5%8D%A0%E8%AE%BF%E9%97%AE%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">独占访问的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%86%B2%E7%AA%81%E7%9A%84%E5%85%B7%E4%BD%93%E7%A4%BA%E4%BE%8B"><span class="nav-text">访问冲突的具体示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE"><span class="nav-text">结构体的内存访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-%E7%9A%84%E5%86%85%E5%AD%98%E5%AE%89%E5%85%A8%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-text">Swift 的内存安全与性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C"><span class="nav-text">Swift内存操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%AD%E8%BF%9B%E8%A1%8C%E4%B8%8D%E5%AE%89%E5%85%A8%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C%E7%9A%84%E6%8A%80%E6%9C%AF%E5%92%8C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E3%80%82"><span class="nav-text">Swift 编程语言中进行不安全内存操作的技术和注意事项。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%99%A8libMalloc"><span class="nav-text">内存分配器libMalloc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#libMalloc"><span class="nav-text">libMalloc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AE%B9%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">系统内容分配方式</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<!-- <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">yvtu</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer> -->
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
