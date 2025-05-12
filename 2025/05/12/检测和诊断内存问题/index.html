@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-12 11:31:38</span>
-            <span class="mobile">2025-05-12 11:31:38</span>
+            <span class="desktop">2025-05-12 11:39:02</span>
+            <span class="mobile">2025-05-12 11:39:02</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -465,7 +465,8 @@
 <ul>
 <li>循环引用：对象A强引用对象B，对象B又强引用对象A，或多个对象互相强引用形成闭环。使用Weak-Strong Dance、断开持有关系（如使用__block关键字、将self作为参数传入block）。</li>
 <li>Block导致的内存泄漏：Block会对其内部的对象强引用，容易形成循环引用。使用Weak-Strong Dance、断开持有关系（如将self作为参数传入block）。</li>
-<li>NSTimer导致的内存泄漏：NSTimer的target-action机制容易导致self与timer之间的循环引用。在合适的时机销毁NSTimer、使用GCD的定时器、借助中介者（如NSObject对象或NSProxy子类）断开循环引用、使用iOS 10后提供的block方式创建timer。<br>委托模式中的内存泄漏：UITableView的delegate和dataSource、NSURLSession的delegate。根据具体场景选择使用weak或strong修饰delegate属性，或在请求结束时手动销毁session对象。</li>
+<li>NSTimer导致的内存泄漏：NSTimer的target-action机制容易导致self与timer之间的循环引用。在合适的时机销毁NSTimer、使用GCD的定时器、借助中介者（如NSObject对象或NSProxy子类）断开循环引用、使用iOS 10后提供的block方式创建timer。</li>
+<li>委托模式中的内存泄漏：UITableView的delegate和dataSource、NSURLSession的delegate。根据具体场景选择使用weak或strong修饰delegate属性，或在请求结束时手动销毁session对象。</li>
 <li>非OC对象的内存管理：CoreFoundation框架下的对象（如CI、CG、CF开头的对象）和C语言中的malloc分配的内存。使用完毕后需手动释放（如CFRelease、free）。</li>
 </ul>
 <h2 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h2><p>Metrics和XCTest中的memgraph 了解和诊断 Xcode 的内存性能问题。</p>
