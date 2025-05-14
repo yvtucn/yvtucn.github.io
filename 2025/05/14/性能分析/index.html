@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="yvtu">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/14/性能分析/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/rabbit.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/rabbit.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/rabbit.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            性能分析 | YVTU
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"yvtucn.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":null},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"YVTU","subtitle":{"text":["Chasing Myths, Touching Stars."],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"},"About":{"icon":"fa-regular fa-user","path":"/about/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/4/21 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/rabbit.svg" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YVTU
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks/"
+                                        >
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                    BOOKMARKS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks/"
+                        >
+                            <span>
+                                BOOKMARKS
+                            </span>
+                            
+                                <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">性能分析</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-14 17:56:43</span>
+        <span class="mobile">2025-05-14 17:56:43</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-14 18:10:24</span>
+            <span class="mobile">2025-05-14 18:10:24</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">性能分析</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="性能分析-工具"><a href="#性能分析-工具" class="headerlink" title="性能分析-工具"></a>性能分析-工具</h2><h3 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h3><ul>
+<li>FLEX (Flipboard Explorer) 是一个非常受欢迎的开源 iOS 内部工具，提供了强大的 UI，允许开发者在运行时检查应用的视图层次结构、网络请求、数据库、用户偏好设置等。适合开发者在应用内实时调试和检查性能问题。</li>
+<li>XCTest XCTest 是 Apple 官方的单元测试框架，支持性能测试。开发者可以通过 measure 方法来衡量代码块的执行时间，从而发现性能瓶颈。适合需要在单元测试中添加性能测试的场景。</li>
+<li>KSCrash KSCrash 是一个强大的崩溃报告框架，它不仅能够捕获崩溃信息，还能提供应用程序的性能数据，例如内存使用和 CPU 使用情况。适合需要深入了解崩溃原因并监控相关性能数据的场景。</li>
+<li>GT (GDT, GodEye) GodEye 是一个开源的 iOS 性能监控工具包，提供了多种监控功能，包括 FPS、内存使用、CPU 使用率、网络请求、崩溃日志等。它有一个方便的 UI，可以实时显示性能数据。适合在开发过程中嵌入应用进行实时性能监控。</li>
+<li>libimobiledevice libimobiledevice 是一个开源的库，提供了与 iOS 设备交互的 API，可以用来监控设备状态和性能，特别是对非越狱设备进行操作。</li>
+</ul>
+<h2 id="Instruments"><a href="#Instruments" class="headerlink" title="Instruments"></a>Instruments</h2><p>Instruments 是 Xcode 自带的一款强大的性能分析和调试工具，广泛用于 iOS 应用的性能监测和问题排查。</p>
+<p>打开 Xcode 项目，选择 Product &gt; Profile，或者使用快捷键 Command + I。这会编译并启动应用，然后打开 Instruments 界面。你也可以直接从 Xcode 中选择 Xcode &gt; Open Developer Tool &gt; Instruments 启动 Instruments。</p>
+<p>Instruments 提供了多种模板，每个模板用于不同类型的性能分析。常用的模板有：</p>
+<ul>
+<li>Time Profiler：用于分析 CPU 使用情况，找出性能瓶颈。</li>
+<li>Allocations：监控内存分配，帮助识别内存泄漏和过度使用。</li>
+<li>Leaks：检测内存泄漏。</li>
+<li>Core Animation：分析应用的动画性能，找出导致掉帧的原因。</li>
+<li>Energy Log：评估应用的能耗表现。</li>
+</ul>
+<p>当应用运行时，正常使用它或执行你需要分析的特定操作。Instruments 将记录这些操作期间的性能数据。点击 Record 按钮（通常是红色圆点），开始记录数据。完成后，点击 Stop 按钮停止记录。Instruments 会生成一个时间轴，展示应用在运行期间的各种性能数据。你可以通过拖动时间轴，放大或缩小某段时间范围内的数据。</p>
+<p>细节分析：</p>
+<ul>
+<li>CPU 使用情况：使用 Time Profiler 查看函数调用栈，识别性能瓶颈。</li>
+<li>内存使用情况：使用 Allocations 或 Leaks 查看对象分配情况，分析内存泄漏和不当的内存使用。</li>
+<li>帧率分析：使用 Core Animation 检查应用的帧率，查找导致掉帧的操作。</li>
+</ul>
+<p>你可以在关键点添加标记（Mark），帮助更容易地定位和分析问题。</p>
+<h3 id="System-Trace"><a href="#System-Trace" class="headerlink" title="System Trace"></a>System Trace</h3><p>System Trace 是一个强大的工具，可以帮助你深入分析和解决性能问题。System Trace 是 Xcode Instruments 中的一个模板，它提供了关于系统性能的详细信息，包括 CPU 使用情况、线程活动、系统调用、分页错误、I&#x2F;O 接口信息等，甚至包括进程内以及进程间的情况。以下是 System Trace 的使用方法：</p>
+<p>步骤一：准备工作</p>
+<ol>
+<li>确保 Xcode 和设备准备好：确保你已经安装了最新版本的 Xcode，并将 iOS 设备连接到你的 Mac。</li>
+<li>打开 Xcode Instruments：在 Xcode 中选择 Product &gt; Profile，或者直接在 Finder 中打开 Instruments 应用。</li>
+</ol>
+<p>步骤二：选择 System Trace 模板</p>
+<ol>
+<li>选择模板：在 Instruments 中，打开“选择模板”窗口，选择 System Trace 模板。</li>
+<li>连接设备：选择你要分析的 iOS 设备，确保设备处于调试模式并已连接。</li>
+</ol>
+<p>步骤三：开始记录</p>
+<ol>
+<li>启动记录：点击红色的记录按钮，开始采集数据。运行你的应用程序，并重现卡顿或性能问题。</li>
+<li>结束记录：当你捕获到问题或完成测试后，点击停止按钮停止记录。</li>
+</ol>
+<p>步骤四：分析数据</p>
+<ol>
+<li>查看时间线：System Trace 会生成一个时间线视图，其中包括 CPU 使用情况、线程活动、硬件中断等。你可以通过缩放和滚动来查看不同时间点的详细信息。</li>
+<li>分析线程活动：查看哪些线程在特定时间段内占用了大量 CPU 资源，找出是否存在长时间运行的任务或死锁。</li>
+<li>查看内核事件：System Trace 还会显示内核相关的事件，如中断处理和内存管理，这对于深入分析系统级问题非常有帮助。</li>
+<li>标记和过滤：使用标记和过滤功能，专注于特定时间段或线程，以更容易地识别问题。</li>
+</ol>
+<p>步骤五：优化和调试</p>
+<ol>
+<li>识别问题代码：根据分析结果，找到可能导致卡顿的代码段，查看是否有可以优化的部分。</li>
+<li>修改代码并重新测试：修改代码后，重新运行 System Trace 来验证优化是否解决了性能问题。</li>
+</ol>
+<p>步骤六：生成报告</p>
+<ol>
+<li>保存和分享：你可以将 System Trace 生成的分析数据导出为 .trace 文件，方便共享或进一步分析。</li>
+<li>对比分析：可以多次运行 System Trace，比较优化前后的数据，确保性能得到改善。</li>
+</ol>
+<h2 id="MetricKit"><a href="#MetricKit" class="headerlink" title="MetricKit"></a>MetricKit</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>MetricKit 允许开发者收集和分析与应用程序性能、崩溃、功耗等相关的关键指标。以下是使用 MetricKit 的方法：</p>
+<p>首先，在你的项目中导入 MetricKit 框架：</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MetricKit</span><br></pre></td></tr></table></figure></div>
+<p>创建一个 MXMetricManager 的实例，它是收集指标数据的主要接口。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> metricManager <span class="operator">=</span> <span class="type">MXMetricManager</span>.shared</span><br></pre></td></tr></table></figure></div>
+<p>注册 Metrics 管理器</p>
+<p>你需要让你的类（通常是 AppDelegate 或其他适合的单例类）遵循 MXMetricManagerSubscriber 协议，并注册为 MXMetricManager 的订阅者。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AppDelegate</span>: <span class="title class_ inherited__">UIResponder</span>, <span class="title class_ inherited__">UIApplicationDelegate</span>, <span class="title class_ inherited__">MXMetricManagerSubscriber</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>,</span><br><span class="line">                     <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>: [<span class="type">UIApplication</span>.<span class="params">LaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="type">MXMetricManager</span>.shared.add(<span class="keyword">self</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 Metrics 数据</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">didReceive</span>(<span class="keyword">_</span> <span class="params">payloads</span>: [<span class="type">MXMetricPayload</span>]) &#123;</span><br><span class="line">        <span class="keyword">for</span> payload <span class="keyword">in</span> payloads &#123;</span><br><span class="line">            <span class="comment">// 处理接收到的 Metrics 数据</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Received metrics payload: <span class="subst">\(payload)</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理崩溃诊断数据</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">didReceive</span>(<span class="keyword">_</span> <span class="params">payloads</span>: [<span class="type">MXCrashDiagnosticPayload</span>]) &#123;</span><br><span class="line">        <span class="keyword">for</span> payload <span class="keyword">in</span> payloads &#123;</span><br><span class="line">            <span class="comment">// 处理接收到的崩溃诊断数据</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Received crash diagnostics payload: <span class="subst">\(payload)</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>分析和存储指标数据</p>
+<p>MXMetricPayload 包含了多种指标数据，如 CPU 使用率、内存使用情况、网络流量等。你可以遍历这些数据，存储或发送到你的后端进行进一步分析。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">didReceive</span>(<span class="keyword">_</span> <span class="params">payloads</span>: [<span class="type">MXMetricPayload</span>]) &#123;</span><br><span class="line">    <span class="keyword">for</span> payload <span class="keyword">in</span> payloads &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> cpuMetrics <span class="operator">=</span> payload.cpuMetrics &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;CPU Usage: <span class="subst">\(cpuMetrics)</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> memoryMetrics <span class="operator">=</span> payload.memoryMetrics &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Memory Usage: <span class="subst">\(memoryMetrics)</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> networkMetrics <span class="operator">=</span> payload.networkTransferMetrics &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Network Usage: <span class="subst">\(networkMetrics)</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 你可以将这些数据保存到文件或发送到服务器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>处理崩溃诊断数据</p>
+<p>MetricKit 也可以收集应用的崩溃诊断信息，方便你追踪和解决崩溃问题。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">didReceive</span>(<span class="keyword">_</span> <span class="params">payloads</span>: [<span class="type">MXCrashDiagnosticPayload</span>]) &#123;</span><br><span class="line">    <span class="keyword">for</span> payload <span class="keyword">in</span> payloads &#123;</span><br><span class="line">        <span class="comment">// 处理崩溃诊断数据</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> diagnostics <span class="operator">=</span> payload.crashDiagnostics &#123;</span><br><span class="line">            <span class="keyword">for</span> diagnostic <span class="keyword">in</span> diagnostics &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Crash Diagnostic: <span class="subst">\(diagnostic)</span>&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>从 Metric Manager 移除订阅者</p>
+<p>如果你不再需要收集指标数据，可以从 MXMetricManager 中移除你的订阅者。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MXMetricManager</span>.shared.remove(<span class="keyword">self</span>)</span><br></pre></td></tr></table></figure></div>
+<p>MXMetricManager 只在实际设备上运行时才会收集数据，模拟器中不会生成有效的数据。MetricKit 数据的收集是异步的，且系统会自动决定何时发送数据给你的应用，所以你不会立即收到数据。数据的保留期较短，Apple 建议尽快处理和存储接收到的指标数据。</p>
+<h3 id="自定义和收集特定的应用指标"><a href="#自定义和收集特定的应用指标" class="headerlink" title="自定义和收集特定的应用指标"></a>自定义和收集特定的应用指标</h3><p>虽然 MetricKit 本身主要提供了一组预定义的指标，如启动时间、CPU 使用率、内存使用情况等，但你也可以通过结合其他技术手段来自定义和收集特定的应用指标。</p>
+<p>思路</p>
+<ol>
+<li>利用现有的 MetricKit 指标： 如果你的自定义指标能够与 MetricKit 提供的现有指标关联，最好优先利用这些指标。例如，你可以利用 MXAppLaunchMetric 来测量特定场景下的启动时间。</li>
+<li>结合日志系统（如 os_log）： 你可以通过 os_log 系统记录特定的自定义事件和数据，然后在 MXLogHandle 提供的日志中分析这些自定义指标。虽然这不是直接通过 MetricKit 记录，但你可以通过这些日志生成自定义报告。</li>
+<li>使用第三方工具或库： 如果 MetricKit 无法满足需求，可以使用其他分析工具或库来收集和发送自定义指标，例如 Firebase Analytics 或 Amplitude。</li>
+<li>自定义代码实现： 你可以在应用中自行编写代码，定期收集并记录自定义指标数据，然后通过网络请求或其他方式将其发送到后端服务器进行分析。<br>假设你想自定义一个指标，用于监测用户在某个特定功能页面的停留时间。你可以通过以下方式实现：</li>
+</ol>
+<p>在 ViewController 中记录开始时间和结束时间</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FeatureViewController</span>: <span class="title class_ inherited__">UIViewController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> startTime: <span class="type">Date</span>?</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> osLog <span class="operator">=</span> <span class="type">OSLog</span>(subsystem: <span class="string">&quot;com.yourapp.feature&quot;</span>, category: <span class="string">&quot;Performance&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidAppear</span>(<span class="keyword">_</span> <span class="params">animated</span>: <span class="type">Bool</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidAppear(animated)</span><br><span class="line">        startTime <span class="operator">=</span> <span class="type">Date</span>()</span><br><span class="line">        os_log(<span class="string">&quot;Feature page appeared&quot;</span>, log: osLog, type: .info)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidDisappear</span>(<span class="keyword">_</span> <span class="params">animated</span>: <span class="type">Bool</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidDisappear(animated)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> startTime <span class="operator">=</span> startTime &#123;</span><br><span class="line">            <span class="keyword">let</span> elapsedTime <span class="operator">=</span> <span class="type">Date</span>().timeIntervalSince(startTime)</span><br><span class="line">            os_log(<span class="string">&quot;Feature page disappeared, duration: %&#123;public&#125;.2f seconds&quot;</span>, log: osLog, type: .info, elapsedTime)</span><br><span class="line">            <span class="comment">// 你可以在这里将 elapsedTime 发送到服务器或其他存储系统</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>定期发送收集到的数据。你可以通过定时任务或应用进入后台时，将收集到的自定义指标发送到服务器或分析系统。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">applicationDidEnterBackground</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>) &#123;</span><br><span class="line">    <span class="comment">// 发送数据到服务器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>将自定义指标与 MetricKit 集成。虽然 MetricKit 没有直接支持自定义指标的功能，但你可以通过 MXMetricManager 的代理方法捕获系统提供的指标数据，并结合自定义指标进行分析。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MetricKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MetricManager</span>: <span class="title class_ inherited__">NSObject</span>, <span class="title class_ inherited__">MXMetricManagerSubscriber</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</span><br><span class="line">        <span class="type">MXMetricManager</span>.shared.add(<span class="keyword">self</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">didReceive</span>(<span class="keyword">_</span> <span class="params">payloads</span>: [<span class="type">MXMetricPayload</span>]) &#123;</span><br><span class="line">        <span class="keyword">for</span> payload <span class="keyword">in</span> payloads &#123;</span><br><span class="line">            <span class="comment">// 处理 MetricKit 提供的系统指标</span></span><br><span class="line">            <span class="keyword">let</span> cpuMetrics <span class="operator">=</span> payload.cpuMetrics</span><br><span class="line">            <span class="comment">// 结合你的自定义指标进行综合分析</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="InApp分析工具"><a href="#InApp分析工具" class="headerlink" title="InApp分析工具"></a>InApp分析工具</h2><p>iOS 平台上常用的 In-app Debug 工具有以下几种：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/FLEXTool/FLEX" >Flex<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是一个功能强大的 In-app Debug 工具，允许开发者在应用内实时查看和修改视图层次结构、网络请求、用户默认设置等。它还支持动态调整 UI 以及调试其他 app 内部逻辑。无需重新编译代码即可直接调试；可以修改内存中的值来观察变化。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/facebook/chisel" >Chisel<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是 Facebook 开发的一组 LLDB 命令集，专门用于在调试时提供更方便的操作。它能帮助开发者快速检查视图层次结构、查看控件信息等。与 Xcode LLDB 无缝集成，通过命令行调试视图、打印出布局相关信息等。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://revealapp.com/" >Reveal<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是一个图形化的 In-app Debug 工具，它允许开发者在运行中的应用中实时查看和编辑视图层次结构，支持 2D 和 3D 的视图展示。提供直观的 UI 调试界面，可以轻松地查看和修改视图属性；支持 iOS 和 tvOS。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/hughkli/Lookin" >Lookin<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是一个开源的 iOS 视觉调试工具，专门用于分析和检查 iOS 应用的界面结构。它提供类似于 Xcode 的 View Debugging 功能，但更加灵活和强大，尤其是在复杂 UI 布局的分析上。通过 Lookin，你可以轻松地获取 iOS 应用中的界面层级、布局信息，并进行实时的 UI 调试和调整。可以称之为开源版的 Reveal。</li>
+</ul>
+<h2 id="fishhook"><a href="#fishhook" class="headerlink" title="fishhook"></a>fishhook</h2><p>fishhook 是一个用于在 iOS 和 macOS 环境中进行函数替换的开源库，主要用于动态链接库（dylib）中的符号重写。</p>
+<p>fishhook 通过操作 Mach-O 文件的符号表来找到需要替换的函数。Mach-O 文件的符号表包含了所有函数和变量的符号（名称和地址）信息。fishhook 使用 dyld（动态链接器）的相关函数来进行符号重定向。它首先使用 dyld 提供的接口找到符号的地址，然后将这些符号的地址替换为新的地址。通过修改 Mach-O 文件中的符号表来完成函数替换。这包括修改动态链接库中的 __dyld 的符号信息，使得在运行时调用这些符号时会跳转到新的实现。</p>
+<p>fishhook 允许在程序运行时动态替换函数实现，这对于调试和修改第三方库的行为非常有用。</p>
+<p>以下是一个简单的示例，展示了如何使用 fishhook 来替换函数实现：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;fishhook.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要被替换的原始函数</span></span><br><span class="line"><span class="type">static</span> <span class="title function_">int</span> <span class="params">(*orig_printf)</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *, ...)</span> = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新的函数实现</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">new_printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Intercepted: &quot;</span>);</span><br><span class="line">    va_list args;</span><br><span class="line">    va_start(args, format);</span><br><span class="line">    <span class="type">int</span> result = orig_printf(format, args);</span><br><span class="line">    va_end(args);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换函数实现</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">replace_printf</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 确保在替换之前已经加载了动态库</span></span><br><span class="line">    rebind_symbols((<span class="keyword">struct</span> rebinding[<span class="number">1</span>])&#123;&#123;<span class="string">&quot;printf&quot;</span>, new_printf, (<span class="type">void</span> *)&amp;orig_printf&#125;&#125;, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    replace_printf();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, World!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在这个示例中，replace_printf 函数将 printf 函数的实现替换为 new_printf，并在控制台上输出 “Intercepted: “。</p>
+<h2 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h2><p>使用 Frida 来进行动态分析和调试</p>
+<ol>
+<li>准备工作</li>
+</ol>
+<ul>
+<li>Frida 工具链: 安装 Frida 的命令行工具。在 macOS 上可以通过 pip 安装： <code>bash pip install frida-tools </code></li>
+<li>开发者证书: 需要一个有效的苹果开发者账号，用于签名自定义的 Frida 服务器应用。</li>
+</ul>
+<ol start="2">
+<li>编译并签名 Frida Server</li>
+</ol>
+<ul>
+<li>下载 Frida 源码: 从 Frida 的 GitHub 仓库克隆源码。</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/frida/frida.git</span><br><span class="line">cd frida</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>编译 Frida Server: 使用 Frida 提供的构建脚本来编译 Frida Server。这个步骤可能需要一些配置，具体过程可以参考 Frida 官方文档。编-译完成后，你会得到一个 frida-server 可执行文件。</li>
+<li>使用开发者证书签名: 将编译好的 frida-server 文件进行签名，确保它可以在非越狱的设备上运行。</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">codesign -s &quot;iPhone Developer: Your Name (Team ID)&quot; --entitlements entitlements.plist frida-server</span><br></pre></td></tr></table></figure></div>
+<p>entitlements.plist 文件需要包括允许调试和 taskforpid 权限的配置。</p>
+<ol start="3">
+<li>部署 Frida Server 到设备</li>
+</ol>
+<ul>
+<li>使用 Xcode 部署: 将 frida-server 文件打包成一个应用，然后通过 Xcode 部署到目标设备上。</li>
+<li>或者通过 SSH 部署: 如果你已经有其他方式在非越狱设备上运行自签名应用，可以通过 SSH 将 frida-server 直接拷贝到设备上。</li>
+</ul>
+<ol start="4">
+<li>启动 Frida Server</li>
+</ol>
+<ul>
+<li>在设备上启动: 打开你部署的应用，确保 frida-server 在后台运行。你可以通过 Xcode 的调试控制台或终端命令来启动它。</li>
+<li>连接 Frida Server: 在你的电脑上通过 USB 连接设备，并使用 Frida CLI 连接到运行中的 Frida Server。</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida-ps -U</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>开始调试: 你可以使用 Frida 的各种命令来分析和调试目标应用。</li>
+</ul>
+<ol start="5">
+<li>Frida CLI 使用示例</li>
+</ol>
+<ul>
+<li>列出所有进程:</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida-ps -U</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>附加到目标进程:</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -U -n &lt;AppName&gt;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>运行脚本:</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -U -n &lt;AppName&gt; -l script.js</span><br></pre></td></tr></table></figure></div>
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">#性能优化</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">#性能分析</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/14/Day14-%E7%A7%BB%E5%8A%A8%E9%9B%B6/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day14-移动零</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">性能分析</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-%E5%B7%A5%E5%85%B7"><span class="nav-text">性能分析-工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7"><span class="nav-text">开源工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instruments"><span class="nav-text">Instruments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#System-Trace"><span class="nav-text">System Trace</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MetricKit"><span class="nav-text">MetricKit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%92%8C%E6%94%B6%E9%9B%86%E7%89%B9%E5%AE%9A%E7%9A%84%E5%BA%94%E7%94%A8%E6%8C%87%E6%A0%87"><span class="nav-text">自定义和收集特定的应用指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InApp%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="nav-text">InApp分析工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fishhook"><span class="nav-text">fishhook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frida"><span class="nav-text">Frida</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<!-- <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">yvtu</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer> -->
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>

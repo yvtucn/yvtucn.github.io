@@ -345,7 +345,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -353,7 +353,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">38</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -372,6 +372,82 @@
 			<div class="main-content">
 				<div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/05/09/RunLoop/">
+                            RunLoop
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            基本概念在iOS和macOS中，RunLoop是一个循环机制，用于管理线程中的事件处理。当一个线程启动后，系统会为其创建一个RunLoop，它会不断地运行、检查和处理事件。如果没有事件需要处理，RunLoop会让线程进入休眠状态，从而节省系统资源。
+获取当前线程的RunLoop
+1NSRunLoop *runLoop = [NSRunLoop currentRunLoop]; 
+这段代码获取...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri May 09 2025 17:47:13 GMT+0800">
+                
+                    2025-05-09
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%8D%A1%E9%A1%BF%E7%9B%91%E6%8E%A7/">卡顿监控</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/05/09/RunLoop/">Read more<span class="seo-reader-text">RunLoop</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -974,70 +1050,6 @@ GCD 使用 线程池 管理线程，具体由 libdispatch + pthread 实现。
     </div>
 
     <a href="/2025/05/07/Day9-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">Read more<span class="seo-reader-text">Day9-有效的括号</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/05/07/Day9-RunLoop-%E5%8D%A1%E9%A1%BF%E4%BC%98%E5%8C%96%E4%B8%8E%E7%9B%91%E6%8E%A7%E5%AE%9E%E7%8E%B0/">
-                            Day9-RunLoop 卡顿优化与监控实现
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            iOS RunLoop 卡顿优化指南一、理解 RunLoop 卡顿的本质1. RunLoop 基本机制RunLoop 本质上是一个事件循环机制，主要用于线程的任务调度。在主线程中，RunLoop 负责处理：
-
-触摸事件
-定时器事件（NSTimer、CADisplayLink）
-UI 渲染
-GCD 主队列任务
-系统事件（比如键盘弹出）
-
-2. 卡顿现象原因主线程卡顿的本质是 RunLoop 长...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed May 07 2025 10:16:14 GMT+0800">
-                
-                    2025-05-07
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2025/05/07/Day9-RunLoop-%E5%8D%A1%E9%A1%BF%E4%BC%98%E5%8C%96%E4%B8%8E%E7%9B%91%E6%8E%A7%E5%AE%9E%E7%8E%B0/">Read more<span class="seo-reader-text">Day9-RunLoop 卡顿优化与监控实现</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
