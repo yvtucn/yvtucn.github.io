@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/categories/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/13/day13-相交链表/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            CATEGORIES | YVTU
+            Day13-相交链表 | YVTU
         
     </title>
 
@@ -335,36 +335,159 @@
 			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-	
-	<h1 class="page-title-header">
-	CATEGORIES
-</h1>
-<div class="category-list-content">
-	<ul class="all-category-list"><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a><span class="all-category-list-count">14</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><span class="all-category-list-count">7</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="all-category-list-count">14</span></li></ul>
-</div>
-<div class="category-comments">
-	
-</div>
-	
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day13-相交链表</h1>
+			</div>
+			
+		</div>
 
-	<div class="page-template-content markdown-body">
 		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-13 23:59:29</span>
+        <span class="mobile">2025-05-13 23:59:29</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-14 15:44:06</span>
+            <span class="mobile">2025-05-14 15:44:06</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-two-linked-lists/" >LeetCode 160 - Intersection of Two Linked Lists<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code>，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 <code>null</code>。</p>
+<p><strong>示例：</strong><br>A:       a1 → a2<br>↘<br>c1 → c2 → c3<br>↗<br>B: b1 → b2 → b3</p>
+<p>输出：c1</p>
+<hr>
+<h3 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h3><p>我们可以使用“双指针法”：</p>
+<ul>
+<li>分别从两个链表的头开始遍历</li>
+<li>当指针 A 到尾部时，转到 B 链表头；指针 B 到尾部时，转到 A 链表头</li>
+<li>如果有交点，最终两个指针会在交点相遇</li>
+<li>否则，都会变为 <code>null</code>，表示没有相交</li>
+</ul>
+<p><strong>核心思想</strong>：两个指针走过的路程一样，最终会在交点重合或同时为 null</p>
+<hr>
+<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getIntersectionNode = <span class="keyword">function</span>(<span class="params">headA, headB</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!headA || !headB) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> pA = headA, pB = headB;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (pA !== pB) &#123;</span><br><span class="line">        pA = pA === <span class="literal">null</span> ? headB : pA.<span class="property">next</span>;</span><br><span class="line">        pB = pB === <span class="literal">null</span> ? headA : pB.<span class="property">next</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pA;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h3><ul>
+<li>如果不允许修改原链表结构，还能怎么做？</li>
+<li>空间复杂度可以为 O(1) 吗？</li>
+<li>如果链表有环，还能找到相交节点吗？（结合 LeetCode 142）</li>
+</ul>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/05/14/Day14-RunLoop-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day14-RunLoop&amp;多线程&amp;内存管理</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/13/Day13-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E3%80%81%E5%83%B5%E5%B0%B8%E5%AF%B9%E8%B1%A1%E4%B8%8E-MRC-%E5%9B%9E%E9%A1%BE/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day13-内存泄漏排查、僵尸对象与 MRC 回顾</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
 
 		
 	</div>
 
-	<div class="page-template-comments">
-		
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Day13-相交链表</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol>
+
 	</div>
 </div>
-
-<div class="paginator">
+	</div>
 	
 </div>
-  
 			</div>
 
 			
@@ -398,6 +521,22 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -500,6 +639,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 

@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/categories/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/13/day13-内存泄漏排查、僵尸对象与-mrc-回顾/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            CATEGORIES | YVTU
+            Day13-内存泄漏排查、僵尸对象与 MRC 回顾 | YVTU
         
     </title>
 
@@ -335,36 +335,195 @@
 			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-	
-	<h1 class="page-title-header">
-	CATEGORIES
-</h1>
-<div class="category-list-content">
-	<ul class="all-category-list"><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a><span class="all-category-list-count">14</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><span class="all-category-list-count">7</span></li><li class="all-category-list-item"><a class="all-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="all-category-list-count">14</span></li></ul>
-</div>
-<div class="category-comments">
-	
-</div>
-	
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day13-内存泄漏排查、僵尸对象与 MRC 回顾</h1>
+			</div>
+			
+		</div>
 
-	<div class="page-template-content markdown-body">
 		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">yvtu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-13 23:59:03</span>
+        <span class="mobile">2025-05-13 23:59:03</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-14 15:42:09</span>
+            <span class="mobile">2025-05-14 15:42:09</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h3 id="一、iOS内存泄漏排查"><a href="#一、iOS内存泄漏排查" class="headerlink" title="一、iOS内存泄漏排查"></a>一、iOS内存泄漏排查</h3><h4 id="1-常见内存泄漏场景"><a href="#1-常见内存泄漏场景" class="headerlink" title="1. 常见内存泄漏场景"></a>1. <strong>常见内存泄漏场景</strong></h4><ul>
+<li><strong>循环引用</strong>：对象之间相互强引用（如父子对象、Block捕获self未使用<code>weak</code>修饰），导致无法释放<sup>5</sup><sup>16</sup>。</li>
+<li><strong>未释放Core Foundation对象</strong>：使用CF框架（如<code>CFArrayRef</code>、<code>CGImageRef</code>）时未调用<code>CFRelease</code><sup>1</sup><sup>7</sup>。</li>
+<li><strong>NSTimer&#x2F;CADisplayLink强引用</strong>：未在适当时机调用<code>invalidate</code>，导致持有者无法释放<sup>5</sup><sup>16</sup>。</li>
+<li><strong>大对象未释放</strong>：如缓存图片、视频资源未及时清理<sup>4</sup><sup>16</sup>。</li>
+<li><strong>ARC下的隐式泄漏</strong>：指针提前置<code>nil</code>，导致堆对象未被释放（如<code>Person *p = [Person new]; p = nil;</code>）<sup>3</sup>。</li>
+</ul>
+<h4 id="2-排查工具与方法"><a href="#2-排查工具与方法" class="headerlink" title="2. 排查工具与方法"></a>2. <strong>排查工具与方法</strong></h4><ul>
+<li><strong>静态分析（Analyze）</strong>：通过Xcode的<code>Product -&gt; Analyze</code>检测代码逻辑错误（如访问未初始化指针、未释放路径）<sup>11</sup><sup>13</sup>。</li>
+<li><strong>动态分析（Instruments）</strong>：<ul>
+<li><strong>Leaks</strong>：检测未释放的内存泄漏，结合Call Tree定位代码位置<sup>6</sup><sup>12</sup><sup>15</sup>。</li>
+<li><strong>Allocations</strong>：监控内存分配趋势，识别异常增长区域<sup>17</sup>。</li>
+</ul>
+</li>
+<li><strong>Debug Memory Graph</strong>：可视化对象引用关系，快速发现循环引用<sup>6</sup><sup>13</sup>。</li>
+<li><strong>第三方工具</strong>：如腾讯的<code>MLeaksFinder</code>，自动化检测页面泄漏<sup>6</sup><sup>9</sup><sup>14</sup>。</li>
+</ul>
+<hr>
+<h3 id="二、僵尸对象（Zombie-Objects）"><a href="#二、僵尸对象（Zombie-Objects）" class="headerlink" title="二、僵尸对象（Zombie Objects）"></a>二、僵尸对象（Zombie Objects）</h3><h4 id="1-定义与成因"><a href="#1-定义与成因" class="headerlink" title="1. 定义与成因"></a>1. <strong>定义与成因</strong></h4><ul>
+<li><strong>僵尸对象</strong>：已被释放（<code>dealloc</code>）但仍在被访问的对象，访问时会导致<code>EXC_BAD_ACCESS</code>崩溃<sup>8</sup><sup>18</sup>。</li>
+<li><strong>常见场景</strong>：<ul>
+<li><strong>过度释放</strong>：对同一对象多次调用<code>release</code>（MRC下）<sup>8</sup>。</li>
+<li><strong>野指针</strong>：指针指向已释放对象后未置<code>nil</code>（如MRC下悬垂指针）<sup>8</sup><sup>18</sup>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-检测与解决"><a href="#2-检测与解决" class="headerlink" title="2. 检测与解决"></a>2. <strong>检测与解决</strong></h4><ul>
+<li><strong>启用Zombie Instrument</strong>：在Instruments中选择<code>Zombies</code>模式，捕获访问僵尸对象的行为<sup>8</sup><sup>17</sup>。</li>
+<li><strong>ARC下的防护</strong>：通过<code>weak</code>修饰符避免野指针，自动置<code>nil</code><sup>5</sup><sup>8</sup>。</li>
+<li><strong>MRC下的规范</strong>：遵循<code>retain</code>&#x2F;<code>release</code>配对原则，释放后指针置<code>nil</code><sup>3</sup><sup>8</sup>。</li>
+</ul>
+<hr>
+<h3 id="三、MRC（Manual-Reference-Counting）回顾"><a href="#三、MRC（Manual-Reference-Counting）回顾" class="headerlink" title="三、MRC（Manual Reference Counting）回顾"></a>三、MRC（Manual Reference Counting）回顾</h3><h4 id="1-核心规则"><a href="#1-核心规则" class="headerlink" title="1. 核心规则"></a>1. <strong>核心规则</strong></h4><ul>
+<li><strong>手动管理引用计数</strong>：通过<code>retain</code>增加计数，<code>release</code>减少计数，<code>autorelease</code>延迟释放<sup>1</sup><sup>7</sup>。</li>
+<li><strong>所有权原则</strong>：谁创建（<code>alloc</code>&#x2F;<code>new</code>&#x2F;<code>copy</code>）、谁释放；其他情况需显式<code>retain</code><sup>7</sup><sup>9</sup>。</li>
+<li><strong>Setter方法规范</strong>：<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)setObject:(id)newObject &#123;</span><br><span class="line">    [_object release];      // 释放旧值</span><br><span class="line">    _object = [newObject retain]; // 保留新值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+需注意旧值可能已被释放的风险<sup>9</sup>。</li>
+</ul>
+<h4 id="2-常见问题与陷阱"><a href="#2-常见问题与陷阱" class="headerlink" title="2. 常见问题与陷阱"></a>2. <strong>常见问题与陷阱</strong></h4><ul>
+<li><strong>不平衡的retain&#x2F;release</strong>：导致内存泄漏或过度释放<sup>1</sup><sup>7</sup>。</li>
+<li><strong>循环引用</strong>：需手动打破强引用链（如使用<code>assign</code>替代<code>retain</code>）<sup>5</sup><sup>16</sup>。</li>
+<li><strong>Autorelease Pool管理</strong>：大量临时对象需手动控制释放时机，避免内存峰值<sup>9</sup>。</li>
+</ul>
+<h4 id="3-ARC的优势"><a href="#3-ARC的优势" class="headerlink" title="3. ARC的优势"></a>3. <strong>ARC的优势</strong></h4><ul>
+<li><strong>自动化</strong>：编译器自动插入<code>retain</code>&#x2F;<code>release</code>代码，减少人为错误<sup>1</sup><sup>7</sup>。</li>
+<li><strong>安全性</strong>：通过<code>weak</code>和<code>strong</code>修饰符管理所有权，避免僵尸对象<sup>5</sup><sup>7</sup>。</li>
+</ul>
+<hr>
+<h3 id="四、总结与建议"><a href="#四、总结与建议" class="headerlink" title="四、总结与建议"></a>四、总结与建议</h3><ol>
+<li><strong>优先使用ARC</strong>：减少手动管理风险，但需注意与Core Foundation交互时的桥接（<code>__bridge</code>、<code>CFRelease</code>）<sup>1</sup><sup>7</sup>。</li>
+<li><strong>规范代码习惯</strong>：<ul>
+<li>避免循环引用，使用<code>weak</code>&#x2F;<code>unowned</code>修饰Block捕获对象<sup>5</sup>。</li>
+<li>及时释放非OC对象（如C语言<code>malloc</code>分配的内存）<sup>1</sup><sup>7</sup>。</li>
+</ul>
+</li>
+<li><strong>结合工具排查</strong>：定期使用静态分析、动态检测和内存图谱，定位复杂泄漏问题<sup>6</sup><sup>13</sup><sup>17</sup>。</li>
+</ol>
+<p>通过上述方法，开发者可有效降低内存泄漏风险，提升应用稳定性。</p>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/05/13/Day13-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day13-相交链表</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/12/%E6%A3%80%E6%B5%8B%E5%92%8C%E8%AF%8A%E6%96%AD%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">检测和诊断内存问题</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
 
 		
 	</div>
 
-	<div class="page-template-comments">
-		
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Day13-内存泄漏排查、僵尸对象与 MRC 回顾</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81iOS%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5"><span class="nav-text">一、iOS内存泄漏排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%83%B5%E5%B0%B8%E5%AF%B9%E8%B1%A1%EF%BC%88Zombie-Objects%EF%BC%89"><span class="nav-text">二、僵尸对象（Zombie Objects）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81MRC%EF%BC%88Manual-Reference-Counting%EF%BC%89%E5%9B%9E%E9%A1%BE"><span class="nav-text">三、MRC（Manual Reference Counting）回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%80%BB%E7%BB%93%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-text">四、总结与建议</span></a></li></ol>
+
 	</div>
 </div>
-
-<div class="paginator">
+	</div>
 	
 </div>
-  
 			</div>
 
 			
@@ -398,6 +557,22 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -500,6 +675,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 
