@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/05/07/day9-有效的括号/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/07/day9-只出现一次的数字/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day9-有效的括号 | YVTU
+            Day9-只出现一次的数字 | YVTU
         
     </title>
 
@@ -341,7 +341,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day9-有效的括号</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day9-只出现一次的数字</h1>
 			</div>
 			
 		</div>
@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-07 10:21:52</span>
-            <span class="mobile">2025-05-07 10:21:52</span>
+            <span class="desktop">2025-05-14 18:22:23</span>
+            <span class="mobile">2025-05-14 18:22:23</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -409,40 +409,33 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-parentheses/" >LeetCode 20 - Valid Parentheses<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给定一个只包括 <code>(</code>、<code>)</code>、<code>&#123;</code>、<code>&#125;</code>、<code>[</code>、<code>]</code> 的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<ul>
-<li>左括号必须用相同类型的右括号闭合。</li>
-<li>左括号必须以正确的顺序闭合。</li>
-</ul>
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/single-number/" >LeetCode 136 - Single Number<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给定一个非空整数数组 <code>nums</code>，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<p>你必须在线性时间复杂度内完成算法，并且不能使用额外空间。</p>
 <p><strong>示例：</strong></p>
-<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [4,1,2,1,2]</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure></div>
 
 <hr>
 <h3 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h3><ul>
-<li><p>使用栈（stack）数据结构；</p>
+<li>异或运算的关键特性：<ul>
+<li><code>a ^ a = 0</code></li>
+<li><code>a ^ 0 = a</code></li>
+</ul>
 </li>
-<li><p>遍历字符串，遇到左括号入栈；</p>
-</li>
-<li><p>遇到右括号时弹出栈顶元素进行匹配；</p>
-</li>
-<li><p>如果最后栈为空，则是有效的括号序列。</p>
-</li>
-<li><p>时间复杂度：O(n)</p>
-</li>
-<li><p>空间复杂度：O(n)</p>
-</li>
+<li>所以将所有数字进行异或操作，成对的数字会抵消为 0，剩下的就是那个只出现了一次的数字。</li>
 </ul>
 <hr>
-<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isValid = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> stack = [];</span><br><span class="line">    <span class="keyword">const</span> map = &#123;</span><br><span class="line">        <span class="string">&#x27;)&#x27;</span>: <span class="string">&#x27;(&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;]&#x27;</span>: <span class="string">&#x27;[&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;&#125;&#x27;</span>: <span class="string">&#x27;&#123;&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> c <span class="keyword">of</span> s) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([<span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;[&#x27;</span>].<span class="title function_">includes</span>(c)) &#123;</span><br><span class="line">            stack.<span class="title function_">push</span>(c);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.<span class="title function_">pop</span>() !== map[c]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> stack.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> singleNumber = <span class="keyword">function</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> nums) &#123;</span><br><span class="line">        result ^= num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="🟣-Swift-实现"><a href="#🟣-Swift-实现" class="headerlink" title="🟣 Swift 实现"></a>🟣 Swift 实现</h3><div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">singleNumber</span>(<span class="keyword">_</span> <span class="params">nums</span>: [<span class="type">Int</span>]) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums &#123;</span><br><span class="line">        result <span class="operator">^=</span> num</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
 <h3 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h3><ul>
-<li>如果加入字符串中的其他字符要如何处理？</li>
-<li>如果括号嵌套层数非常深，有优化空间吗？</li>
+<li>如果一个元素出现一次，其余出现三次，该怎么做？</li>
+<li>如果有两个只出现一次的数字，其余都出现两次呢？</li>
+<li>如何用位运算统计任意次数的重复？</li>
 </ul>
-<hr>
 
 		</div>
 
@@ -492,8 +485,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day9-有效的括号</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol>
+		<div class="page-title">Day9-只出现一次的数字</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9F%A3-Swift-%E5%AE%9E%E7%8E%B0"><span class="nav-text">🟣 Swift 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol>
 
 	</div>
 </div>
