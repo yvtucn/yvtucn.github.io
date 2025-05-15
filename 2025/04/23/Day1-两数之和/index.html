@@ -310,7 +310,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -318,7 +318,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">42</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -369,8 +369,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-29 12:01:22</span>
-            <span class="mobile">2025-04-29 12:01:22</span>
+            <span class="desktop">2025-05-15 11:04:49</span>
+            <span class="mobile">2025-05-15 11:04:49</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -420,28 +420,52 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>🧠 算法题：两数之和（Two Sum）</p>
-<p>🎯 题目描述：</p>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在数组中找出两个加起来等于目标值的数字，并返回它们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但数组中同一个元素不能使用两遍。</p>
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/" >LeetCode 1 - Two Sum<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <code>target</code> 的那 <strong>两个整数</strong>，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p><strong>示例：</strong></p>
+<p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9<br>输出：[0,1]<br>解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1]</p>
 <hr>
-<p>💡 示例：</p>
-<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [2, 7, 11, 15], target = 9</span><br><span class="line">输出: [0, 1] </span><br><span class="line">解释: 因为 nums[0] + nums[1] == 9</span><br></pre></td></tr></table></figure></div>
+<h3 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h3><ul>
+<li>使用哈希表（字典）存储已访问的数字及其下标；</li>
+<li>遍历数组，对于每个元素 <code>x</code>，检查 <code>target - x</code> 是否存在于哈希表中；</li>
+<li>如果存在，说明找到了答案；</li>
+<li>否则将当前数字和下标加入哈希表继续查找。</li>
+</ul>
+<p>时间复杂度：<code>O(n)</code><br>空间复杂度：<code>O(n)</code></p>
 <hr>
-<p>✅ 解题要求：<br>	•	时间复杂度尽量做到 O(n)<br>	•	返回一组下标即可，无需考虑顺序<br>	•	提供 Swift 或 Objective-C 实现</p>
-<hr>
-<p>✨ 提示：</p>
-<p>你可以用哈希表记录访问过的数字及其下标，在遍历时直接判断 target - 当前值 是否存在于 map 中。</p>
-<hr>
-<p>🚀 拓展思考（建议尝试）：<br>	1.	如果要求返回所有可能的两数组合（即可能有多个答案），你会怎么做？<br>	2.	如果输入是一个有序数组，你是否可以用双指针优化？</p>
-<hr>
-<p>🔧 模板（Swift 示例）：</p>
-<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">twoSum</span>(<span class="keyword">_</span> <span class="params">nums</span>: [<span class="type">Int</span>], <span class="keyword">_</span> <span class="params">target</span>: <span class="type">Int</span>) -&gt; [<span class="type">Int</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> map <span class="operator">=</span> [<span class="type">Int</span>: <span class="type">Int</span>]()  <span class="comment">// 记录数字和对应的下标</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (index, num) <span class="keyword">in</span> nums.enumerated() &#123;</span><br><span class="line">        <span class="keyword">let</span> complement <span class="operator">=</span> target <span class="operator">-</span> num</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> otherIndex <span class="operator">=</span> map[complement] &#123;</span><br><span class="line">            <span class="keyword">return</span> [otherIndex, index]</span><br><span class="line">        &#125;</span><br><span class="line">        map[num] <span class="operator">=</span> index</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span>(<span class="params">nums, target</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> map = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> complement = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (map[complement] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> [map[complement], i];</span><br><span class="line">        &#125;</span><br><span class="line">        map[nums[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
-<p>JS版本：</p>
-<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">target</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number[]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span>(<span class="params">nums, target</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> diff = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (map.<span class="title function_">has</span>(diff)) &#123;</span><br><span class="line">            <span class="keyword">return</span> [map.<span class="title function_">get</span>(diff), i];</span><br><span class="line">        &#125;</span><br><span class="line">        map.<span class="title function_">set</span>(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h3 id="🟣-Swift-实现"><a href="#🟣-Swift-实现" class="headerlink" title="🟣 Swift 实现"></a>🟣 Swift 实现</h3><div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">twoSum</span>(<span class="keyword">_</span> <span class="params">nums</span>: [<span class="type">Int</span>], <span class="keyword">_</span> <span class="params">target</span>: <span class="type">Int</span>) -&gt; [<span class="type">Int</span>] &#123;</span><br><span class="line">        <span class="keyword">var</span> map <span class="operator">=</span> [<span class="type">Int</span>: <span class="type">Int</span>]()</span><br><span class="line">        <span class="keyword">for</span> (i, num) <span class="keyword">in</span> nums.enumerated() &#123;</span><br><span class="line">            <span class="keyword">let</span> complement <span class="operator">=</span> target <span class="operator">-</span> num</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> index <span class="operator">=</span> map[complement] &#123;</span><br><span class="line">                <span class="keyword">return</span> [index, i]</span><br><span class="line">            &#125;</span><br><span class="line">            map[num] <span class="operator">=</span> i</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/" >👉 LeetCode 1. 两数之和<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h3 id="🧠-思考与拓展"><a href="#🧠-思考与拓展" class="headerlink" title="🧠 思考与拓展"></a>🧠 思考与拓展</h3><ol>
+<li><p>如果要求返回所有满足条件的数对呢？</p>
+<p> 可以在遍历时记录所有匹配的组合，存储在数组中。</p>
+</li>
+<li><p>如果输入数据有多个解，你该如何处理？</p>
+<ul>
+<li>当前题目假设「只有一个解」，但在实际项目中通常需要找到所有解。</li>
+<li>可采用双层循环或在 map 中记录所有下标（数组），进行组合尝试。</li>
+</ul>
+</li>
+<li><p>如果不能使用额外空间，只能 O(1) 空间？</p>
+<ul>
+<li>先对数组进行排序（需要额外记录原始下标），然后使用 双指针 思路解决；</li>
+<li>时间复杂度为 O(nlogn)，但空间复杂度可降为 O(1)（如果允许修改原数组）。</li>
+</ul>
+</li>
+<li><p>高频拓展题</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/" >LeetCode 15. 三数之和<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum/" >LeetCode 18. 四数之和<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/" >LeetCode 167. 两数之和 II - 输入有序数组<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-iv-input-is-a-bst/" >LeetCode 653. 两数之和 IV - 输入 BST<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
+</li>
+</ol>
 
 		</div>
 
@@ -500,7 +524,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">Day1-两数之和</div>
-		
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9F%A3-Swift-%E5%AE%9E%E7%8E%B0"><span class="nav-text">🟣 Swift 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E4%B8%8E%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考与拓展</span></a></li></ol>
 
 	</div>
 </div>
