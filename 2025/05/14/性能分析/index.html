@@ -367,8 +367,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-14 18:10:24</span>
-            <span class="mobile">2025-05-14 18:10:24</span>
+            <span class="desktop">2025-05-15 14:29:49</span>
+            <span class="mobile">2025-05-15 14:29:49</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -423,11 +423,11 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<h2 id="性能分析-工具"><a href="#性能分析-工具" class="headerlink" title="性能分析-工具"></a>性能分析-工具</h2><h3 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h3><ul>
-<li>FLEX (Flipboard Explorer) 是一个非常受欢迎的开源 iOS 内部工具，提供了强大的 UI，允许开发者在运行时检查应用的视图层次结构、网络请求、数据库、用户偏好设置等。适合开发者在应用内实时调试和检查性能问题。</li>
-<li>XCTest XCTest 是 Apple 官方的单元测试框架，支持性能测试。开发者可以通过 measure 方法来衡量代码块的执行时间，从而发现性能瓶颈。适合需要在单元测试中添加性能测试的场景。</li>
-<li>KSCrash KSCrash 是一个强大的崩溃报告框架，它不仅能够捕获崩溃信息，还能提供应用程序的性能数据，例如内存使用和 CPU 使用情况。适合需要深入了解崩溃原因并监控相关性能数据的场景。</li>
-<li>GT (GDT, GodEye) GodEye 是一个开源的 iOS 性能监控工具包，提供了多种监控功能，包括 FPS、内存使用、CPU 使用率、网络请求、崩溃日志等。它有一个方便的 UI，可以实时显示性能数据。适合在开发过程中嵌入应用进行实时性能监控。</li>
-<li>libimobiledevice libimobiledevice 是一个开源的库，提供了与 iOS 设备交互的 API，可以用来监控设备状态和性能，特别是对非越狱设备进行操作。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/FLEXTool/FLEX" >FLEX<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> (Flipboard Explorer) 是一个非常受欢迎的开源 iOS 内部工具，提供了强大的 UI，允许开发者在运行时检查应用的视图层次结构、网络请求、数据库、用户偏好设置等。适合开发者在应用内实时调试和检查性能问题。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/apple/swift-corelibs-xctest" >XCTest<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> XCTest 是 Apple 官方的单元测试框架，支持性能测试。开发者可以通过 measure 方法来衡量代码块的执行时间，从而发现性能瓶颈。适合需要在单元测试中添加性能测试的场景。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/kstenerud/KSCrash" >KSCrash<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> KSCrash 是一个强大的崩溃报告框架，它不仅能够捕获崩溃信息，还能提供应用程序的性能数据，例如内存使用和 CPU 使用情况。适合需要深入了解崩溃原因并监控相关性能数据的场景。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/zixun/GodEye" >GT (GDT, GodEye)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> GodEye 是一个开源的 iOS 性能监控工具包，提供了多种监控功能，包括 FPS、内存使用、CPU 使用率、网络请求、崩溃日志等。它有一个方便的 UI，可以实时显示性能数据。适合在开发过程中嵌入应用进行实时性能监控。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/libimobiledevice/libimobiledevice" >libimobiledevice<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> libimobiledevice 是一个开源的库，提供了与 iOS 设备交互的 API，可以用来监控设备状态和性能，特别是对非越狱设备进行操作。</li>
 </ul>
 <h2 id="Instruments"><a href="#Instruments" class="headerlink" title="Instruments"></a>Instruments</h2><p>Instruments 是 Xcode 自带的一款强大的性能分析和调试工具，广泛用于 iOS 应用的性能监测和问题排查。</p>
 <p>打开 Xcode 项目，选择 Product &gt; Profile，或者使用快捷键 Command + I。这会编译并启动应用，然后打开 Instruments 界面。你也可以直接从 Xcode 中选择 Xcode &gt; Open Developer Tool &gt; Instruments 启动 Instruments。</p>
