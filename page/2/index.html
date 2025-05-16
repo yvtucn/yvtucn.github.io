@@ -353,7 +353,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">44</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -372,6 +372,65 @@
 			<div class="main-content">
 				<div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/05/13/Day13-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E3%80%81%E5%83%B5%E5%B0%B8%E5%AF%B9%E8%B1%A1%E4%B8%8E-MRC-%E5%9B%9E%E9%A1%BE/">
+                            Day13-内存泄漏排查、僵尸对象与 MRC 回顾
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            一、iOS内存泄漏排查1. 常见内存泄漏场景
+循环引用：对象之间相互强引用（如父子对象、Block捕获self未使用weak修饰），导致无法释放516。
+未释放Core Foundation对象：使用CF框架（如CFArrayRef、CGImageRef）时未调用CFRelease17。
+NSTimer&#x2F;CADisplayLink强引用：未在适当时机调用invalidate，导致持...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue May 13 2025 23:59:03 GMT+0800">
+                
+                    2025-05-13
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2025/05/13/Day13-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E3%80%81%E5%83%B5%E5%B0%B8%E5%AF%B9%E8%B1%A1%E4%B8%8E-MRC-%E5%9B%9E%E9%A1%BE/">Read more<span class="seo-reader-text">Day13-内存泄漏排查、僵尸对象与 MRC 回顾</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -1006,91 +1065,6 @@ TaggedPointer为小型数据（如NSNumber、NSDate、NSString等）提供的一
     </div>
 
     <a href="/2025/05/09/Day11-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">Read more<span class="seo-reader-text">Day11-环形链表</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/05/09/Day11-GCD-vs-NSOperation-%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94/">
-                            Day11-GCD vs NSOperation 框架对比
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            一、基本介绍
-
-
-方面
-GCD
-NSOperation
-
-
-
-所属框架
-C 语言底层 API，Foundation 框架
-Foundation 框架的面向对象封装
-
-
-编程范式
-函数式（Block）
-面向对象（Operation 对象）
-
-
-线程管理
-自动管理线程
-基于 NSOperationQueue，封装良好
-
-
-适用场景
-性能优先，轻量并发控制
-更复杂的任务依赖和管理需求
-
-
-二、核心...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri May 09 2025 10:19:06 GMT+0800">
-                
-                    2025-05-09
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2025/05/09/Day11-GCD-vs-NSOperation-%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94/">Read more<span class="seo-reader-text">Day11-GCD vs NSOperation 框架对比</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="YVTU">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/16/macho/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/rabbit.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/rabbit.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/rabbit.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Mach-O | YVTU
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"yvtucn.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":4,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":null},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"YVTU","subtitle":{"text":["Chasing Myths, Touching Stars."],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"},"About":{"icon":"fa-regular fa-user","path":"/about/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/4/21 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/rabbit.svg" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YVTU
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks/"
+                                        >
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                    BOOKMARKS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks/"
+                        >
+                            <span>
+                                BOOKMARKS
+                            </span>
+                            
+                                <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Mach-O</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">YVTU</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-16 12:18:34</span>
+        <span class="mobile">2025-05-16 12:18:34</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-16 12:23:43</span>
+            <span class="mobile">2025-05-16 12:23:43</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>Mach-O 是 macOS 和 iOS 平台上使用的可执行文件格式。</p>
+<p>Mach-O 文件格式用于 macOS 和 iOS 中的可执行文件、动态库和核心转储等。Mach-O 文件包含多个部分，每个部分都具有特定的结构和功能。</p>
+<h2 id="Mach-O-文件头"><a href="#Mach-O-文件头" class="headerlink" title="Mach-O 文件头"></a>Mach-O 文件头</h2><p>Mach-O 文件的开始部分是文件头（MachHeader），它包含了文件的基本信息。文件头分为两种类型：32位（mach_header）和 64位（mach_header_64）。下面是一个 64 位 Mach-O 文件头的结构示例：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mach_header_64</span> &#123;</span></span><br><span class="line">    <span class="type">uint32_t</span>    magic;      <span class="comment">// 文件的魔数，标识 Mach-O 文件格式</span></span><br><span class="line">    <span class="type">cpu_type_t</span>  cputype;    <span class="comment">// 架构类型</span></span><br><span class="line">    <span class="type">cpu_subtype_t</span> cpusubtype; <span class="comment">// 架构子类型</span></span><br><span class="line">    <span class="type">uint32_t</span>    filetype;   <span class="comment">// 文件类型（例如，可执行文件、动态库）</span></span><br><span class="line">    <span class="type">uint32_t</span>    ncmds;      <span class="comment">// 命令数</span></span><br><span class="line">    <span class="type">uint32_t</span>    sizeofcmds; <span class="comment">// 命令总大小</span></span><br><span class="line">    <span class="type">uint32_t</span>    flags;      <span class="comment">// 标志</span></span><br><span class="line">    <span class="type">uint32_t</span>    reserved;   <span class="comment">// 保留字段</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>magic: 用于识别文件格式的标识符，如 MH_MAGIC_64。</li>
+<li>cputype 和 cpusubtype: 描述 CPU 架构。</li>
+<li>filetype: 文件类型，如 MH_EXECUTE（可执行文件）。</li>
+<li>ncmds 和 sizeofcmds: 描述了文件中的加载命令数量和大小。</li>
+</ul>
+<p>以下示例展示了如何使用 C 语言读取 Mach-O 文件的头部信息：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mach-o/loader.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printMachHeader</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span> &#123;</span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;rb&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (!file) &#123;</span><br><span class="line">        perror(<span class="string">&quot;fopen&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">mach_header_64</span> <span class="title">header</span>;</span></span><br><span class="line">    fread(&amp;header, <span class="keyword">sizeof</span>(header), <span class="number">1</span>, file);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Magic: 0x%x\n&quot;</span>, header.magic);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;CPU Type: 0x%x\n&quot;</span>, header.cputype);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;CPU Subtype: 0x%x\n&quot;</span>, header.cpusubtype);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;File Type: 0x%x\n&quot;</span>, header.filetype);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of Commands: %u\n&quot;</span>, header.ncmds);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Size of Commands: %u\n&quot;</span>, header.sizeofcmds);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Flags: 0x%x\n&quot;</span>, header.flags);</span><br><span class="line"></span><br><span class="line">    fclose(file);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    printMachHeader(<span class="string">&quot;example.macho&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="加载命令"><a href="#加载命令" class="headerlink" title="加载命令"></a>加载命令</h2><p>Mach-O 文件的加载命令（load_command）用于描述文件的各个部分，例如段（segment）和节（section）。每个加载命令都有一个类型字段（cmd），表示命令的具体类型。下面是一个 segment_command_64 的结构示例：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segment_command_64</span> &#123;</span></span><br><span class="line">    <span class="type">uint32_t</span>    cmd;        <span class="comment">// 命令类型，指示这是一个段命令</span></span><br><span class="line">    <span class="type">uint32_t</span>    cmdsize;    <span class="comment">// 命令大小</span></span><br><span class="line">    <span class="type">char</span>        segname[<span class="number">16</span>];<span class="comment">// 段名称</span></span><br><span class="line">    <span class="type">uint64_t</span>    vmaddr;     <span class="comment">// 段在内存中的地址</span></span><br><span class="line">    <span class="type">uint64_t</span>    vmsize;     <span class="comment">// 段在内存中的大小</span></span><br><span class="line">    <span class="type">uint64_t</span>    fileoff;    <span class="comment">// 段在文件中的偏移</span></span><br><span class="line">    <span class="type">uint64_t</span>    filesize;   <span class="comment">// 段在文件中的大小</span></span><br><span class="line">    <span class="type">uint32_t</span>    maxprot;    <span class="comment">// 最大保护属性</span></span><br><span class="line">    <span class="type">uint32_t</span>    initprot;   <span class="comment">// 初始化保护属性</span></span><br><span class="line">    <span class="type">uint32_t</span>    nsects;     <span class="comment">// 段中节的数量</span></span><br><span class="line">    <span class="type">uint32_t</span>    flags;      <span class="comment">// 段标志</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>cmd: 加载命令的类型，例如 LC_SEGMENT_64。</li>
+<li>segname: 段的名称，如 __TEXT 或 __DATA。</li>
+<li>vmaddr 和 vmsize: 描述段在内存中的位置和大小。</li>
+<li>fileoff 和 filesize: 描述段在文件中的位置和大小。</li>
+</ul>
+<h2 id="节（Section）"><a href="#节（Section）" class="headerlink" title="节（Section）"></a>节（Section）</h2><p>每个段可以包含多个节（section）。节是 Mach-O 文件中的基本数据单位，包含实际的数据或代码。下面是一个 section_64 的结构示例：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">section_64</span> &#123;</span></span><br><span class="line">    <span class="type">char</span>        sectname[<span class="number">16</span>]; <span class="comment">// 节名称</span></span><br><span class="line">    <span class="type">char</span>        segname[<span class="number">16</span>];  <span class="comment">// 段名称</span></span><br><span class="line">    <span class="type">uint32_t</span>    addr;         <span class="comment">// 节的地址</span></span><br><span class="line">    <span class="type">uint32_t</span>    size;         <span class="comment">// 节的大小</span></span><br><span class="line">    <span class="type">uint32_t</span>    offset;       <span class="comment">// 节在文件中的偏移</span></span><br><span class="line">    <span class="type">uint32_t</span>    align;        <span class="comment">// 对齐</span></span><br><span class="line">    <span class="type">uint32_t</span>    reloff;       <span class="comment">// 重定位信息的偏移</span></span><br><span class="line">    <span class="type">uint32_t</span>    nreloc;       <span class="comment">// 重定位条目数量</span></span><br><span class="line">    <span class="type">uint32_t</span>    flags;        <span class="comment">// 节标志</span></span><br><span class="line">    <span class="type">uint32_t</span>    reserved1;    <span class="comment">// 保留字段</span></span><br><span class="line">    <span class="type">uint32_t</span>    reserved2;    <span class="comment">// 保留字段</span></span><br><span class="line">    <span class="type">uint32_t</span>    reserved3;    <span class="comment">// 保留字段</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>sectname 和 segname: 描述节和段的名称。</li>
+<li>addr 和 size: 节在内存中的地址和大小。</li>
+<li>offset: 节在文件中的偏移。</li>
+<li>flags: 描述节的属性，如是否可写、可执行等。</li>
+</ul>
+<p>Mach-O 文件可能包含重定位信息，用于在加载时调整代码或数据的地址。重定位信息存储在 segment_command 的 reloff 和 nreloc 字段中。</p>
+<h2 id="MachOView-3-0版本"><a href="#MachOView-3-0版本" class="headerlink" title="MachOView 3.0版本"></a>MachOView 3.0版本</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/gdbinit/MachOView" >MachOView<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是一个开源项目，用于解析和可视化 Mach-O 文件，这是 macOS 和 iOS 系统上的二进制文件格式。这个工具可以帮助开发者查看和分析 Mach-O 文件的结构和内容。</p>
+<h2 id="MachOKit"><a href="#MachOKit" class="headerlink" title="MachOKit"></a>MachOKit</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/p-x9/MachOKit" >MachOKit<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 是一个用 Swift 编写的开源项目，用于解析和操作 Mach-O 文件格式。它能够利用 Swift 的类型安全和内存管理特性。例如，Swift 的类型系统可以用于定义 Mach-O 文件的各种结构。</p>
+<p>MachOKit 解析 Mach-O 文件头部。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MachOHeader</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> magic: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> cputype: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> cpusubtype: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> filetype: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> ncmds: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> sizeofcmds: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> flags: <span class="type">UInt32</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">parseMachOHeader</span>(<span class="params">data</span>: <span class="type">Data</span>) -&gt; <span class="type">MachOHeader</span>? &#123;</span><br><span class="line">    <span class="keyword">guard</span> data.count <span class="operator">&gt;=</span> <span class="number">28</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">    <span class="keyword">let</span> magic <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> cputype <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">4</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> cpusubtype <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">8</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> filetype <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">12</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> ncmds <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">16</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> sizeofcmds <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">20</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> flags <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: <span class="number">24</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="type">MachOHeader</span>(magic: magic, cputype: cputype, cpusubtype: cpusubtype, filetype: filetype, ncmds: ncmds, sizeofcmds: sizeofcmds, flags: flags)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>MachOKit 使用 Swift 的文件系统 API 来读取 Mach-O 文件的二进制数据。这包括从文件中读取数据并将其解析成 Mach-O 格式的结构体。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">readMachOFile</span>(<span class="params">atPath</span> <span class="params">path</span>: <span class="type">String</span>) -&gt; <span class="type">Data</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">FileManager</span>.default.contents(atPath: path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>使用 Swift 的结构体和类来映射 Mach-O 文件的各种数据结构。这些数据结构包括 Mach-O 头部、加载命令、段和节等。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">MachOLoadCommand</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> cmd: <span class="type">UInt32</span></span><br><span class="line">    <span class="keyword">let</span> cmdsize: <span class="type">UInt32</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">parseLoadCommand</span>(<span class="params">data</span>: <span class="type">Data</span>, <span class="params">offset</span>: <span class="type">Int</span>) -&gt; <span class="type">MachOLoadCommand</span>? &#123;</span><br><span class="line">    <span class="keyword">guard</span> data.count <span class="operator">&gt;=</span> offset <span class="operator">+</span> <span class="number">8</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">    <span class="keyword">let</span> cmd <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: offset, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> cmdsize <span class="operator">=</span> data.withUnsafeBytes &#123; <span class="variable">$0</span>.load(fromByteOffset: offset <span class="operator">+</span> <span class="number">4</span>, as: <span class="type">UInt32</span>.<span class="keyword">self</span>) &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="type">MachOLoadCommand</span>(cmd: cmd, cmdsize: cmdsize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>MachOKit 利用 Swift 的类型安全和内存管理特性，结合对 Mach-O 文件格式的深入理解，来实现对 Mach-O 文件的解析。通过读取二进制数据、映射数据结构、内存映射和错误处理，它能够有效地解析 Mach-O 文件并提供相关信息。</p>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/16/Day16-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day16-无重复字符的最长子串</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Mach-O</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mach-O-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-text">Mach-O 文件头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="nav-text">加载命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%EF%BC%88Section%EF%BC%89"><span class="nav-text">节（Section）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MachOView-3-0%E7%89%88%E6%9C%AC"><span class="nav-text">MachOView 3.0版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MachOKit"><span class="nav-text">MachOKit</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<!-- <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">YVTU</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer> -->
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
