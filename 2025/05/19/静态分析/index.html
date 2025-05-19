@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="YVTU">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/19/静态分析/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/rabbit.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/rabbit.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/rabbit.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            静态分析 | YVTU
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"yvtucn.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":4,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":null},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"YVTU","subtitle":{"text":["Chasing Myths, Touching Stars."],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"},"About":{"icon":"fa-regular fa-user","path":"/about/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/4/21 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/rabbit.svg" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YVTU
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks/"
+                                        >
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                    BOOKMARKS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks/"
+                        >
+                            <span>
+                                BOOKMARKS
+                            </span>
+                            
+                                <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">52</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">静态分析</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/rabbit.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">YVTU</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-05-19 11:09:53</span>
+        <span class="mobile">2025-05-19 11:09:53</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-05-19 11:26:10</span>
+            <span class="mobile">2025-05-19 11:26:10</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>静态程序分析是一种在不执行代码的情况下，对代码进行分析以发现潜在问题、优化代码质量或检测安全漏洞的方法。</p>
+<p>静态分析方法有：</p>
+<ul>
+<li>语法检查 (Syntax Checking)</li>
+<li>代码规范检查 (Linting)</li>
+<li>数据流分析 (Data Flow Analysis)</li>
+<li>控制流分析 (Control Flow Analysis)</li>
+<li>安全漏洞检测 (Security Vulnerability Detection)</li>
+</ul>
+<p>常用静态分析工具有：</p>
+<p>Xcode 静态分析器。Xcode 自带的静态分析器能够分析 Objective-C 和 Swift 代码，自动检测潜在的内存管理问题、逻辑错误以及可能的安全漏洞。开发者可以在 Xcode 中开启静态分析功能，通过菜单路径 Product -&gt; Analyze 来执行分析。</p>
+<p>SwiftLint 是一个专为 Swift 语言设计的静态分析工具，用于确保代码符合 Swift 的编码风格和最佳实践。它能够检测代码中的格式问题、不规范的命名、未使用的代码等。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install swiftlint</span><br><span class="line">swiftlint lint</span><br></pre></td></tr></table></figure></div>
+
+<p>OCLint 是一款适用于 Objective-C、C 和 C++ 代码的静态分析工具，专注于代码质量的提升。它能够检测代码中的常见问题，如复杂度过高、未使用的代码等，并提供详细的报告。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install oclint</span><br><span class="line">oclint-json-compilation-database -e Pods -- -report-type html -o oclint_report.html</span><br></pre></td></tr></table></figure></div>
+
+<p>Infer 是由 Facebook 开发的一款开源静态分析工具，支持分析 Objective-C 和 Swift 代码。它特别擅长检测空指针引用、内存泄漏和资源泄漏等常见问题。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install infer</span><br><span class="line">infer run -- xcodebuild -workspace YourApp.xcworkspace -scheme YourApp</span><br></pre></td></tr></table></figure></div>
+<p>为了获得更全面的静态分析结果，开发者通常会结合多种工具和方法。例如，可以使用 Xcode 的静态分析器进行基本的代码检查，使用 SwiftLint 和 OCLint 确保代码规范，最后通过 Infer 进行深入的逻辑和安全分析。</p>
+<p>此外，许多静态分析工具支持集成到持续集成（CI）系统中，使得静态分析成为开发流程的一部分，确保每次代码提交都符合质量标准。</p>
+<h2 id="Clang静态分析器"><a href="#Clang静态分析器" class="headerlink" title="Clang静态分析器"></a>Clang静态分析器</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>静态分析器是Xcode内置的一个工具，它可以在不运行源代码的情况下进行静态的代码分析。静态分析器不执行代码，而是通过静态分析来检查代码中的逻辑、安全和API使用等问题。主要支持C&#x2F;C++&#x2F;Objective-C，对Objective-C和Swift混编的工程也有很好的支持。</p>
+<p>在Xcode中，通过点击Product菜单下的Analyze选项来启动静态分析器。分析完成后，问题会以蓝色的感叹号在Xcode上方显示，也可以在Issue Navigator中查看。</p>
+<p>Clang静态分析器的模块位于&#x2F;llvm&#x2F;tools&#x2F;clang&#x2F;lib&#x2F;StaticAnalyzer。Checkers目录下包含了各种检查器，每个检查器负责一个独立的检查项目。共用逻辑部分下沉到Core模块中，大量依赖LLVM和Clang的库。</p>
+<ul>
+<li>scan-build：负责对目标代码进行分析，并生成HTML样式的分析报告。</li>
+<li>scan-view：负责在本地运行一个简易的web server，方便查看生成的报告。</li>
+</ul>
+<p>你也可以直接使用 clang 命令来运行静态分析。假设你有一个 C 文件 example.c，可以这样运行分析：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang --analyze example.c</span><br></pre></td></tr></table></figure></div>
+<p>这将对 example.c 进行静态分析，并输出分析结果。</p>
+<p>让我们以一个简单的 C 程序为例，它可能包含一些潜在的错误：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">risky_function</span><span class="params">(<span class="type">int</span> *ptr)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*ptr &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Value: %d\n&quot;</span>, *ptr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> *p = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误：没有检查 malloc 是否成功</span></span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 潜在的空指针引用</span></span><br><span class="line">    risky_function(p);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在这段代码中，存在以下问题：</p>
+<ul>
+<li>malloc 之后没有检查是否成功分配内存。</li>
+<li>函数 risky_function 中，如果传入一个空指针 ptr，则可能会解引用空指针。</li>
+</ul>
+<p>使用 clang –analyze 来分析这段代码：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang --analyze example.c</span><br></pre></td></tr></table></figure></div>
+<p>输出可能会包括如下警告：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">example.c:12:5: warning: Dereference of null pointer (loaded from variable &#x27;p&#x27;)</span><br><span class="line">    p[0] = 10;</span><br><span class="line">    ^</span><br><span class="line">example.c:15:5: warning: Dereference of null pointer (loaded from variable &#x27;ptr&#x27;)</span><br><span class="line">    if (*ptr &gt; 0) &#123;</span><br><span class="line">    ^</span><br></pre></td></tr></table></figure></div>
+<p>如果你在使用 Xcode 进行开发，你可以通过以下方式启用静态分析：</p>
+<ul>
+<li>在 Xcode 中打开你的项目。</li>
+<li>选择 Product &gt; Analyze，Xcode 将运行静态分析并在报告导航器中显示发现的所有问题。</li>
+</ul>
+<p>根据 Clang 静态分析器的提示，我们可以修改代码来修复这些潜在的问题：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">risky_function</span><span class="params">(<span class="type">int</span> *ptr)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (ptr != <span class="literal">NULL</span> &amp;&amp; *ptr &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Value: %d\n&quot;</span>, *ptr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> *p = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Memory allocation failed\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    risky_function(p);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在修复后的代码中：</p>
+<ul>
+<li>我们在使用 malloc 后检查了是否分配成功。</li>
+<li>在 risky_function 中添加了一个检查，以确保 ptr 不为 NULL。</li>
+</ul>
+<p>Clang 静态分析器可以集成到持续集成（CI）系统中，自动分析代码库中的潜在问题。一个简单的方式是将 clang –analyze 命令添加到你的 CI 脚本中，这样每次提交代码时都会自动运行分析。</p>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p>Clang 静态分析器允许你自定义分析器，以便检测特定的代码模式或遵循自定义规则。你可以通过编写 Clang 插件或直接修改 Clang 源代码来实现自定义分析。</p>
+<p>自定义检查器是 Clang 静态分析器的一个模块，用于分析特定的代码模式。你可以通过创建一个新的 C++ 类并继承自 Checker 基类来实现它。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;clang/StaticAnalyzer/Core/Checker.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;clang/StaticAnalyzer/Core/CheckerManager.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;clang/StaticAnalyzer/Core/BugReporter/BugType.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;clang/StaticAnalyzer/Core/PathSensitive/CheckerContext.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">using namespace clang;</span><br><span class="line">using namespace ento;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NullDerefChecker</span> :</span> public Checker&lt;check::PreStmt&lt;UnaryOperator&gt;&gt; &#123;</span><br><span class="line">    mutable <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;BugType&gt; BT;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    <span class="type">void</span> <span class="title function_">checkPreStmt</span><span class="params">(<span class="type">const</span> UnaryOperator *U, CheckerContext &amp;C)</span> <span class="type">const</span>;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    <span class="type">void</span> <span class="title function_">reportBug</span><span class="params">(<span class="type">const</span> UnaryOperator *U, CheckerContext &amp;C)</span> <span class="type">const</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">NullDerefChecker::checkPreStmt</span><span class="params">(<span class="type">const</span> UnaryOperator *U, CheckerContext &amp;C)</span> <span class="type">const</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (U-&gt;getOpcode() == UO_Deref) &#123;</span><br><span class="line">        <span class="type">const</span> Expr *SubExpr = U-&gt;getSubExpr()-&gt;IgnoreParenCasts();</span><br><span class="line">        <span class="type">const</span> LocationContext *LCtx = C.getLocationContext();</span><br><span class="line">        <span class="type">const</span> SVal &amp;Val = C.getState()-&gt;getSVal(SubExpr, LCtx);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Val.isUndef() || Val.isZeroConstant()) &#123;</span><br><span class="line">            reportBug(U, C);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">NullDerefChecker::reportBug</span><span class="params">(<span class="type">const</span> UnaryOperator *U, CheckerContext &amp;C)</span> <span class="type">const</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!BT)</span><br><span class="line">        BT.reset(new BugType(this, <span class="string">&quot;Dereference of null pointer&quot;</span>, <span class="string">&quot;Example Checker&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> Report = <span class="built_in">std</span>::make_unique&lt;PathSensitiveBugReport&gt;(*BT, BT-&gt;getName(), C.generateErrorNode());</span><br><span class="line">    Report-&gt;addRange(U-&gt;getSourceRange());</span><br><span class="line">    C.emitReport(<span class="built_in">std</span>::move(Report));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="type">void</span> <span class="title function_">clang_registerCheckers</span><span class="params">(CheckerRegistry &amp;registry)</span> &#123;</span><br><span class="line">    registry.addChecker&lt;NullDerefChecker&gt;(<span class="string">&quot;example.NullDerefChecker&quot;</span>, <span class="string">&quot;Checks for null pointer dereference&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>将上述代码保存为 NullDerefChecker.cpp，然后编译它：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clang++ -shared -fPIC -o NullDerefChecker.so NullDerefChecker.cpp \</span><br><span class="line">    $(llvm-config --cxxflags --ldflags --system-libs --libs all)</span><br></pre></td></tr></table></figure></div>
+<p>生成的 NullDerefChecker.so 是一个共享库，可以在运行 Clang 静态分析时加载这个自定义检查器。</p>
+<p>使用 clang 命令运行你的自定义检查器：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang --analyze -Xclang -load -Xclang ./NullDerefChecker.so -Xclang -analyzer-checker=example.NullDerefChecker example.c</span><br></pre></td></tr></table></figure></div>
+<p>这里 example.c 是要分析的代码文件。自定义检查器将会在分析时查找空指针解引用的情况，并报告任何发现的问题。</p>
+<p>上面的代码实现了一个简单的检查器 NullDerefChecker，它会检测所有的指针解引用操作，并检查该指针是否为空或未定义。如果发现潜在的空指针解引用，它将报告一个错误。</p>
+<ul>
+<li>checkPreStmt 方法：在每个解引用操作之前调用，检查指针是否为空。</li>
+<li>reportBug 方法：当检测到潜在问题时，生成并报告一个错误。</li>
+</ul>
+<p>你可以扩展自定义检查器来支持更多类型的检查，或使用其他 Clang API 来分析更复杂的代码结构。例如，可以在 checkPostCall 中检查函数调用后的返回值，或者在 checkEndAnalysis 中对整个代码路径进行总结分析。</p>
+<h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><h3 id="代码规范指南"><a href="#代码规范指南" class="headerlink" title="代码规范指南"></a>代码规范指南</h3><p>一些常见的 iOS 代码规范及其参考资料：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://docs.swift.org/swift-book/documentation/the-swift-programming-language/" >Swift 官方文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：包含 Swift 语言的详细说明和规范。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://google.github.io/swift/" >Google Swift Style Guide<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：Google 提供的 Swift 代码风格指南。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/realm/SwiftLint" >SwiftLint<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：一个用于强制执行 Swift 代码风格和规范的工具。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/nicklockwood/SwiftFormat" >SwiftFormat<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：一个用于自动格式化 Swift 代码的工具。</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://nshipster.com/" >NSHipster<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：一个涵盖 iOS 和 macOS 编程的博客，提供了许多有用的技巧和最佳实践。</li>
+</ul>
+<h3 id="Code-Review-的重要性"><a href="#Code-Review-的重要性" class="headerlink" title="Code Review 的重要性"></a>Code Review 的重要性</h3><ul>
+<li>提高代码质量：通过复查代码，能够及时发现并修复潜在的问题，如逻辑错误、性能瓶颈、安全漏洞等。</li>
+<li>促进知识共享：高手可以通过审查新手的代码，传授好的编程实践和经验，帮助新手快速成长。同时，审查过程也是互相学习的过程，有助于团队成员之间的知识传递。</li>
+<li>保证团队规范的执行：每个团队都有自己的代码规范和开发规范，通过代码审查可以确保这些规范得到执行，避免代码中出现不规范的情况。</li>
+<li>减少技术债务：在代码合并前进行审查，可以及时发现并修复问题，避免问题在后续开发中被放大，从而减少技术债务。</li>
+</ul>
+<h3 id="Code-Review-的最佳实践"><a href="#Code-Review-的最佳实践" class="headerlink" title="Code Review 的最佳实践"></a>Code Review 的最佳实践</h3><ul>
+<li>作为开发流程的必选项：将Code Review作为开发流程的一个必要环节，确保每次代码合并前都经过审查。这样可以保证审查的代码量适中，减轻审查者的压力，同时也使被审查者更愿意积极修改问题。</li>
+<li>形成开发文化：让Code Review成为团队的一种文化，而不是仅仅作为一种制度来执行。这需要团队成员从心底接受并认真执行Code Review，同时管理者也需要通过激励和表率作用来推动这一文化的形成。</li>
+<li>使用合适的工具：现在许多源代码管理工具都自带Code Review工具，如Github、Gitlab、Azure DevOps等。这些工具提供了丰富的功能，如线上讨论、行级别的注释、版本历史等，有助于更高效地进行Code Review。</li>
+<li>做好设计审查：在开发新功能之前，建议先写一个简单的设计文档，并找资深的团队成员进行设计审查。这样可以确保设计上的合理性，减少在Code Review时出现的问题。</li>
+<li>提交前自我审查：开发人员在提交代码进行Code Review之前，应该先进行自我审查，确保代码的基本质量。这包括编写必要的自动化测试代码、运行测试用例等。</li>
+<li>小范围提交：在提交Pull Request（PR）时，尽量保持小范围的修改。如果改动较大，可以分批提交，以减轻审查者的压力。</li>
+<li>明确审查标准：制定明确的审查标准，如代码风格、注释规范、性能要求等。这有助于审查者更准确地评估代码质量，并给出有针对性的反馈。</li>
+<li>分级评论：对Review的评论进行分级，如[blocker]（必须修改）、[optional]（可改可不改）、[question]（需要澄清）等。这有助于被审查者更直观地了解Review结果，并提高Review效率。</li>
+</ul>
+<h3 id="应重点关注的方面"><a href="#应重点关注的方面" class="headerlink" title="应重点关注的方面"></a>应重点关注的方面</h3><ul>
+<li>代码的整体结构是否合理？模块化是否清晰？</li>
+<li>代码是否正确地实现了预期功能？是否存在逻辑错误？</li>
+<li>代码是否可以进一步简化？是否有重复代码？</li>
+<li>代码是否有充分的测试覆盖？是否有边界条件的测试？</li>
+<li>命名是否清晰且符合团队风格？是否有注释？</li>
+</ul>
+<h3 id="Code-Review-遵循的原则"><a href="#Code-Review-遵循的原则" class="headerlink" title="Code Review 遵循的原则"></a>Code Review 遵循的原则</h3><h4 id="遵循-KISS-原则（Keep-It-Simple-Stupid-）"><a href="#遵循-KISS-原则（Keep-It-Simple-Stupid-）" class="headerlink" title="遵循 KISS 原则（Keep It Simple, Stupid!）"></a>遵循 KISS 原则（Keep It Simple, Stupid!）</h4><p>简单是编码的最高境界。确保你的代码简洁明了，易于理解和维护。</p>
+<p>示例</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：一个简单的用户模型和用户视图</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// SwiftData: UserModel</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">UserModel</span>: <span class="title class_ inherited__">Codable</span>, <span class="title class_ inherited__">Identifiable</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> id: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> email: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SwiftUI: UserView</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">UserView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@ObservedObject</span> <span class="keyword">var</span> viewModel: <span class="type">UserViewModel</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span> &#123;</span><br><span class="line">            <span class="type">Text</span>(viewModel.user.name)</span><br><span class="line">            <span class="type">Text</span>(viewModel.user.email)</span><br><span class="line">        &#125;</span><br><span class="line">        .padding()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ViewModel 简化逻辑处理</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserViewModel</span>: <span class="title class_ inherited__">ObservableObject</span> &#123;</span><br><span class="line">    <span class="meta">@Published</span> <span class="keyword">var</span> user: <span class="type">UserModel</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">user</span>: <span class="type">UserModel</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.user <span class="operator">=</span> user</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">let</span> user <span class="operator">=</span> <span class="type">UserModel</span>(id: <span class="string">&quot;123&quot;</span>, name: <span class="string">&quot;John Doe&quot;</span>, email: <span class="string">&quot;john@example.com&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> viewModel <span class="operator">=</span> <span class="type">UserViewModel</span>(user: user)</span><br><span class="line"><span class="type">UserView</span>(viewModel: viewModel)</span><br></pre></td></tr></table></figure></div>
+<h4 id="避免重复代码"><a href="#避免重复代码" class="headerlink" title="避免重复代码"></a>避免重复代码</h4><p>检查并删除重复的代码段，使用函数、类、结构体或枚举来封装重复逻辑。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 避免在每个视图中重复写用户信息展示逻辑</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">displayUserInfo</span>(<span class="params">user</span>: <span class="type">UserModel</span>) -&gt; <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">    <span class="type">VStack</span> &#123;</span><br><span class="line">        <span class="type">Text</span>(user.name)</span><br><span class="line">        <span class="type">Text</span>(user.email)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在需要的地方使用</span></span><br><span class="line"><span class="type">UserView</span> &#123;</span><br><span class="line">    displayUserInfo(user: viewModel.user)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="保持函数职责单一"><a href="#保持函数职责单一" class="headerlink" title="保持函数职责单一"></a>保持函数职责单一</h4><p>确保每个函数只负责一项功能，这有助于代码的可读性和可维护性。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设有一个函数处理用户登录</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">loginUser</span>(<span class="params">username</span>: <span class="type">String</span>, <span class="params">password</span>: <span class="type">String</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="comment">// 假设这里是登录逻辑</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 登录成功</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而不是</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">handleLogin</span>(<span class="params">username</span>: <span class="type">String</span>, <span class="params">password</span>: <span class="type">String</span>, <span class="params">onSuccess</span>: <span class="keyword">@escaping</span> () -&gt; <span class="type">Void</span>, <span class="params">onFailure</span>: <span class="keyword">@escaping</span> (<span class="type">Error</span>) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="comment">// 登录逻辑 + UI 更新逻辑</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="优化错误处理和日志记录"><a href="#优化错误处理和日志记录" class="headerlink" title="优化错误处理和日志记录"></a>优化错误处理和日志记录</h4><p>确保代码中有适当的错误处理和日志记录，以便在出现问题时能够快速定位和解决。</p>
+<div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设的日志记录函数</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">logError</span>(<span class="keyword">_</span> <span class="params">error</span>: <span class="type">Error</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Error: <span class="subst">\(error.localizedDescription)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例函数使用日志记录</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>() &#123;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="comment">// 假设这里是数据获取逻辑</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> <span class="keyword">let</span> error &#123;</span><br><span class="line">        logError(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="代码审查和反馈"><a href="#代码审查和反馈" class="headerlink" title="代码审查和反馈"></a>代码审查和反馈</h4><p>在团队中进行定期的代码审查，分享最佳实践，指出潜在的问题，并促进团队整体代码质量的提升。</p>
+<p>实际操作：</p>
+<ul>
+<li>使用 GitHub Pull Requests, GitLab Merge Requests 或其他代码托管平台的审查功能。</li>
+<li>在审查过程中，注重代码的可读性、可维护性、性能优化等方面。</li>
+<li>提供具体的改进建议和反馈，而不是简单的“这个不好”。</li>
+</ul>
+<h4 id="度量与改进"><a href="#度量与改进" class="headerlink" title="度量与改进"></a>度量与改进</h4><p>项目提测后第一时间进行 Code Review。小模块随时review，项目代码面对面投屏。关注代码设计、总体流程、关键设计、重点功能等。遵循checklist。</p>
+<p>改进</p>
+<ul>
+<li>跟踪Code Review结果的执行，必要时加todo指定时间和人员修改。</li>
+<li>定期回顾和总结，更新checklist和代码规范。</li>
+<li>发现好的代码和设计，定期展示并给予奖励。</li>
+</ul>
+<h4 id="Code-Review的注意事项"><a href="#Code-Review的注意事项" class="headerlink" title="Code Review的注意事项"></a>Code Review的注意事项</h4><ul>
+<li>保持友好沟通：在Code Review过程中，应保持友好和尊重的沟通态度。避免使用负面词汇和攻击性语言，以免对团队成员的士气造成负面影响。</li>
+<li>及时反馈：审查者应及时给出反馈意见，并尽量在代码提交后的短时间内完成审查。这有助于被审查者及时修改问题，并保持开发进度。</li>
+<li>重视代码可读性：代码的可读性对于维护性和扩展性至关重要。在Code Review时，应特别关注代码的可读性，如命名规范、注释清晰等。</li>
+<li>考虑性能和安全：除了关注代码的基本逻辑和可读性外，还应考虑代码的性能和安全性。审查者应评估代码的性能瓶颈和潜在的安全漏洞，并给出相应的改进建议。</li>
+</ul>
+<h4 id="Pre-Commit-Hooks"><a href="#Pre-Commit-Hooks" class="headerlink" title="Pre-Commit Hooks"></a>Pre-Commit Hooks</h4><p>实现代码评审（Code Review）与 pre-commit 钩子的结合，可以在代码提交前自动执行代码评审，确保代码质量。</p>
+<ul>
+<li>安装 Pre-Commit： 首先需要在项目中安装 pre-commit，可以通过 pip 或其他包管理器安装。</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pre-commit</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>配置 Pre-Commit： 在项目根目录创建 .pre-commit-config.yaml 文件，定义需要运行的钩子。例如：</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">repos:</span><br><span class="line">  - repo: https://github.com/pre-commit/pre-commit-hooks</span><br><span class="line">    rev: v4.0.1</span><br><span class="line">    hooks:</span><br><span class="line">      - id: trailing-whitespace</span><br><span class="line">      - id: end-of-file-fixer</span><br><span class="line">  - repo: https://github.com/psf/black</span><br><span class="line">    rev: 23.1a1</span><br><span class="line">    hooks:</span><br><span class="line">      - id: black</span><br></pre></td></tr></table></figure></div>
+<p>这个配置文件定义了几个常用的钩子，比如去除多余空格、确保文件末尾有换行符以及代码格式化。</p>
+<ul>
+<li>安装 Pre-Commit 钩子： 运行以下命令来安装预定义的钩子到 Git 仓库中。</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre-commit install</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>自定义 Shell 脚本钩子： 如果需要自定义一些特定的代码检查，可以编写 shell 脚本作为钩子。例如，检查代码中是否存在 TODO 注释：</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">if git grep -q &#x27;TODO&#x27;; then</span><br><span class="line">  echo &quot;Error: There are TODO comments in the code.&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></div>
+<p>然后在 .pre-commit-config.yaml 中添加这个钩子：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- repo: local</span><br><span class="line">  hooks:</span><br><span class="line">    - id: check-todos</span><br><span class="line">      name: Check for TODO comments</span><br><span class="line">      entry: ./check_todos.sh</span><br><span class="line">      language: script</span><br><span class="line">      files: \.swift$</span><br></pre></td></tr></table></figure></div>
+<p>代码评审（Code Review）流程中的集成</p>
+<ul>
+<li>团队约定： 在团队中约定每个开发者都必须启用 pre-commit 钩子，确保提交的代码符合项目的代码规范，并经过基本检查。</li>
+<li>持续集成（CI）支持： 在 CI 流程中，也可以使用相同的 pre-commit 配置，确保所有提交和合并请求都经过统一的检查。可以在 CI 管道中运行 pre-commit run –all-files 来检查所有代码。<br>假设我们希望在 Swift 项目中检查代码格式（使用 SwiftFormat）、静态分析（使用 SwiftLint），以及确保没有 TODO 注释，可以这样配置：</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">repos:</span><br><span class="line">  - repo: https://github.com/nicklockwood/SwiftFormat</span><br><span class="line">    rev: &#x27;0.48.17&#x27;</span><br><span class="line">    hooks:</span><br><span class="line">      - id: swiftformat</span><br><span class="line">  - repo: https://github.com/realm/SwiftLint</span><br><span class="line">    rev: &#x27;0.42.0&#x27;</span><br><span class="line">    hooks:</span><br><span class="line">      - id: swiftlint</span><br><span class="line">  - repo: local</span><br><span class="line">    hooks:</span><br><span class="line">      - id: check-todos</span><br><span class="line">        name: Check for TODO comments</span><br><span class="line">        entry: ./check_todos.sh</span><br><span class="line">        language: script</span><br><span class="line">        files: \.swift$</span><br></pre></td></tr></table></figure></div>
+<h4 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h4><p>《编写可读代码的艺术》、《重构》、《重构与模式》、《代码精进之路》以及Google Engineering Practices Documentation等。</p>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/05/19/Day19-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Day19-岛屿数量</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">静态分析</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clang%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-text">Clang静态分析器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-text">自定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-text">代码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E6%8C%87%E5%8D%97"><span class="nav-text">代码规范指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Review-%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-text">Code Review 的重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Review-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-text">Code Review 的最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E9%87%8D%E7%82%B9%E5%85%B3%E6%B3%A8%E7%9A%84%E6%96%B9%E9%9D%A2"><span class="nav-text">应重点关注的方面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Review-%E9%81%B5%E5%BE%AA%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-text">Code Review 遵循的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%B5%E5%BE%AA-KISS-%E5%8E%9F%E5%88%99%EF%BC%88Keep-It-Simple-Stupid-%EF%BC%89"><span class="nav-text">遵循 KISS 原则（Keep It Simple, Stupid!）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81"><span class="nav-text">避免重复代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E8%81%8C%E8%B4%A3%E5%8D%95%E4%B8%80"><span class="nav-text">保持函数职责单一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E5%92%8C%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95"><span class="nav-text">优化错误处理和日志记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E5%92%8C%E5%8F%8D%E9%A6%88"><span class="nav-text">代码审查和反馈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%A6%E9%87%8F%E4%B8%8E%E6%94%B9%E8%BF%9B"><span class="nav-text">度量与改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-Review%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">Code Review的注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pre-Commit-Hooks"><span class="nav-text">Pre-Commit Hooks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-text">扩展阅读</span></a></li></ol></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<!-- <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">YVTU</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer> -->
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
