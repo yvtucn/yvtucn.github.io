@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://yvtucn.github.io/2025/04/24/day2-用栈实现队列/"/>
+    <link rel="canonical" href="https://yvtucn.github.io/2025/05/20/day20-反转链表/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -30,7 +30,7 @@
     
     <title>
         
-            Day2-用栈实现队列 | YVTU
+            Day20-反转链表 | YVTU
         
     </title>
 
@@ -341,7 +341,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day2-用栈实现队列</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Day20-反转链表</h1>
 			</div>
 			
 		</div>
@@ -360,15 +360,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-24 11:28:10</span>
-        <span class="mobile">2025-04-24 11:28:10</span>
+        <span class="desktop">2025-05-20 10:54:49</span>
+        <span class="mobile">2025-05-20 10:54:49</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-29 12:01</span>
-            <span class="mobile">2025-04-29 12:01</span>
+            <span class="desktop">2025-05-20 10:55:51</span>
+            <span class="mobile">2025-05-20 10:55:51</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -391,17 +391,6 @@
         </span>
     
     
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
 
     
     
@@ -418,29 +407,30 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-queue-using-stacks/" >LeetCode 232 - Implement Queue using Stacks<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<h3 id="📌-题目描述："><a href="#📌-题目描述：" class="headerlink" title="📌 题目描述："></a>📌 题目描述：</h3><p>使用两个栈 stackIn 和 stackOut 实现一个队列，支持以下操作：</p>
+			<p>🔗 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/" >LeetCode 206 - Reverse Linked List<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="📌-题目描述"><a href="#📌-题目描述" class="headerlink" title="📌 题目描述"></a>📌 题目描述</h3><p>给你单链表的头节点 <code>head</code>，请你反转链表，并返回反转后的链表。</p>
+<hr>
+<h3 id="🔍-示例"><a href="#🔍-示例" class="headerlink" title="🔍 示例"></a>🔍 示例</h3><div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: head = [1,2,3,4,5]</span><br><span class="line">输出: [5,4,3,2,1]</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="💡-解题思路"><a href="#💡-解题思路" class="headerlink" title="💡 解题思路"></a>💡 解题思路</h3><p>链表反转是经典题目，可通过迭代或递归实现。</p>
+<p><strong>迭代做法：</strong></p>
 <ul>
-<li>push(x)：将元素 x 推到队列的末尾</li>
-<li>pop()：移除队列开头的元素并返回</li>
-<li>peek()：返回队列开头的元素</li>
-<li>empty()：返回队列是否为空</li>
-</ul>
-<p>要求：<br>只能使用栈的标准操作（push, pop, peek, empty）</p>
-<hr>
-<h3 id="💡-解题思路："><a href="#💡-解题思路：" class="headerlink" title="💡 解题思路："></a>💡 解题思路：</h3><ul>
-<li>入队操作（push）直接往 stackIn 中加元素；</li>
-<li>出队操作（pop 或 peek）时，如果 stackOut 为空，则将 stackIn 中的所有元素倒序转移到 stackOut；</li>
-<li>保证先进先出（FIFO）的顺序。</li>
+<li>使用 <code>prev</code> 指针保存上一个节点；</li>
+<li>每次迭代，将当前节点的 <code>next</code> 指向 <code>prev</code>；</li>
+<li>向前推进 <code>curr</code> 和 <code>prev</code>。</li>
 </ul>
 <hr>
-<h3 id="✅-JavaScript-实现："><a href="#✅-JavaScript-实现：" class="headerlink" title="✅ JavaScript 实现："></a>✅ JavaScript 实现：</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">MyQueue</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span> = [];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackOut</span> = [];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span> = <span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">push</span>(x);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pop</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">pop</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">peek</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="title function_">pop</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackOut</span>[<span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> - <span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyQueue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">empty</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stackIn</span>.<span class="property">length</span> === <span class="number">0</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">stackOut</span>.<span class="property">length</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="✅-JavaScript-实现"><a href="#✅-JavaScript-实现" class="headerlink" title="✅ JavaScript 实现"></a>✅ JavaScript 实现</h3><div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseList = <span class="keyword">function</span>(<span class="params">head</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> prev = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">let</span> curr = head;</span><br><span class="line">    <span class="keyword">while</span> (curr !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> next = curr.<span class="property">next</span>;</span><br><span class="line">        curr.<span class="property">next</span> = prev;</span><br><span class="line">        prev = curr;</span><br><span class="line">        curr = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> prev;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h3 id="🧠-思考拓展："><a href="#🧠-思考拓展：" class="headerlink" title="🧠 思考拓展："></a>🧠 思考拓展：</h3><ul>
-<li>如果反过来是“用队列实现栈”应该怎么做？👉 <a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/implement-stack-using-queues/" >LeetCode 225<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
-<li>队列相关拓展题：滑动窗口最大值、最小栈等</li>
+<h3 id="✅-Swift-实现"><a href="#✅-Swift-实现" class="headerlink" title="✅ Swift 实现"></a>✅ Swift 实现</h3><div class="code-container" data-rel="Swift"><figure class="iseeu highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">reverseList</span>(<span class="keyword">_</span> <span class="params">head</span>: <span class="type">ListNode</span>?) -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">var</span> prev: <span class="type">ListNode</span>? <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">var</span> curr <span class="operator">=</span> head</span><br><span class="line">    <span class="keyword">while</span> curr <span class="operator">!=</span> <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> next <span class="operator">=</span> curr<span class="operator">?</span>.next</span><br><span class="line">        curr<span class="operator">?</span>.next <span class="operator">=</span> prev</span><br><span class="line">        prev <span class="operator">=</span> curr</span><br><span class="line">        curr <span class="operator">=</span> next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="🧠-思考拓展"><a href="#🧠-思考拓展" class="headerlink" title="🧠 思考拓展"></a>🧠 思考拓展</h3><ul>
+<li>如何使用 <strong>递归</strong> 实现链表反转？</li>
+<li>如何反转部分链表（如第 m 到 n 个节点）？</li>
+<li>如何在链表反转的过程中处理带有随机指针的结构？</li>
 </ul>
 
 		</div>
@@ -448,37 +438,17 @@
 		
 
 		
-		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
-			</li>
-			
-		</ul>
-		
 
 		
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/04/25/Day3-Block-%E5%88%86%E7%B1%BB%E3%80%81%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day3-Block 分类、变量捕获与作用域</span>
-						<span class="post-nav-item">Prev posts</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/04/24/Day2-View-%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B/">
+				<a class="next" rel="next" href="/2025/05/20/Day20-MVC-MVVM-VIPER-Redux-%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Day2-View 布局流程</span>
+						<span class="post-nav-title-item">Day20-MVC/MVVM/VIPER/Redux 模式总结</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -499,8 +469,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Day2-用栈实现队列</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="nav-text">📌 题目描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">💡 解题思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-text">✅ JavaScript 实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95%EF%BC%9A"><span class="nav-text">🧠 思考拓展：</span></a></li></ol>
+		<div class="page-title">Day20-反转链表</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">📌 题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%8D-%E7%A4%BA%E4%BE%8B"><span class="nav-text">🔍 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">💡 解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-JavaScript-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ JavaScript 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swift-%E5%AE%9E%E7%8E%B0"><span class="nav-text">✅ Swift 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%9D%E8%80%83%E6%8B%93%E5%B1%95"><span class="nav-text">🧠 思考拓展</span></a></li></ol>
 
 	</div>
 </div>
